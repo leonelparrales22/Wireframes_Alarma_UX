@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System · App Ciclos Circadianos</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink-900: #111827;
+      --ink-700: #374151;
+      --ink-500: #6b7280;
+      --ink-300: #d1d5db;
+      --ink-100: #f3f4f6;
+      --sky-500: #38bdf8;
+      --accent-amber: #fbbf24;
+      --success: #10b981;
+      --alert: #f87171;
+      font-family: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--ink-100);
+      color: var(--ink-900);
+    }
+
+    body {
+      margin: 0;
+      padding: 3rem;
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
+      margin-bottom: 0.35rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3vw, 3rem);
+    }
+
+    h2 {
+      margin-top: 3rem;
+    }
+
+    .section {
+      padding: 2rem;
+      border-radius: 32px;
+      background: white;
+      margin-bottom: 2rem;
+      box-shadow: 0 40px 80px rgba(17, 24, 39, 0.08);
+    }
+
+    .frame-preview {
+      border: 1px solid var(--ink-200);
+      border-radius: 32px;
+      padding: 2rem;
+      background: white;
+      box-shadow: 0 20px 50px rgba(17, 24, 39, 0.06);
+    }
+
+    .frame-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      padding: 0.25rem 0.85rem;
+      border: 1px solid var(--ink-300);
+      background-color: var(--ink-100);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px solid var(--ink-100);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--ink-500);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    td strong {
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 24px;
+      border: 1px solid var(--ink-100);
+    }
+
+    .swatch span:first-child {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+    }
+
+    .token-grid {
+      margin-top: 1.5rem;
+      border-radius: 24px;
+      border: 1px dashed var(--ink-200);
+      padding: 1.5rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(243, 244, 246, 0.9));
+    }
+
+    .token-grid h3 {
+      margin-top: 0;
+    }
+
+    .color-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .color-step {
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      background: white;
+    }
+
+    .color-step strong {
+      display: block;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .color-step span {
+      display: block;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.85rem;
+      color: var(--ink-600, #4b5563);
+    }
+
+    .type-table {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--ink-100);
+      margin-top: 1.5rem;
+    }
+
+    .type-table thead {
+      background: var(--ink-100);
+    }
+
+    .type-table td.sample {
+      font-family: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+    }
+
+    .button-wall {
+      margin-top: 1.5rem;
+      border-radius: 32px;
+      border: 2px dashed var(--ink-200);
+      padding: 2rem;
+      background: white;
+    }
+
+    .button-wall table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 0.75rem;
+    }
+
+    .button-wall th {
+      text-align: center;
+    }
+
+    .btn-swatch {
+      border-radius: 999px;
+      border: none;
+      padding: 0.65rem 1.5rem;
+      font-weight: 600;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--ink-900);
+      color: white;
+      box-shadow: 0 8px 20px rgba(17, 24, 39, 0.25);
+    }
+
+    .btn-primary.hover {
+      background: #0d1422;
+    }
+
+    .btn-primary.focus {
+      outline: 3px solid rgba(56, 189, 248, 0.35);
+      outline-offset: 3px;
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 2px solid var(--ink-900);
+      color: var(--ink-900);
+    }
+
+    .btn-secondary.hover {
+      background: rgba(17, 24, 39, 0.07);
+    }
+
+    .btn-secondary.focus {
+      border-color: var(--sky-500);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 2px dashed var(--ink-300);
+      color: var(--ink-700);
+    }
+
+    .btn-disabled {
+      background: var(--ink-100);
+      color: var(--ink-500);
+      border: 2px solid var(--ink-300);
+      cursor: not-allowed;
+    }
+
+    .component-showcase {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .component-card {
+      border-radius: 28px;
+      border: 1px solid var(--ink-200);
+      padding: 1.5rem;
+      background: white;
+    }
+
+    .classification-block {
+      border-radius: 28px;
+      border: 1px solid var(--ink-200);
+
+.classification-block h3 {
+  margin-top: 0;
+}
+
+.fundation-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.fundation-item {
+  border: 1px solid var(--ink-100);
+  border-radius: 28px;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(243, 244, 246, 0.95));
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fundation-label {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink-700);
+}
+      padding: 0.5rem 0.85rem;
+      border-radius: 18px;
+      border: 1px solid var(--ink-200);
+      background: white;
+    }
+
+    .color-chip span {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      display: inline-block;
+    }
+
+    .color-chip p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--ink-500);
+    }
+
+    .typography-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .fundation-caption {
+      margin: 0.35rem 0 0;
+      font-size: 0.85rem;
+      color: var(--ink-500);
+    }
+
+    .spacing-scale {
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-end;
+    }
+
+    .spacing-scale span {
+      width: 20px;
+      border-radius: 10px;
+      background: var(--ink-200);
+      display: inline-flex;
+      justify-content: center;
+      align-items: flex-end;
+      font-size: 0.6rem;
+      color: var(--ink-700);
+      padding-bottom: 0.2rem;
+    }
+
+    .grid-preview {
+      border-radius: 22px;
+      border: 1px dashed var(--ink-300);
+      padding: 0.75rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.5rem;
+    }
+
+    .grid-preview span {
+      height: 42px;
+      border-radius: 12px;
+      background: var(--ink-100);
+      border: 1px solid var(--ink-200);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border-radius: 999px;
+      border: 1px solid var(--ink-300);
+      padding: 0.35rem 0.85rem;
+      font-size: 0.85rem;
+    }
+
+    .tag-pill span {
+      font-weight: 600;
+    }
+
+    .feedback-visual {
+      margin-top: 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--ink-200);
+      padding: 1.25rem;
+      display: grid;
+      gap: 1.25rem;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .feedback-card {
+      border-radius: 24px;
+      border: 1px solid var(--ink-100);
+      padding: 1rem 1.25rem;
+      background: var(--ink-50, #f9fafb);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .feedback-label {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink-700);
+    }
+
+    .feedback-note {
+      margin: 0;
+      font-size: 0.78rem;
+      color: var(--ink-500);
+    }
+
+    .heading-sample {
+      margin-top: 0.75rem;
+      border-radius: 22px;
+      border: 1px solid var(--ink-200);
+      padding: 1rem 1.25rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 48px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .feedback-gauge svg {
+      width: 110px;
+      height: 110px;
+    }
+
+    .feedback-gauge strong {
+      font-size: 2rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .status-row-mini {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 16px;
+      border: 1px solid var(--ink-200);
+      padding: 0.65rem 0.9rem;
+      background: white;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    }
+
+    .status-row-mini p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--ink-500);
+    }
+
+    .status-row-mini strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--ink-900);
+    }
+
+    .metric-card-mini {
+      border-radius: 18px;
+      border: 1px solid var(--ink-200);
+      padding: 0.75rem;
+    }
+
+    .metric-card-mini p {
+      margin: 0 0 0.35rem 0;
+      font-size: 0.85rem;
+    }
+
+    .metric-chart {
+      height: 48px;
+      border-radius: 14px;
+      border: 1px dashed var(--ink-300);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 0 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .metric-chart span {
+      flex: 1;
+      height: 60%;
+      border-radius: 999px;
+      background: var(--ink-200);
+    }
+
+    .metric-chart span:nth-child(odd) {
+      background: var(--ink-400);
+    }
+
+    .layout-shell {
+      border-radius: 40px;
+      border: 2px solid var(--ink-300);
+      padding: 1.5rem;
+      background: white;
+    }
+
+    .layout-shell.mini {
+      margin-top: 1rem;
+      padding: 1rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .layout-shell.mini .layout-header {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .layout-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .layout-header span:first-child {
+      font-size: 1.8rem;
+    }
+
+    .layout-body {
+      border-radius: 28px;
+      border: 1.5px dashed var(--ink-300);
+      padding: 1rem;
+    }
+
+    .layout-body .row {
+      height: 48px;
+      border-radius: 18px;
+      border: 1px solid var(--ink-200);
+      margin-bottom: 0.75rem;
+      background: var(--ink-50, #f9fafb);
+    }
+
+    .layout-shell.mini .layout-body .row {
+      height: 32px;
+    }
+
+    .layout-body .row:last-child {
+      margin-bottom: 0;
+    }
+
+    .mock-toggle {
+      width: 64px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid var(--ink-200);
+      padding: 3px;
+      background: linear-gradient(90deg, var(--ink-900), rgba(17, 24, 39, 0.4));
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .mock-toggle.off {
+      background: var(--ink-100);
+      border-color: var(--ink-300);
+      justify-content: flex-end;
+    }
+
+    .mock-toggle span {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .chip-set {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip-set span {
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--ink-300);
+    }
+
+    .chip-set span.active {
+      background: var(--ink-900);
+      color: white;
+      border-color: var(--ink-900);
+    }
+
+    .chip-set span.blocked {
+      background: var(--ink-100);
+      color: var(--ink-400);
+      border-style: dashed;
+    }
+
+    .slider-sample {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--ink-100);
+      position: relative;
+      margin-top: 0.75rem;
+    }
+
+    .slider-sample::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 70%;
+      background: var(--ink-900);
+      border-radius: inherit;
+    }
+
+    .inputs-visual {
+      margin-top: 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--ink-200);
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .input-card {
+      border-radius: 22px;
+      border: 1px solid var(--ink-100);
+      padding: 1rem 1.25rem;
+      background: var(--ink-50, #f9fafb);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .input-label {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink-700);
+    }
+
+    .input-note {
+      margin: 0;
+      font-size: 0.78rem;
+      color: var(--ink-500);
+    }
+
+    .toggle-stack {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toggle-stack small {
+      font-size: 0.75rem;
+      color: var(--ink-500);
+    }
+
+    .button-row,
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .button-row {
+      justify-content: flex-start;
+    }
+
+    .emotion-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .emotion-row span {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--ink-200);
+      background: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--ink-500);
+    }
+
+    .emotion-row span.active {
+      background: var(--ink-900);
+      color: white;
+      border-color: var(--ink-900);
+    }
+
+    .emotion-row span.positive {
+      background: #ecfdf5;
+      color: var(--success);
+    }
+
+    .emotion-row span.negative {
+      background: #fef3c7;
+      color: var(--accent-amber);
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: var(--ink-500);
+      max-width: 680px;
+    }
+
+    ul {
+      margin-top: 0.5rem;
+    }
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+
+    .card {
+      padding: 1.25rem;
+      border-radius: 20px;
+      border: 1px solid var(--ink-200);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .states {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .states span {
+      border-radius: 12px;
+      padding: 0.2rem 0.75rem;
+      background-color: var(--ink-100);
+      border: 1px dashed var(--ink-300);
+      font-size: 0.85rem;
+    }
+
+    .highlight {
+      color: var(--sky-500);
+      font-weight: 600;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <header class="section">
+    <!-- <p class="pill"><span>🔧</span> Artefacto de diseño</p> -->
+    <h1>Design System · App de Alarma (Ciclos Circadianos)</h1>
+    <p>
+      Resume colores, tipografías y el inventario completo
+      de componentes necesarios en las
+      pantallas: inicio, configuración, modo sueño, alarma, resumen y estados de error.
+    </p>
+  </header>
+
+  <section class="section">
+    <h2>1. Paleta cromática</h2>
+    <div class="frame-preview">
+      <div class="frame-grid">
+        <header>
+          <p class="pill">Paleta principal y secundaria</p>
+          <h3>Guía de color</h3>
+          <p class="note">Paleta desplegada a pantalla completa con tokens listos para implementación.</p>
+        </header>
+        <div class="grid two">
+          <div class="swatch">
+            <span style="background:#111827"></span>
+            <div>
+                <strong>Ink 900</strong>
+                <p>#111827 · Títulos, botones primarios, iconos.</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <span style="background:#374151"></span>
+              <div>
+                <strong>Ink 700</strong>
+                <p>#374151 · Texto principal</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <span style="background:#6B7280"></span>
+              <div>
+                <strong>Ink 500</strong>
+                <p>#6B7280 · Etiquetas y descripciones</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <span style="background:#D1D5DB"></span>
+              <div>
+                <strong>Ink 300</strong>
+                <p>#D1D5DB · Bordes, divisores, contornos de chips.</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <span style="background:#F3F4F6"></span>
+              <div>
+                <strong>Ink 100</strong>
+                <p>#F3F4F6 · Fondos suaves, tarjetas de apoyo.</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <span style="background:#38BDF8"></span>
+              <div>
+                <strong>Sky 500</strong>
+                <p>#38BDF8 · Indicadores activos</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <span style="background:#FBBF24"></span>
+              <div>
+                <strong>Amber 400</strong>
+                <p>#FBBF24 · Alertas de ventana</p>
+              </div>
+            </div>
+            <div class="swatch">
+              <span style="background:#10B981"></span>
+              <div>
+                <strong>Success 500</strong>
+                <p>#10B981 · Estados de sensores</p>
+              </div>
+            </div>
+          </div>
+          <div class="token-grid">
+            <h3>Tonos extendidos (listos para tokens)</h3>
+            <div class="color-steps">
+              <div class="color-step">
+                <strong style="background:#f9fafb">Ink 100</strong>
+                <span>#F9FAFB · Fondo cards</span>
+                <strong style="background:#f3f4f6">Ink 200</strong>
+                <span>#F3F4F6 · Bordes suaves</span>
+                <strong style="background:#e5e7eb">Ink 300</strong>
+                <span>#E5E7EB · Divisores</span>
+                <strong style="background:#d1d5db">Ink 400</strong>
+                <span>#D1D5DB · Inputs</span>
+                <strong style="background:#9ca3af;color:#111">Ink 500</strong>
+                <span>#9CA3AF · Texto secundario</span>
+                <strong style="background:#6b7280;color:#fff">Ink 600</strong>
+                <span>#6B7280 · Texto base</span>
+                <strong style="background:#374151;color:#fff">Ink 700</strong>
+                <span>#374151 · Headings</span>
+                <strong style="background:#111827;color:#fff">Ink 900</strong>
+                <span>#111827 · CTA</span>
+              </div>
+              <div class="color-step">
+                <strong style="background:#ecfeff">Sky 50</strong>
+                <span>#ECFEFF · Background</span>
+                <strong style="background:#bae6fd">Sky 200</strong>
+                <span>#BAE6FD · Hover</span>
+                <strong style="background:#7dd3fc">Sky 300</strong>
+                <span>#7DD3FC · Focus outline</span>
+                <strong style="background:#38bdf8">Sky 500</strong>
+                <span>#38BDF8 · Indicadores activos</span>
+                <strong style="background:#0ea5e9;color:#fff">Sky 600</strong>
+                <span>#0EA5E9 · Highlight</span>
+              </div>
+              <div class="color-step">
+                <strong style="background:#fefce8">Amber 50</strong>
+                <span>#FEFCE8 · Avisos suaves</span>
+                <strong style="background:#fde68a">Amber 200</strong>
+                <span>#FDE68A · Background card</span>
+                <strong style="background:#fbbf24">Amber 400</strong>
+                <span>#FBBF24 · Icono ventana</span>
+                <strong style="background:#f59e0b;color:#fff">Amber 500</strong>
+                <span>#F59E0B · Alerta límite</span>
+              </div>
+              <div class="color-step">
+                <strong style="background:#ecfdf5">Success 50</strong>
+                <span>#ECFDF5 · Feedback</span>
+                <strong style="background:#d1fae5">Success 100</strong>
+                <span>#D1FAE5 · Chips OK</span>
+                <strong style="background:#6ee7b7">Success 300</strong>
+                <span>#6EE7B7 · Badges</span>
+                <strong style="background:#10b981;color:#fff">Success 500</strong>
+                <span>#10B981 · Estados confirmados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>2. Carta tipográfica</h2>
+    <div class="frame-preview">
+      <div class="frame-grid">
+        <header>
+          <p class="pill">Carta tipográfica</p>
+          <h3>Especificación tipográfica</h3>
+          <p class="note">Jerarquías aplicadas al canvas completo del Design System.</p>
+        </header>
+        <div class="grid two">
+          <div class="card">
+            <h3>Space Grotesk</h3>
+            <p>Usos: títulos, valores principales (p. ej. 7:00 AM, puntajes del gauge).</p>
+            <ul>
+              <li>Display · 500/600</li>
+              <li>Tamaños guía: 48 px, 36 px, 28 px</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>IBM Plex Sans</h3>
+            <p>Usos: cuerpo, etiquetas, botones, chips.</p>
+            <ul>
+              <li>Pesos: 400, 500, 700</li>
+              <li>Tamaños guía: 18 px, 16 px, 14 px, 12 px</li>
+            </ul>
+          </div>
+        </div>
+        <table class="type-table">
+          <thead>
+            <tr>
+              <th>Token</th>
+              <th>Tamaño</th>
+              <th>Peso</th>
+              <th>Uso</th>
+              <th>Muestra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Display / h1</td>
+              <td>48 px</td>
+              <td>Space Grotesk 600</td>
+              <td>Lecturas clave, hora principal</td>
+              <td class="sample" style="font-size:48px; line-height:1.15">07:12 AM</td>
+            </tr>
+            <tr>
+              <td>Heading / h2</td>
+              <td>32 px</td>
+              <td>Space Grotesk 500</td>
+              <td>Títulos de tarjeta</td>
+              <td class="sample" style="font-size:32px; line-height:1.2">Configurar ventana</td>
+            </tr>
+            <tr>
+              <td>Body / base</td>
+              <td>16 px</td>
+              <td>IBM Plex Sans 400</td>
+              <td>Texto general, descripciones</td>
+              <td class="sample" style="font-size:16px; line-height:1.5">Te despertaremos cuando detectemos sueño
+                ligero.</td>
+            </tr>
+            <tr>
+              <td>Label / micro</td>
+              <td>12 px</td>
+              <td>IBM Plex Sans 600</td>
+              <td>Etiquetas, chips, tags</td>
+              <td class="sample" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase">Snooze
+                inteligente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>3. Mapa de pantallas y componentes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pantalla</th>
+          <th>Componentes</th>
+          <th>Notas de estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Home / Dashboard</strong></td>
+          <td>Gauge de calidad, Status tags, Tarjeta Smart Alarm, Chips de estado, Botones primario/secundario.</td>
+          <td>Gauge (0-100), toggle on/off, botones hover/disabled.</td>
+        </tr>
+        <tr>
+          <td><strong>Configurar ventana</strong></td>
+          <td>Pestañas (Laboral/Finde), selector de días, Slider horario, inputs de hora, toggles.</td>
+          <td>Chips activos/inactivos, slider con límites, toggles on/off.</td>
+        </tr>
+        <tr>
+          <td><strong>Modo Sueño</strong></td>
+          <td>Header con back, reloj principal, status rows (phone/watch/batería), card aviso permisos, CTAs.</td>
+          <td>States para conexión (OK / Error), botones ghost/filled.</td>
+        </tr>
+        <tr>
+          <td><strong>Smart Alarm (wake)</strong></td>
+          <td>Icon card, tarjetas de métricas audio y snooze, botón deslizable.</td>
+          <td>Indicadores de progreso (0-100%), botón deslizar con hover/active.</td>
+        </tr>
+        <tr>
+          <td><strong>Resumen</strong></td>
+          <td>Gauge, gráficos lineales, tarjetas de hábitos, componente de emociones.</td>
+          <td>Emotions (4 estados), check de café (sí/no).</td>
+        </tr>
+        <tr>
+          <td><strong>Error permisos</strong></td>
+          <td>Ilustración, texto, botón primario.</td>
+          <td>Estados de advertencia (info, error crítico).</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2>4. Clasificación de componentes</h2>
+    <div class="classification-block">
+      <h3>Fundacionales</h3>
+      <ul class="fundation-list">
+        <li class="fundation-item">
+          <p class="fundation-label">Colores base + semantic</p>
+          <div class="color-line" aria-label="Colores base">
+            <div class="color-chip">
+              <span style="background:#111827"></span>
+              <div>
+                <strong>Ink 900</strong>
+                <p>#111827 · Botones y títulos</p>
+              </div>
+            </div>
+            <div class="color-chip">
+              <span style="background:#374151"></span>
+              <div>
+                <strong>Ink 700</strong>
+                <p>#374151 · Texto principal</p>
+              </div>
+            </div>
+            <div class="color-chip">
+              <span style="background:#6B7280"></span>
+              <div>
+                <strong>Ink 500</strong>
+                <p>#6B7280 · Etiquetas y descripciones</p>
+              </div>
+            </div>
+            <div class="color-chip">
+              <span style="background:#38BDF8"></span>
+              <div>
+                <strong>Sky 500</strong>
+                <p>#38BDF8 · Indicadores activos</p>
+              </div>
+            </div>
+            <div class="color-chip">
+              <span style="background:#FBBF24"></span>
+              <div>
+                <strong>Amber 400</strong>
+                <p>#FBBF24 · Alertas de ventana</p>
+              </div>
+            </div>
+            <div class="color-chip">
+              <span style="background:#10B981"></span>
+              <div>
+                <strong>Success 500</strong>
+                <p>#10B981 · Estados de sensores</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="fundation-item">
+          <p class="fundation-label">Tipografías y escalas</p>
+          <div class="typography-stack">
+            <p class="fundation-caption">Jerarquía tipográfica empleada en pantallas: Space Grotesk para títulos/horarios
+              y IBM Plex Sans para cuerpo, etiquetas y controles.</p>
+            <span style="font-size:32px; font-family:'Space Grotesk', sans-serif">Space Grotesk 600 · Mostrar la hora principal</span>
+            <strong style="font-size:32px; font-family:'Space Grotesk', sans-serif">Space Grotesk 500 · Títulos y valores</strong>
+            <span style="font-size:16px">IBM Plex Sans · Texto principal y párrafos</span>
+            <span style="font-size:12px; text-transform:uppercase; letter-spacing:0.08em">IBM Plex Sans Bold · Etiquetas y chips</span>
+          </div>
+        </li>
+        <li class="fundation-item">
+          <p class="fundation-label">Espaciados (4/8/16/24/40 px)</p>
+          <div class="spacing-scale" aria-label="Escala de espaciados">
+            <span style="height:12px">4</span>
+            <span style="height:20px">8</span>
+            <span style="height:32px">16</span>
+            <span style="height:44px">24</span>
+            <span style="height:60px">40</span>
+          </div>
+          <p class="fundation-caption">Jerarquía modular aplicada a tarjetas, chips, márgenes y artboards.</p>
+        </li>
+        <li class="fundation-item">
+          <p class="fundation-label">Grid móvil (4 columnas, 24 px padding)</p>
+          <div class="grid-preview" aria-label="Grid móvil 4 columnas">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <p class="fundation-caption">Gutter de 16 px + padding lateral de 24 px como en los wireframes.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="classification-block">
+      <h3>Navegación & Layout</h3>
+      <ul>
+        <li>App Shell (bordes 40 px)</li>
+        <li>Header con back y acciones</li>
+        <li>Secciones con borde dashed</li>
+      </ul>
+      <div class="layout-shell mini" aria-label="App Shell">
+        <div class="layout-header">
+          <span>←</span>
+          <strong>Configurar ventana</strong>
+          <span>···</span>
+        </div>
+        <div class="layout-body">
+          <div class="row"></div>
+          <div class="row"></div>
+          <div class="row"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="classification-block">
+      <h3>Inputs & Control</h3>
+      <ul>
+        <li>Botón primario, secundario, ghost</li>
+        <li>Toggle, slider, chips & tabs</li>
+        <li>Selector de emociones</li>
+      </ul>
+      <div class="inputs-visual">
+        <div class="inputs-grid">
+          <div class="input-card">
+            <p class="input-label">Botones principales</p>
+            <div class="button-row">
+              <button class="btn-swatch btn-primary">Primario</button>
+              <button class="btn-swatch btn-secondary">Secundario</button>
+              <button class="btn-swatch btn-ghost">Ghost</button>
+            </div>
+            <p class="input-note">Colores finales: Ink 900 (#111827), blanco invertido, borde dashed.</p>
+          </div>
+          <div class="input-card">
+            <p class="input-label">Toggles & slider</p>
+            <div class="toggle-stack">
+              <div class="mock-toggle"><span></span></div>
+              <small>On</small>
+              <div class="mock-toggle off"><span></span></div>
+              <small>Off</small>
+            </div>
+            <div class="slider-sample"></div>
+            <div class="slider-labels">
+              <span>7:00</span>
+              <span>7:30</span>
+            </div>
+          </div>
+          <div class="input-card">
+            <p class="input-label">Chips / Tabs</p>
+            <div class="chip-set">
+              <span class="active">Laboral</span>
+              <span class="neutral">Finde</span>
+              <span class="blocked">D</span>
+              <span class="active">L</span>
+              <span>M</span>
+              <span>X</span>
+            </div>
+            <p class="input-note">Activos en Ink 900, bloqueados en Ink 100 con borde dashed.</p>
+          </div>
+          <div class="input-card">
+            <p class="input-label">Selector de emociones</p>
+            <div class="emotion-row">
+              <span class="negative">😴</span>
+              <span>😐</span>
+              <span class="active">😌</span>
+              <span class="positive">😀</span>
+            </div>
+            <p class="input-note">Estados neutro, positivo (verde) y alerta (ámbar).</p>
+          </div>
+        </div>
+      </div>
+      <div class="button-wall" style="margin-top:1.5rem">
+        <h4 style="margin-top:0">Estados visuales de botones</h4>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Default</th>
+              <th>Hover</th>
+              <th>Focus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primario</td>
+              <td><button class="btn-swatch btn-primary">Button label</button></td>
+              <td><button class="btn-swatch btn-primary hover">Button label</button></td>
+              <td><button class="btn-swatch btn-primary focus">Button label</button></td>
+            </tr>
+            <tr>
+              <td>Secundario</td>
+              <td><button class="btn-swatch btn-secondary">Button label</button></td>
+              <td><button class="btn-swatch btn-secondary hover">Button label</button></td>
+              <td><button class="btn-swatch btn-secondary focus">Button label</button></td>
+            </tr>
+            <tr>
+              <td>Línea / Ghost</td>
+              <td><button class="btn-swatch btn-ghost">Button label</button></td>
+              <td><button class="btn-swatch btn-ghost hover">Button label</button></td>
+              <td><button class="btn-swatch btn-ghost focus">Button label</button></td>
+            </tr>
+            <tr>
+              <td>Deshabilitado</td>
+              <td colspan="3"><button class="btn-swatch btn-disabled">Button label</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="classification-block">
+      <h3>Feedback & Data</h3>
+      <ul>
+        <li>Gauge circular</li>
+        <li>Status tag / status row</li>
+        <li>Tarjetas métricas (audio, hábitos, sensores)</li>
+      </ul>
+      <div class="feedback-visual">
+        <div class="feedback-grid">
+          <div class="feedback-card">
+            <p class="feedback-label">Gauge circular</p>
+            <div class="feedback-gauge">
+              <svg viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#E5E7EB" stroke-width="10" />
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#111827" stroke-width="10" stroke-dasharray="250 999"
+                  stroke-linecap="round" transform="rotate(-90 60 60)" />
+              </svg>
+              <div>
+                <strong>85</strong>
+                <p style="margin:0;color:var(--ink-500)">Calidad · Excelente</p>
+              </div>
+            </div>
+            <p class="feedback-note">Escala 0-100 con trazo Ink 900 y fondo Ink 100.</p>
+          </div>
+          <div class="feedback-card">
+            <p class="feedback-label">Status tags</p>
+            <div class="tag-row">
+              <span class="tag-pill" style="border-color:#0ea5e9;color:#0ea5e9"><span>◎</span>Sensores OK</span>
+              <span class="tag-pill" style="border-color:#10b981;color:#10b981"><span>▣</span>Batería 92%</span>
+              <span class="tag-pill" style="border-color:#fbbf24;color:#fbbf24"><span>△</span>Ventana 7:00-7:30</span>
+              <span class="tag-pill" style="border-color:#6b7280;color:#6b7280"><span>✔</span>Window Met</span>
+            </div>
+            <p class="feedback-note">Colores directos: Sky 500, Success 500, Amber 400 e Ink 500.</p>
+          </div>
+          <div class="feedback-card">
+            <p class="feedback-label">Status row</p>
+            <div class="status-row-mini">
+              <div>
+                <strong>Phone</strong>
+                <p>95% · Cargando</p>
+              </div>
+              <span class="pill">OK</span>
+            </div>
+            <p class="feedback-note">Usa layout con ícono, copy IBM Plex Sans y badge pill.</p>
+          </div>
+          <div class="feedback-card">
+            <p class="feedback-label">Tarjeta de métricas</p>
+            <div class="metric-card-mini">
+              <p>Métricas hábitos</p>
+              <div class="metric-chart">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <p style="font-size:0.75rem;color:var(--ink-500)">Movimiento nocturno: Bajo</p>
+            </div>
+            <p class="feedback-note">Se usa para hábitos/audio con chart mini y copy secundario.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+</body>
+
+</html>
