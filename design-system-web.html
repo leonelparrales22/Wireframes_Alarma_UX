@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Design System Web - Wireframe Sueno</title>
+    <title>Design System Web - Admin Sueno</title>
     <style>
       :root {
         --gray-0: #ffffff;
@@ -23,27 +23,28 @@
 
       body {
         margin: 0;
-        background: linear-gradient(180deg, #f2f2f2 0%, #dfdfdf 100%);
+        background: linear-gradient(180deg, #f1f1f1 0%, #dddddd 100%);
         color: var(--gray-900);
         font-family: "Segoe UI", Arial, sans-serif;
       }
 
       .page {
-        max-width: 1300px;
+        max-width: 1440px;
         margin: 0 auto;
-        padding: 24px;
+        padding: 22px;
       }
 
       .hero {
         border: 2px solid var(--gray-300);
         background: var(--gray-0);
-        padding: 18px;
-        margin-bottom: 16px;
+        padding: 16px;
+        margin-bottom: 14px;
       }
 
       .hero h1 {
         margin: 0 0 8px 0;
         font-size: 24px;
+        letter-spacing: 0.2px;
       }
 
       .hero p {
@@ -52,23 +53,32 @@
         font-size: 14px;
       }
 
+      .note {
+        margin-top: 12px;
+        border: 2px dashed var(--gray-400);
+        background: var(--gray-50);
+        padding: 10px;
+        font-size: 13px;
+        color: var(--gray-700);
+      }
+
       .section {
         border: 2px solid var(--gray-300);
         background: var(--gray-0);
-        margin-bottom: 14px;
+        margin-bottom: 12px;
       }
 
       .section-head {
         border-bottom: 2px solid var(--gray-300);
         padding: 10px 12px;
-        font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 0.8px;
+        font-size: 12px;
         font-weight: 700;
       }
 
       .section-body {
-        padding: 14px;
+        padding: 12px;
       }
 
       .grid {
@@ -84,142 +94,245 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .token {
+      .box {
         border: 2px solid var(--gray-300);
+        background: var(--gray-50);
         padding: 10px;
+      }
+
+      .box h3,
+      .box h4,
+      .box p {
+        margin: 0 0 7px 0;
+      }
+
+      .box h3 {
+        font-size: 16px;
+      }
+
+      .box h4 {
+        font-size: 14px;
+      }
+
+      .box p {
+        font-size: 13px;
+        color: var(--gray-700);
+      }
+
+      .artboard-wrap {
         display: grid;
-        gap: 8px;
+        gap: 12px;
       }
 
-      .swatch {
-        height: 44px;
+      .artboard-title {
         border: 2px solid var(--gray-300);
+        background: var(--gray-100);
+        padding: 8px 10px;
+        font-size: 12px;
+        font-weight: 700;
       }
 
-      .label {
+      .artboard {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 2px solid var(--gray-700);
+        background: #fcfcfc;
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+        min-height: 520px;
+        overflow: auto;
+      }
+
+      .artboard-stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .artboard-separator {
+        border-top: 3px solid var(--gray-300);
+        border-bottom: 2px dashed var(--gray-300);
+        padding: 6px 0;
+        text-align: center;
+        font-size: 11px;
+        color: var(--gray-500);
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+      }
+
+      .subtitle {
         font-size: 12px;
         color: var(--gray-500);
       }
 
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .swatch {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        min-height: 70px;
+        display: grid;
+        align-content: end;
+      }
+
+      .swatch-sample {
+        height: 42px;
+        border-bottom: 2px solid var(--gray-300);
+      }
+
+      .swatch-label {
+        font-size: 11px;
+        padding: 5px;
+        color: var(--gray-700);
+      }
+
+      .mood-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .mood {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      .type-line {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        padding: 8px;
+      }
+
       .display {
-        font-size: 36px;
+        font-size: 42px;
         font-weight: 700;
-        margin: 0;
+        letter-spacing: 0.2px;
+      }
+
+      .h1 {
+        font-size: 30px;
+        font-weight: 700;
       }
 
       .h2 {
-        font-size: 22px;
-        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
       }
 
       .h3 {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .body-l {
         font-size: 16px;
-        margin: 0;
       }
 
       .body {
         font-size: 14px;
-        margin: 0;
       }
 
       .small {
         font-size: 12px;
-        margin: 0;
       }
 
-      .component {
-        border: 2px solid var(--gray-300);
-        background: var(--gray-50);
-        padding: 12px;
+      .micro {
+        font-size: 11px;
       }
 
-      .wf-topbar {
-        display: flex;
-        align-items: center;
+      .usage-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
+      }
+
+      .usage-card {
         border: 2px solid var(--gray-300);
-        padding: 8px;
+        background: var(--gray-0);
+        padding: 9px;
+      }
+
+      .usage-label {
+        font-size: 11px;
+        color: var(--gray-500);
+        margin-bottom: 5px;
+      }
+
+      .mono {
+        font-family: "Courier New", monospace;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+
+      th,
+      td {
+        border: 2px solid var(--gray-300);
+        padding: 7px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
         background: var(--gray-100);
       }
 
-      .dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 2px solid var(--gray-300);
-      }
-
-      .address {
-        height: 20px;
-        flex: 1;
-        border: 2px solid var(--gray-300);
-        background: var(--gray-0);
-      }
-
-      .wf-layout {
+      .token-list {
         display: grid;
-        grid-template-columns: 200px 1fr;
-        border: 2px solid var(--gray-300);
-        min-height: 220px;
+        gap: 7px;
       }
 
-      .wf-sidebar {
-        border-right: 2px solid var(--gray-300);
-        padding: 10px;
-        display: grid;
-        gap: 8px;
-        align-content: start;
-      }
-
-      .menu-item {
+      .token-item {
         border: 2px solid var(--gray-300);
         background: var(--gray-0);
         padding: 8px;
-        font-size: 13px;
+        font-size: 12px;
       }
 
-      .menu-item.active {
-        border-color: var(--gray-700);
-        background: var(--gray-100);
-        font-weight: 700;
-      }
-
-      .wf-main {
-        padding: 10px;
-        display: grid;
-        gap: 8px;
-      }
-
-      .card {
+      .component-frame {
         border: 2px solid var(--gray-300);
         background: var(--gray-0);
         padding: 10px;
+      }
+
+      .component-frame h4 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
       }
 
       .input {
-        border: 2px solid var(--gray-300);
         height: 34px;
+        border: 2px solid var(--gray-300);
         background: var(--gray-50);
       }
 
-      .button {
+      .btn {
+        display: inline-block;
         border: 2px solid var(--gray-700);
         background: var(--gray-100);
-        padding: 8px 10px;
-        font-size: 13px;
-        display: inline-block;
+        font-size: 12px;
+        padding: 7px 9px;
       }
 
-      .button.secondary {
+      .btn.secondary {
         border-color: var(--gray-300);
         background: var(--gray-50);
       }
 
       .chip {
+        display: inline-block;
         border: 2px solid var(--gray-300);
         padding: 5px 8px;
-        font-size: 12px;
-        display: inline-block;
+        font-size: 11px;
         margin-right: 6px;
       }
 
@@ -229,25 +342,47 @@
         font-weight: 700;
       }
 
-      .table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 13px;
+      .skeleton {
+        display: grid;
+        gap: 8px;
       }
 
-      .table th,
-      .table td {
-        border: 2px solid var(--gray-300);
-        padding: 6px;
-        text-align: left;
+      .skeleton-line {
+        height: 12px;
+        background: linear-gradient(90deg, #ededed 0%, #d9d9d9 50%, #ededed 100%);
+        background-size: 200% 100%;
+        animation: shimmer 1.3s linear infinite;
+      }
+
+      .skeleton-box {
+        height: 70px;
+        background: linear-gradient(90deg, #ededed 0%, #d9d9d9 50%, #ededed 100%);
+        background-size: 200% 100%;
+        animation: shimmer 1.3s linear infinite;
+      }
+
+      .state {
+        border: 2px dashed var(--gray-700);
+        background: var(--gray-50);
+        padding: 9px;
+        font-size: 12px;
+      }
+
+      .row {
+        display: grid;
+        gap: 8px;
+      }
+
+      .row.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
       .chart {
-        height: 90px;
+        height: 84px;
         border: 2px dashed var(--gray-300);
         display: flex;
-        gap: 8px;
         align-items: end;
+        gap: 8px;
         padding: 8px;
       }
 
@@ -261,42 +396,16 @@
         height: 40%;
       }
 
-      .h65 {
-        height: 65%;
-      }
-
-      .h80 {
-        height: 80%;
-      }
-
       .h55 {
         height: 55%;
       }
 
-      .state {
-        border: 2px dashed var(--gray-700);
-        padding: 10px;
-        background: var(--gray-50);
-        font-size: 13px;
+      .h70 {
+        height: 70%;
       }
 
-      .skeleton {
-        display: grid;
-        gap: 8px;
-      }
-
-      .skeleton-line {
-        height: 14px;
-        background: linear-gradient(90deg, #ededed 0%, #d9d9d9 50%, #ededed 100%);
-        background-size: 200% 100%;
-        animation: shimmer 1.3s linear infinite;
-      }
-
-      .skeleton-box {
-        height: 70px;
-        background: linear-gradient(90deg, #ededed 0%, #d9d9d9 50%, #ededed 100%);
-        background-size: 200% 100%;
-        animation: shimmer 1.3s linear infinite;
+      .h80 {
+        height: 80%;
       }
 
       @keyframes shimmer {
@@ -308,32 +417,14 @@
         }
       }
 
-      .spec {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 13px;
-      }
-
-      .spec th,
-      .spec td {
-        border: 2px solid var(--gray-300);
-        padding: 7px;
-        text-align: left;
-      }
-
-      @media (max-width: 980px) {
+      @media (max-width: 1080px) {
         .grid.two,
-        .grid.three {
+        .grid.three,
+        .usage-grid,
+        .row.three,
+        .swatches,
+        .mood-row {
           grid-template-columns: 1fr;
-        }
-
-        .wf-layout {
-          grid-template-columns: 1fr;
-        }
-
-        .wf-sidebar {
-          border-right: 0;
-          border-bottom: 2px solid var(--gray-300);
         }
       }
     </style>
@@ -341,111 +432,393 @@
   <body>
     <div class="page">
       <header class="hero">
-        <h1>Design System Web (Wireframe) - Monitoreo de Sueno</h1>
+        <h1>Design System Web - Admin de Monitoreo de Sueno</h1>
         <p>
-          Guia base para construir las pantallas web del admin sin color ni estilo final.
+          Documento listo para pasar de wireframes a mockups con lista real de
+          componentes, estados y variaciones.
         </p>
+        <div class="note">
+          Base de trabajo: 8 pantallas del flujo web (`indexweb.html`) +
+          clasificacion completa de componentes por uso.
+        </div>
       </header>
 
       <section class="section">
-        <div class="section-head">01. Foundations</div>
+        <div class="section-head">01. Style Tile + Artboard 1920 x 1080</div>
         <div class="section-body grid two">
-          <div class="grid three">
-            <div class="token">
-              <div class="swatch" style="background: var(--gray-0);"></div>
-              <div class="label">Gray 0 - #FFFFFF</div>
-            </div>
-            <div class="token">
-              <div class="swatch" style="background: var(--gray-100);"></div>
-              <div class="label">Gray 100 - #EDEDED</div>
-            </div>
-            <div class="token">
-              <div class="swatch" style="background: var(--gray-300);"></div>
-              <div class="label">Gray 300 - #BDBDBD</div>
-            </div>
-            <div class="token">
-              <div class="swatch" style="background: var(--gray-500);"></div>
-              <div class="label">Gray 500 - #6F6F6F</div>
-            </div>
-            <div class="token">
-              <div class="swatch" style="background: var(--gray-700);"></div>
-              <div class="label">Gray 700 - #474747</div>
-            </div>
-            <div class="token">
-              <div class="swatch" style="background: var(--gray-900);"></div>
-              <div class="label">Gray 900 - #1F1F1F</div>
-            </div>
-          </div>
-          <div class="component">
-            <p class="display">Display 36</p>
-            <p class="h2">Heading 22</p>
-            <p class="h3">Heading 16</p>
-            <p class="body">Body 14 para contenido principal.</p>
-            <p class="small">Small 12 para metadata y estados.</p>
-            <hr style="border: 0; border-top: 2px solid var(--gray-300); margin: 12px 0;" />
-            <p class="small">Spacing base: 8px / 12px / 16px / 24px.</p>
-            <p class="small">Radio recomendado: 0px (wireframe) o 2px max.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">02. Layout Web</div>
-        <div class="section-body">
-          <div class="wf-topbar">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <div class="address"></div>
-          </div>
-          <div class="wf-layout">
-            <aside class="wf-sidebar">
-              <div class="menu-item active">Inicio</div>
-              <div class="menu-item">Detalles</div>
-              <div class="menu-item">Historial</div>
-              <div class="menu-item">Alertas</div>
-              <div class="menu-item">Exportar</div>
-            </aside>
-            <main class="wf-main">
-              <div class="card">Header de pantalla</div>
-              <div class="grid three">
-                <div class="card">KPI 1</div>
-                <div class="card">KPI 2</div>
-                <div class="card">KPI 3</div>
+          <div class="artboard-wrap">
+            <div class="artboard-title">Artboard A - Paleta Principal y Secundaria (1920x1080)</div>
+            <div class="artboard">
+              <div>
+                <strong>Style Tile - Direccion visual</strong><br />
+                <span class="subtitle">
+                  Concepto: clinico, legible, tecnico, sin ruido visual.
+                </span>
               </div>
-              <div class="card">Contenedor principal de grafico o tabla</div>
-            </main>
+              <div class="swatches">
+                <div class="swatch">
+                  <div class="swatch-sample" style="background:#ffffff;"></div>
+                  <div class="swatch-label">Base / White</div>
+                </div>
+                <div class="swatch">
+                  <div class="swatch-sample" style="background:#f7f7f7;"></div>
+                  <div class="swatch-label">Surface 1</div>
+                </div>
+                <div class="swatch">
+                  <div class="swatch-sample" style="background:#ededed;"></div>
+                  <div class="swatch-label">Surface 2</div>
+                </div>
+                <div class="swatch">
+                  <div class="swatch-sample" style="background:#bdbdbd;"></div>
+                  <div class="swatch-label">Borders</div>
+                </div>
+                <div class="swatch">
+                  <div class="swatch-sample" style="background:#6f6f6f;"></div>
+                  <div class="swatch-label">Text Secondary</div>
+                </div>
+                <div class="swatch">
+                  <div class="swatch-sample" style="background:#1f1f1f;"></div>
+                  <div class="swatch-label">Text Primary</div>
+                </div>
+              </div>
+              <div class="mood-row">
+                <div class="mood"><strong>Keyword 1</strong><br />Confiable</div>
+                <div class="mood"><strong>Keyword 2</strong><br />Ordenado</div>
+                <div class="mood"><strong>Keyword 3</strong><br />Analitico</div>
+                <div class="mood"><strong>Keyword 4</strong><br />Sobrio</div>
+              </div>
+              <div class="box">
+                <h4>Regla de color para wireframe</h4>
+                <p>
+                  No usar color semantico. Estados (error, loading, exito) se
+                  comunican con texto + borde + icono de estructura.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="artboard-wrap">
+            <div class="artboard-title">Artboard B - Muestras de UI (1920x1080)</div>
+            <div class="artboard">
+              <div class="row three">
+                <div class="box">
+                  <h4>Login card</h4>
+                  <div class="input"></div>
+                  <div style="height:8px;"></div>
+                  <div class="input"></div>
+                  <div style="height:8px;"></div>
+                  <span class="btn">Iniciar sesion</span>
+                </div>
+                <div class="box">
+                  <h4>KPI card</h4>
+                  <p class="h2">85%</p>
+                  <p>Calidad promedio</p>
+                </div>
+                <div class="box">
+                  <h4>Filtro</h4>
+                  <span class="chip active">30 dias</span>
+                  <span class="chip">7 dias</span>
+                </div>
+              </div>
+              <div class="chart">
+                <span class="bar h40"></span>
+                <span class="bar h70"></span>
+                <span class="bar h55"></span>
+                <span class="bar h80"></span>
+                <span class="bar h55"></span>
+              </div>
+              <div class="state">
+                Texto de estado ejemplo: "Cargando datos de la nube..."
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="section-head">03. Componentes Base</div>
-        <div class="section-body grid two">
-          <div class="component">
-            <p class="h3">Inputs y Botones</p>
-            <div class="input"></div>
-            <div style="height: 8px;"></div>
-            <div class="input"></div>
-            <div style="height: 10px;"></div>
-            <span class="button">Boton Primario</span>
-            <span class="button secondary">Boton Secundario</span>
+        <div class="section-head">02. Carta Tipografica + Ejemplos de Texto (Artboard 1920 x 1080)</div>
+        <div class="section-body artboard-stack">
+          <div class="artboard-wrap">
+            <div class="artboard-title">Artboard C - Carta Tipografica (1920x1080)</div>
+            <div class="artboard">
+              <div class="type-line"><span class="display">Display 42</span> - Titulos de modulo</div>
+              <div class="type-line"><span class="h1">H1 30</span> - Titulo de pantalla</div>
+              <div class="type-line"><span class="h2">H2 24</span> - Subtitulo de bloque</div>
+              <div class="type-line"><span class="h3">H3 18</span> - Titulo de tarjeta</div>
+              <div class="type-line"><span class="body-l">Body L 16</span> - Copy principal</div>
+              <div class="type-line"><span class="body">Body 14</span> - Texto regular</div>
+              <div class="type-line"><span class="small">Small 12</span> - Labels y metadata</div>
+              <div class="type-line"><span class="micro">Micro 11</span> - Notas tecnicas</div>
+              <div class="box">
+                <h4>Familias recomendadas</h4>
+                <p>Primaria: Segoe UI / Arial (web safe)</p>
+                <p>Soporte tecnico: Courier New para IDs o logs</p>
+              </div>
+            </div>
           </div>
-          <div class="component">
-            <p class="h3">Filtros / Tabs</p>
-            <span class="chip active">30 dias</span>
-            <span class="chip">7 dias</span>
-            <span class="chip">90 dias</span>
-            <div style="height: 12px;"></div>
+
+          <div class="artboard-separator">Separacion visual entre Artboard C y Artboard D</div>
+
+          <div class="artboard-wrap">
+            <div class="artboard-title">Artboard D - Ejemplos de Uso de Textos (1920x1080)</div>
+            <div class="artboard">
+              <div class="usage-grid">
+                <div class="usage-card">
+                  <div class="usage-label">Login / Error</div>
+                  <div class="body">Usuario o contrasena incorrectos.</div>
+                </div>
+                <div class="usage-card">
+                  <div class="usage-label">Dashboard / Loading</div>
+                  <div class="body">Cargando datos de la nube...</div>
+                </div>
+                <div class="usage-card">
+                  <div class="usage-label">Export / Exito</div>
+                  <div class="body">Tu reporte se ha descargado correctamente.</div>
+                </div>
+                <div class="usage-card">
+                  <div class="usage-label">Detalle / Headline</div>
+                  <div class="h3">Analisis de Noche: 12 Octubre 2025</div>
+                </div>
+                <div class="usage-card">
+                  <div class="usage-label">KPI</div>
+                  <div class="h2">Calidad 85% - Duracion 7h 20m</div>
+                </div>
+                <div class="usage-card">
+                  <div class="usage-label">Nota tecnica</div>
+                  <div class="mono small">session_id: SLP-2025-10-12-001</div>
+                </div>
+              </div>
+              <div class="box">
+                <h4>Reglas de redaccion</h4>
+                <p>Usar mensajes cortos, directos, orientados a accion.</p>
+                <p>Evitar texto ambiguo en estados de error y exito.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">03. Analisis de Pantallas - Componentes por Pantalla</div>
+        <div class="section-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Pantalla</th>
+                <th>Objetivo</th>
+                <th>Componentes requeridos</th>
+                <th>Feedback clave</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>01 Login Seguro</td>
+                <td>Autenticacion robusta</td>
+                <td>Card login, input email, input password, CTA primario, CTA secundario, banner error</td>
+                <td>Error credenciales</td>
+              </tr>
+              <tr>
+                <td>02 Dashboard Loading</td>
+                <td>Espera controlada</td>
+                <td>Sidebar, topbar, title, skeleton line, skeleton chart, skeleton cards</td>
+                <td>Cargando datos de la nube</td>
+              </tr>
+              <tr>
+                <td>03 Dashboard Analitico</td>
+                <td>Big picture 30 dias</td>
+                <td>KPI cards, chips filtro tiempo, grafico barras, tarjetas factores, menu lateral</td>
+                <td>Datos activos</td>
+              </tr>
+              <tr>
+                <td>04 Detalle de Sesion</td>
+                <td>Zoom REM / Profundo</td>
+                <td>Header sesion, chart timeline, cards metricas, tabla resumen rapido</td>
+                <td>Vista de precision</td>
+              </tr>
+              <tr>
+                <td>05 Historial Noches</td>
+                <td>Consulta por fecha</td>
+                <td>Filtros, tabla resultados, accion ver detalle, paginacion basica</td>
+                <td>Busqueda</td>
+              </tr>
+              <tr>
+                <td>06 Alertas Clinicas</td>
+                <td>Priorizar eventos</td>
+                <td>Cards alerta, tags prioridad, timeline alertas, CTA abrir sesion</td>
+                <td>Alta / media prioridad</td>
+              </tr>
+              <tr>
+                <td>07 Exportar Reporte</td>
+                <td>Descargar PDF o CSV</td>
+                <td>Selector formato, selector rango, CTA descargar, CTA preview, nota legal</td>
+                <td>Accion de descarga</td>
+              </tr>
+              <tr>
+                <td>08 Descarga Exitosa</td>
+                <td>Confirmar resultado</td>
+                <td>Card exito, resumen archivo, CTA abrir archivo, CTA volver dashboard</td>
+                <td>Tu reporte se ha descargado correctamente</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">04. Estados y Variaciones por Componente</div>
+        <div class="section-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Estados</th>
+                <th>Variaciones</th>
+                <th>Evento que cambia estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Input texto</td>
+                <td>Default, Focus, Error, Disabled</td>
+                <td>Email, Password, Date range</td>
+                <td>Click, validacion, bloqueo por sistema</td>
+              </tr>
+              <tr>
+                <td>Boton CTA</td>
+                <td>Default, Hover, Pressed, Disabled, Loading</td>
+                <td>Primario, Secundario, Ghost</td>
+                <td>Mouse, submit, espera respuesta</td>
+              </tr>
+              <tr>
+                <td>Card metrica</td>
+                <td>Default, Loading, Empty</td>
+                <td>KPI calidad, duracion, alertas</td>
+                <td>Consulta de datos, sin registros</td>
+              </tr>
+              <tr>
+                <td>Chart barra/linea</td>
+                <td>Default, Loading, Empty, Error data</td>
+                <td>30 dias, 7 dias, 90 dias</td>
+                <td>Cambio filtro, fallo API</td>
+              </tr>
+              <tr>
+                <td>Tabla historial</td>
+                <td>Default, Loading, Empty, Sorted</td>
+                <td>Compacta, Extendida</td>
+                <td>Busqueda, ordenamiento, filtro</td>
+              </tr>
+              <tr>
+                <td>Mensaje estado</td>
+                <td>Info, Error, Success</td>
+                <td>Inline, Banner, Card</td>
+                <td>Respuesta de accion usuario</td>
+              </tr>
+              <tr>
+                <td>Chip filtro</td>
+                <td>Default, Active, Disabled</td>
+                <td>Tiempo, categoria, formato</td>
+                <td>Seleccion de filtro</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">05. Clasificacion por Tipo o Uso</div>
+        <div class="section-body grid three">
+          <div class="box">
+            <h3>Navegacion</h3>
+            <div class="token-list">
+              <div class="token-item">Topbar browser shell</div>
+              <div class="token-item">Sidebar principal</div>
+              <div class="token-item">Menu item (default/active)</div>
+              <div class="token-item">Breadcrumb simple</div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>Entrada de datos</h3>
+            <div class="token-list">
+              <div class="token-item">Input texto</div>
+              <div class="token-item">Input fecha/rango</div>
+              <div class="token-item">Selector formato PDF/CSV</div>
+              <div class="token-item">Chips de filtro</div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>Acciones</h3>
+            <div class="token-list">
+              <div class="token-item">Boton primario</div>
+              <div class="token-item">Boton secundario</div>
+              <div class="token-item">Boton ghost</div>
+              <div class="token-item">Link accion en tabla</div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>Visualizacion de datos</h3>
+            <div class="token-list">
+              <div class="token-item">Card KPI</div>
+              <div class="token-item">Chart barras</div>
+              <div class="token-item">Chart timeline</div>
+              <div class="token-item">Tabla historial</div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>Feedback</h3>
+            <div class="token-list">
+              <div class="token-item">Banner error login</div>
+              <div class="token-item">Skeleton loading</div>
+              <div class="token-item">Mensaje exito export</div>
+              <div class="token-item">Estado vacio</div>
+            </div>
+          </div>
+          <div class="box">
+            <h3>Documentacion</h3>
+            <div class="token-list">
+              <div class="token-item">Nombres de componentes</div>
+              <div class="token-item">Convencion de variantes</div>
+              <div class="token-item">Reglas de texto</div>
+              <div class="token-item">Notas de handoff</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">06. Catalogo Visual de Componentes (Base para Mockups)</div>
+        <div class="section-body grid two">
+          <div class="component-frame">
+            <h4>Grupo A - Formulario y Acciones</h4>
+            <div class="input"></div>
+            <div style="height:8px;"></div>
+            <div class="input"></div>
+            <div style="height:10px;"></div>
+            <span class="btn">Primario</span>
+            <span class="btn secondary">Secundario</span>
+            <span class="chip">Ghost</span>
+          </div>
+          <div class="component-frame">
+            <h4>Grupo B - Data Cards y Charts</h4>
+            <div class="row three">
+              <div class="box"><strong>84%</strong><br />Calidad</div>
+              <div class="box"><strong>7h 12m</strong><br />Duracion</div>
+              <div class="box"><strong>3</strong><br />Alertas</div>
+            </div>
+            <div style="height:8px;"></div>
             <div class="chart">
               <span class="bar h40"></span>
               <span class="bar h80"></span>
               <span class="bar h55"></span>
-              <span class="bar h65"></span>
+              <span class="bar h70"></span>
             </div>
           </div>
-          <div class="component">
-            <p class="h3">Tabla de Historial</p>
-            <table class="table">
+          <div class="component-frame">
+            <h4>Grupo C - Tabla y Filtros</h4>
+            <span class="chip active">30 dias</span>
+            <span class="chip">7 dias</span>
+            <span class="chip">90 dias</span>
+            <div style="height:8px;"></div>
+            <table>
               <thead>
                 <tr>
                   <th>Fecha</th>
@@ -459,83 +832,24 @@
                   <td>7h 20m</td>
                   <td>85%</td>
                 </tr>
-                <tr>
-                  <td>11 Oct</td>
-                  <td>6h 58m</td>
-                  <td>79%</td>
-                </tr>
               </tbody>
             </table>
           </div>
-          <div class="component">
-            <p class="h3">Tarjeta de Detalle</p>
-            <div class="card">
-              <p class="body">Analisis de noche: 12 Octubre</p>
-              <div class="chart">
-                <span class="bar h55"></span>
-                <span class="bar h80"></span>
-                <span class="bar h40"></span>
-                <span class="bar h65"></span>
-                <span class="bar h55"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">04. Estados de Feedback</div>
-        <div class="section-body grid three">
-          <div class="component">
-            <p class="h3">Error Login</p>
-            <div class="state">"Usuario o contrasena incorrectos."</div>
-          </div>
-          <div class="component">
-            <p class="h3">Skeleton Dashboard</p>
+          <div class="component-frame">
+            <h4>Grupo D - Feedback</h4>
+            <div class="state">Error: Usuario o contrasena incorrectos.</div>
+            <div style="height:8px;"></div>
             <div class="skeleton">
               <div class="skeleton-line"></div>
               <div class="skeleton-line"></div>
               <div class="skeleton-box"></div>
             </div>
-          </div>
-          <div class="component">
-            <p class="h3">Exito Exportacion</p>
-            <div class="state">"Tu reporte se ha descargado correctamente."</div>
+            <div style="height:8px;"></div>
+            <div class="state">Exito: Tu reporte se ha descargado correctamente.</div>
           </div>
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-head">05. Reglas de Uso</div>
-        <div class="section-body">
-          <table class="spec">
-            <thead>
-              <tr>
-                <th>Regla</th>
-                <th>Definicion</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Grises only</td>
-                <td>No usar color semantico. Solo escalas grises.</td>
-              </tr>
-              <tr>
-                <td>Bordes visibles</td>
-                <td>Todos los bloques deben marcar estructura con borde 2px.</td>
-              </tr>
-              <tr>
-                <td>Contenido textual</td>
-                <td>Mensajes reales del flujo: login, carga, exportacion.</td>
-              </tr>
-              <tr>
-                <td>Desktop-first</td>
-                <td>Layout base con sidebar + area principal para admin web.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
     </div>
   </body>
 </html>

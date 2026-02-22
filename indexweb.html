@@ -307,13 +307,99 @@
 
       .line-chart {
         height: 180px;
-        border: 2px dashed var(--line);
-        padding: 12px;
+        border-left: 2px solid var(--line);
+        border-bottom: 2px solid var(--line);
+        padding: 8px 10px 2px 10px;
+        background-image: repeating-linear-gradient(
+          to top,
+          transparent 0,
+          transparent 34px,
+          #e4e4e4 34px,
+          #e4e4e4 35px
+        );
       }
 
       .timeline {
         width: 100%;
         height: 100%;
+      }
+
+      .chart-with-scale {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .chart-with-scale.compact {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .axis-y {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        font-size: 11px;
+        color: var(--text-soft);
+        padding: 2px 0;
+      }
+
+      .plot-wrap {
+        display: grid;
+        gap: 6px;
+      }
+
+      .plot-grid {
+        min-height: 132px;
+        border-left: 2px solid var(--line);
+        border-bottom: 2px solid var(--line);
+        padding: 8px 8px 4px 8px;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 8px;
+        background-image: repeating-linear-gradient(
+          to top,
+          transparent 0,
+          transparent 26px,
+          #e4e4e4 26px,
+          #e4e4e4 27px
+        );
+      }
+
+      .chart-with-scale.compact .plot-grid {
+        min-height: 102px;
+      }
+
+      .plot-grid .bar {
+        flex: 1 1 44px;
+        min-width: 12px;
+      }
+
+      .axis-x {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        font-size: 11px;
+        color: var(--text-soft);
+      }
+
+      .axis-x span {
+        flex: 1;
+        text-align: center;
+      }
+
+      .axis-caption {
+        font-size: 11px;
+        color: var(--text-soft);
+        margin-top: 6px;
+      }
+
+      .line-chart-with-scale {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 8px;
       }
 
       .table {
@@ -577,34 +663,91 @@
                       <span class="chip">7 dias</span>
                       <span class="chip">90 dias</span>
                     </div>
-                    <div class="metric" style="margin-top: 10px;">
-                      <span class="bar a"></span>
-                      <span class="bar c"></span>
-                      <span class="bar b"></span>
-                      <span class="bar e"></span>
-                      <span class="bar d"></span>
-                      <span class="bar c"></span>
-                      <span class="bar b"></span>
+                    <div class="chart-with-scale">
+                      <div class="axis-y">
+                        <span>100%</span>
+                        <span>75%</span>
+                        <span>50%</span>
+                        <span>25%</span>
+                        <span>0%</span>
+                      </div>
+                      <div class="plot-wrap">
+                        <div class="plot-grid">
+                          <span class="bar a"></span>
+                          <span class="bar c"></span>
+                          <span class="bar b"></span>
+                          <span class="bar e"></span>
+                          <span class="bar d"></span>
+                          <span class="bar c"></span>
+                          <span class="bar b"></span>
+                        </div>
+                        <div class="axis-x">
+                          <span>D1</span>
+                          <span>D5</span>
+                          <span>D10</span>
+                          <span>D15</span>
+                          <span>D20</span>
+                          <span>D25</span>
+                          <span>D30</span>
+                        </div>
+                      </div>
                     </div>
+                    <p class="axis-caption">Eje Y: indice de calidad | Eje X: dias del periodo</p>
                   </div>
                   <div class="row two">
                     <div class="card">
                       <h4>Factor: consumo de cafe</h4>
-                      <div class="metric">
-                        <span class="bar b"></span>
-                        <span class="bar d"></span>
-                        <span class="bar a"></span>
-                        <span class="bar c"></span>
+                      <div class="chart-with-scale compact">
+                        <div class="axis-y">
+                          <span>4</span>
+                          <span>3</span>
+                          <span>2</span>
+                          <span>1</span>
+                          <span>0</span>
+                        </div>
+                        <div class="plot-wrap">
+                          <div class="plot-grid">
+                            <span class="bar b"></span>
+                            <span class="bar d"></span>
+                            <span class="bar a"></span>
+                            <span class="bar c"></span>
+                          </div>
+                          <div class="axis-x">
+                            <span>Sem1</span>
+                            <span>Sem2</span>
+                            <span>Sem3</span>
+                            <span>Sem4</span>
+                          </div>
+                        </div>
                       </div>
+                      <p class="axis-caption">Unidad: tazas promedio / noche</p>
                     </div>
                     <div class="card">
                       <h4>Factor: estres diario</h4>
-                      <div class="metric">
-                        <span class="bar c"></span>
-                        <span class="bar d"></span>
-                        <span class="bar b"></span>
-                        <span class="bar a"></span>
+                      <div class="chart-with-scale compact">
+                        <div class="axis-y">
+                          <span>10</span>
+                          <span>8</span>
+                          <span>6</span>
+                          <span>4</span>
+                          <span>0</span>
+                        </div>
+                        <div class="plot-wrap">
+                          <div class="plot-grid">
+                            <span class="bar c"></span>
+                            <span class="bar d"></span>
+                            <span class="bar b"></span>
+                            <span class="bar a"></span>
+                          </div>
+                          <div class="axis-x">
+                            <span>Sem1</span>
+                            <span>Sem2</span>
+                            <span>Sem3</span>
+                            <span>Sem4</span>
+                          </div>
+                        </div>
                       </div>
+                      <p class="axis-caption">Unidad: escala de estres (0-10)</p>
                     </div>
                   </div>
                 </main>
@@ -638,19 +781,39 @@
                   </div>
                   <div class="card">
                     <h4>Fases de sueno (REM / Ligero / Profundo)</h4>
-                    <div class="line-chart">
-                      <svg class="timeline" viewBox="0 0 600 180" preserveAspectRatio="none">
-                        <polyline
-                          points="0,145 60,145 110,80 180,80 240,132 300,132 350,60 430,60 500,118 600,118"
-                          fill="none"
-                          stroke="#666666"
-                          stroke-width="3"
-                        />
-                        <line x1="0" y1="145" x2="600" y2="145" stroke="#c0c0c0" stroke-width="1" />
-                        <line x1="0" y1="110" x2="600" y2="110" stroke="#cfcfcf" stroke-width="1" />
-                        <line x1="0" y1="75" x2="600" y2="75" stroke="#cfcfcf" stroke-width="1" />
-                      </svg>
+                    <div class="line-chart-with-scale">
+                      <div class="axis-y">
+                        <span>100%</span>
+                        <span>75%</span>
+                        <span>50%</span>
+                        <span>25%</span>
+                        <span>0%</span>
+                      </div>
+                      <div class="plot-wrap">
+                        <div class="line-chart">
+                          <svg class="timeline" viewBox="0 0 600 180" preserveAspectRatio="none">
+                            <polyline
+                              points="0,145 60,145 110,80 180,80 240,132 300,132 350,60 430,60 500,118 600,118"
+                              fill="none"
+                              stroke="#666666"
+                              stroke-width="3"
+                            />
+                            <line x1="0" y1="145" x2="600" y2="145" stroke="#c0c0c0" stroke-width="1" />
+                            <line x1="0" y1="110" x2="600" y2="110" stroke="#cfcfcf" stroke-width="1" />
+                            <line x1="0" y1="75" x2="600" y2="75" stroke="#cfcfcf" stroke-width="1" />
+                            <line x1="0" y1="40" x2="600" y2="40" stroke="#d8d8d8" stroke-width="1" />
+                          </svg>
+                        </div>
+                        <div class="axis-x">
+                          <span>00:00</span>
+                          <span>02:00</span>
+                          <span>04:00</span>
+                          <span>06:00</span>
+                          <span>08:00</span>
+                        </div>
+                      </div>
                     </div>
+                    <p class="axis-caption">Eje Y: profundidad (%) | Eje X: tiempo de la sesion</p>
                   </div>
                   <div class="row two">
                     <div class="card">
@@ -776,14 +939,34 @@
                   </div>
                   <div class="card">
                     <h4>Linea temporal de alertas</h4>
-                    <div class="metric">
-                      <span class="bar a"></span>
-                      <span class="bar b"></span>
-                      <span class="bar d"></span>
-                      <span class="bar c"></span>
-                      <span class="bar a"></span>
-                      <span class="bar e"></span>
+                    <div class="chart-with-scale compact">
+                      <div class="axis-y">
+                        <span>5</span>
+                        <span>4</span>
+                        <span>3</span>
+                        <span>2</span>
+                        <span>0</span>
+                      </div>
+                      <div class="plot-wrap">
+                        <div class="plot-grid">
+                          <span class="bar a"></span>
+                          <span class="bar b"></span>
+                          <span class="bar d"></span>
+                          <span class="bar c"></span>
+                          <span class="bar a"></span>
+                          <span class="bar e"></span>
+                        </div>
+                        <div class="axis-x">
+                          <span>Lun</span>
+                          <span>Mar</span>
+                          <span>Mie</span>
+                          <span>Jue</span>
+                          <span>Vie</span>
+                          <span>Sab</span>
+                        </div>
+                      </div>
                     </div>
+                    <p class="axis-caption">Cantidad de eventos por dia</p>
                   </div>
                 </main>
               </div>
