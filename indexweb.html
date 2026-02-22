@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wireframes Web - Admin Sueno</title>
+    <style>
+      :root {
+        --bg: #e5e5e5;
+        --surface: #f7f7f7;
+        --panel: #ffffff;
+        --line: #b6b6b6;
+        --line-strong: #5f5f5f;
+        --text: #1e1e1e;
+        --text-soft: #6a6a6a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: var(--text);
+        background: linear-gradient(180deg, #f1f1f1 0%, #dfdfdf 100%);
+      }
+
+      .page {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .title-block {
+        border: 2px solid var(--line);
+        background: var(--panel);
+        padding: 16px 18px;
+        margin-bottom: 18px;
+      }
+
+      .title-block h1 {
+        margin: 0 0 6px 0;
+        font-size: 24px;
+        letter-spacing: 0.2px;
+      }
+
+      .title-block p {
+        margin: 0;
+        color: var(--text-soft);
+        font-size: 14px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 16px;
+      }
+
+      .panel {
+        border: 2px solid var(--line);
+        background: var(--panel);
+      }
+
+      .nav-panel {
+        display: flex;
+        flex-direction: column;
+        min-height: 760px;
+      }
+
+      .panel-head {
+        border-bottom: 2px solid var(--line);
+        padding: 12px 14px;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+
+      .screen-list {
+        display: grid;
+        gap: 8px;
+        padding: 10px;
+      }
+
+      .screen-btn {
+        border: 2px solid var(--line);
+        background: #fafafa;
+        color: var(--text);
+        text-align: left;
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .screen-btn strong {
+        display: block;
+        font-size: 13px;
+        margin-bottom: 3px;
+      }
+
+      .screen-btn span {
+        color: var(--text-soft);
+        font-size: 12px;
+      }
+
+      .screen-btn.active {
+        border-color: var(--line-strong);
+        background: #efefef;
+        box-shadow: inset 0 0 0 2px #d6d6d6;
+      }
+
+      .legend {
+        margin-top: auto;
+        border-top: 2px solid var(--line);
+        padding: 12px;
+        font-size: 12px;
+        color: var(--text-soft);
+        line-height: 1.5;
+      }
+
+      .viewer {
+        padding: 14px;
+      }
+
+      .screen {
+        display: none;
+      }
+
+      .screen.active {
+        display: block;
+      }
+
+      .wireframe {
+        border: 2px solid var(--line-strong);
+        background: var(--surface);
+        min-height: 760px;
+        display: grid;
+        grid-template-rows: 48px 1fr;
+      }
+
+      .browser-top {
+        border-bottom: 2px solid var(--line);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 12px;
+        background: #ededed;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid var(--line);
+      }
+
+      .url-bar {
+        height: 22px;
+        flex: 1;
+        border: 2px solid var(--line);
+        background: white;
+      }
+
+      .app-shell {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        min-height: 0;
+      }
+
+      .sidebar {
+        border-right: 2px solid var(--line);
+        padding: 14px;
+        background: #f2f2f2;
+      }
+
+      .logo {
+        height: 38px;
+        border: 2px solid var(--line);
+        margin-bottom: 12px;
+      }
+
+      .menu {
+        display: grid;
+        gap: 8px;
+      }
+
+      .menu-item {
+        border: 2px solid var(--line);
+        padding: 8px 10px;
+        font-size: 13px;
+        background: white;
+      }
+
+      .menu-item.active {
+        border-color: var(--line-strong);
+        background: #ececec;
+        font-weight: 700;
+      }
+
+      .main {
+        padding: 16px;
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .row {
+        display: grid;
+        gap: 12px;
+      }
+
+      .row.two {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .row.three {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .card {
+        border: 2px solid var(--line);
+        background: white;
+        padding: 12px;
+      }
+
+      .card h3,
+      .card h4,
+      .card p {
+        margin: 0 0 8px 0;
+      }
+
+      .card h3 {
+        font-size: 16px;
+      }
+
+      .card h4 {
+        font-size: 14px;
+      }
+
+      .card p {
+        font-size: 13px;
+        color: var(--text-soft);
+      }
+
+      .input {
+        height: 36px;
+        border: 2px solid var(--line);
+        background: #fafafa;
+        margin-top: 8px;
+      }
+
+      .btn {
+        border: 2px solid var(--line-strong);
+        background: #ebebeb;
+        padding: 9px 12px;
+        font-size: 13px;
+        display: inline-block;
+      }
+
+      .btn.ghost {
+        border-color: var(--line);
+        background: #f8f8f8;
+      }
+
+      .message {
+        border: 2px dashed var(--line-strong);
+        background: #f1f1f1;
+        padding: 10px;
+        font-size: 13px;
+      }
+
+      .metric {
+        height: 90px;
+        border: 2px dashed var(--line);
+        display: flex;
+        align-items: end;
+        gap: 8px;
+        padding: 8px;
+      }
+
+      .bar {
+        flex: 1;
+        border: 2px solid var(--line);
+        background: #dfdfdf;
+      }
+
+      .bar.a {
+        height: 28%;
+      }
+
+      .bar.b {
+        height: 52%;
+      }
+
+      .bar.c {
+        height: 75%;
+      }
+
+      .bar.d {
+        height: 46%;
+      }
+
+      .bar.e {
+        height: 68%;
+      }
+
+      .line-chart {
+        height: 180px;
+        border: 2px dashed var(--line);
+        padding: 12px;
+      }
+
+      .timeline {
+        width: 100%;
+        height: 100%;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .table th,
+      .table td {
+        border: 2px solid var(--line);
+        padding: 7px 8px;
+        text-align: left;
+      }
+
+      .skeleton {
+        display: grid;
+        gap: 10px;
+      }
+
+      .skeleton-block {
+        height: 16px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, #ececec 0%, #d9d9d9 50%, #ececec 100%);
+        background-size: 200% 100%;
+        animation: pulse 1.4s linear infinite;
+      }
+
+      .skeleton-block.big {
+        height: 100px;
+      }
+
+      @keyframes pulse {
+        from {
+          background-position: 100% 0;
+        }
+        to {
+          background-position: -100% 0;
+        }
+      }
+
+      .chip-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        border: 2px solid var(--line);
+        padding: 6px 9px;
+        font-size: 12px;
+        background: #f8f8f8;
+      }
+
+      .chip.selected {
+        border-color: var(--line-strong);
+        background: #e9e9e9;
+        font-weight: 700;
+      }
+
+      .center-stack {
+        max-width: 520px;
+        margin: 36px auto;
+        display: grid;
+        gap: 12px;
+      }
+
+      .feedback-footer {
+        margin-top: 12px;
+        border-top: 2px solid var(--line);
+        padding-top: 10px;
+        font-size: 12px;
+        color: var(--text-soft);
+      }
+
+      @media (max-width: 1120px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-panel {
+          min-height: auto;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .app-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: 0;
+          border-bottom: 2px solid var(--line);
+        }
+
+        .row.two,
+        .row.three {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <section class="title-block">
+        <h1>Wireframes Web - Admin de Monitoreo de Sueno</h1>
+        <p>
+          Flujo completo en 8 pantallas. Solo estructura (grises), sin diseno final.
+        </p>
+      </section>
+
+      <div class="workspace">
+        <aside class="panel nav-panel">
+          <div class="panel-head">Pantallas Web</div>
+          <div class="screen-list">
+            <button class="screen-btn active" data-target="screen-1">
+              <strong>01. Login Seguro</strong>
+              <span>Acceso protegido + estado de error</span>
+            </button>
+            <button class="screen-btn" data-target="screen-2">
+              <strong>02. Dashboard (Carga)</strong>
+              <span>Skeleton "cargando datos de la nube"</span>
+            </button>
+            <button class="screen-btn" data-target="screen-3">
+              <strong>03. Dashboard Analitico</strong>
+              <span>Vista resumen 30 dias</span>
+            </button>
+            <button class="screen-btn" data-target="screen-4">
+              <strong>04. Detalle de Sesion</strong>
+              <span>Zoom fases REM/Profundo</span>
+            </button>
+            <button class="screen-btn" data-target="screen-5">
+              <strong>05. Historial de Noches</strong>
+              <span>Tabla de sesiones para auditoria</span>
+            </button>
+            <button class="screen-btn" data-target="screen-6">
+              <strong>06. Alertas Clinicas</strong>
+              <span>Eventos detectados y prioridad</span>
+            </button>
+            <button class="screen-btn" data-target="screen-7">
+              <strong>07. Exportar Reporte</strong>
+              <span>PDF/CSV para medicos</span>
+            </button>
+            <button class="screen-btn" data-target="screen-8">
+              <strong>08. Descarga Exitosa</strong>
+              <span>Confirmacion final del flujo</span>
+            </button>
+          </div>
+          <div class="legend">
+            Menus laterales y componentes siguen la referencia que compartiste.<br />
+            Todas las vistas se presentan en wireframe de escritorio.
+          </div>
+        </aside>
+
+        <section class="panel viewer">
+          <article class="screen active" id="screen-1">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="main">
+                <div class="center-stack">
+                  <div class="card">
+                    <h3>Login Seguro</h3>
+                    <p>Acceso a datos medicos privados (admin)</p>
+                    <div class="input"></div>
+                    <div class="input"></div>
+                    <div class="row two" style="margin-top: 10px;">
+                      <span class="btn">Iniciar sesion</span>
+                      <span class="btn ghost">Recuperar acceso</span>
+                    </div>
+                  </div>
+                  <div class="message">
+                    Error: "Usuario o contrasena incorrectos."
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: autenticacion robusta para proteger informacion sensible.
+            </div>
+          </article>
+
+          <article class="screen" id="screen-2">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item active">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item">Exportar</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Dashboard Analitico</h3>
+                    <p>Cargando datos de la nube...</p>
+                    <div class="skeleton">
+                      <div class="skeleton-block"></div>
+                      <div class="skeleton-block"></div>
+                      <div class="skeleton-block big"></div>
+                      <div class="skeleton-block big"></div>
+                    </div>
+                  </div>
+                  <div class="row three">
+                    <div class="card skeleton"><div class="skeleton-block big"></div></div>
+                    <div class="card skeleton"><div class="skeleton-block big"></div></div>
+                    <div class="card skeleton"><div class="skeleton-block big"></div></div>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Feedback: estado de espera visible para evitar pantalla vacia.
+            </div>
+          </article>
+
+          <article class="screen" id="screen-3">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item active">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item">Alertas</div>
+                    <div class="menu-item">Exportar</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="row three">
+                    <div class="card">
+                      <h4>Calidad promedio</h4>
+                      <p>84%</p>
+                    </div>
+                    <div class="card">
+                      <h4>Duracion promedio</h4>
+                      <p>7h 12m</p>
+                    </div>
+                    <div class="card">
+                      <h4>Alertas</h4>
+                      <p>3 eventos</p>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h3>Tendencias ultimos 30 dias</h3>
+                    <div class="chip-row">
+                      <span class="chip selected">30 dias</span>
+                      <span class="chip">7 dias</span>
+                      <span class="chip">90 dias</span>
+                    </div>
+                    <div class="metric" style="margin-top: 10px;">
+                      <span class="bar a"></span>
+                      <span class="bar c"></span>
+                      <span class="bar b"></span>
+                      <span class="bar e"></span>
+                      <span class="bar d"></span>
+                      <span class="bar c"></span>
+                      <span class="bar b"></span>
+                    </div>
+                  </div>
+                  <div class="row two">
+                    <div class="card">
+                      <h4>Factor: consumo de cafe</h4>
+                      <div class="metric">
+                        <span class="bar b"></span>
+                        <span class="bar d"></span>
+                        <span class="bar a"></span>
+                        <span class="bar c"></span>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <h4>Factor: estres diario</h4>
+                      <div class="metric">
+                        <span class="bar c"></span>
+                        <span class="bar d"></span>
+                        <span class="bar b"></span>
+                        <span class="bar a"></span>
+                      </div>
+                    </div>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: "big picture" de comportamiento del sueno.
+            </div>
+          </article>
+
+          <article class="screen" id="screen-4">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item active">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item">Exportar</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Analisis de Noche: 12 Octubre 2025</h3>
+                    <p>Calidad 85% - Duracion 7h 20m - Eficiencia 91%</p>
+                  </div>
+                  <div class="card">
+                    <h4>Fases de sueno (REM / Ligero / Profundo)</h4>
+                    <div class="line-chart">
+                      <svg class="timeline" viewBox="0 0 600 180" preserveAspectRatio="none">
+                        <polyline
+                          points="0,145 60,145 110,80 180,80 240,132 300,132 350,60 430,60 500,118 600,118"
+                          fill="none"
+                          stroke="#666666"
+                          stroke-width="3"
+                        />
+                        <line x1="0" y1="145" x2="600" y2="145" stroke="#c0c0c0" stroke-width="1" />
+                        <line x1="0" y1="110" x2="600" y2="110" stroke="#cfcfcf" stroke-width="1" />
+                        <line x1="0" y1="75" x2="600" y2="75" stroke="#cfcfcf" stroke-width="1" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="row two">
+                    <div class="card">
+                      <h4>Respiracion</h4>
+                      <p>12 eventos leves</p>
+                    </div>
+                    <div class="card">
+                      <h4>Frecuencia cardiaca</h4>
+                      <p>56-72 bpm</p>
+                    </div>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: zoom tecnico de una sesion especifica.
+            </div>
+          </article>
+
+          <article class="screen" id="screen-5">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item active">Historial</div>
+                    <div class="menu-item">Exportar</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Historial de Sesiones</h3>
+                    <p>Busqueda por fecha, calidad y eventos.</p>
+                    <div class="row three">
+                      <div class="input"></div>
+                      <div class="input"></div>
+                      <div class="input"></div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Fecha</th>
+                          <th>Duracion</th>
+                          <th>Calidad</th>
+                          <th>Eventos</th>
+                          <th>Accion</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>12 Oct 2025</td>
+                          <td>7h 20m</td>
+                          <td>85%</td>
+                          <td>2</td>
+                          <td>Ver detalle</td>
+                        </tr>
+                        <tr>
+                          <td>11 Oct 2025</td>
+                          <td>6h 58m</td>
+                          <td>79%</td>
+                          <td>4</td>
+                          <td>Ver detalle</td>
+                        </tr>
+                        <tr>
+                          <td>10 Oct 2025</td>
+                          <td>7h 42m</td>
+                          <td>88%</td>
+                          <td>1</td>
+                          <td>Ver detalle</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: consulta historica antes de exportar o comparar.
+            </div>
+          </article>
+
+          <article class="screen" id="screen-6">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item active">Alertas</div>
+                    <div class="menu-item">Exportar</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Alertas Clinicas Detectadas</h3>
+                    <p>Priorizacion para revision del equipo medico.</p>
+                  </div>
+                  <div class="row two">
+                    <div class="card">
+                      <h4>Evento A</h4>
+                      <p>Desaturacion nocturna - Prioridad Alta</p>
+                      <span class="btn ghost">Abrir sesion</span>
+                    </div>
+                    <div class="card">
+                      <h4>Evento B</h4>
+                      <p>Movimientos frecuentes - Prioridad Media</p>
+                      <span class="btn ghost">Abrir sesion</span>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h4>Linea temporal de alertas</h4>
+                    <div class="metric">
+                      <span class="bar a"></span>
+                      <span class="bar b"></span>
+                      <span class="bar d"></span>
+                      <span class="bar c"></span>
+                      <span class="bar a"></span>
+                      <span class="bar e"></span>
+                    </div>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Pantalla adicional para completar flujo admin (6-8 vistas).
+            </div>
+          </article>
+
+          <article class="screen" id="screen-7">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item active">Exportar</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Descargar Reporte Medico</h3>
+                    <p>Selecciona formato y rango.</p>
+                    <div class="chip-row">
+                      <span class="chip selected">PDF</span>
+                      <span class="chip">CSV</span>
+                    </div>
+                    <div class="row two" style="margin-top: 10px;">
+                      <div class="input"></div>
+                      <div class="input"></div>
+                    </div>
+                    <div class="row two" style="margin-top: 10px;">
+                      <span class="btn">Descargar</span>
+                      <span class="btn ghost">Previsualizar</span>
+                    </div>
+                  </div>
+                  <div class="message">
+                    Nota: incluye resumen analitico y detalle por fases de sueno.
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: exportar datos en PDF/CSV para medicos.
+            </div>
+          </article>
+
+          <article class="screen" id="screen-8">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="main">
+                <div class="center-stack">
+                  <div class="card">
+                    <h3>Exportacion completada</h3>
+                    <p>Tu reporte se ha descargado correctamente.</p>
+                    <div class="row two" style="margin-top: 10px;">
+                      <span class="btn">Abrir archivo</span>
+                      <span class="btn ghost">Volver al dashboard</span>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h4>Resumen del archivo</h4>
+                    <p>Formato: PDF - Rango: ultimos 30 dias - Incluye analisis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Feedback final: confirmacion positiva de descarga.
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const buttons = document.querySelectorAll(".screen-btn");
+      const screens = document.querySelectorAll(".screen");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-target");
+          buttons.forEach((item) => item.classList.remove("active"));
+          screens.forEach((screen) => screen.classList.remove("active"));
+          btn.classList.add("active");
+          document.getElementById(target).classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>

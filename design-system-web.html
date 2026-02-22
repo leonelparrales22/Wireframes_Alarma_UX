@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System Web - Wireframe Sueno</title>
+    <style>
+      :root {
+        --gray-0: #ffffff;
+        --gray-50: #f7f7f7;
+        --gray-100: #ededed;
+        --gray-200: #dddddd;
+        --gray-300: #bdbdbd;
+        --gray-400: #9a9a9a;
+        --gray-500: #6f6f6f;
+        --gray-700: #474747;
+        --gray-900: #1f1f1f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, #f2f2f2 0%, #dfdfdf 100%);
+        color: var(--gray-900);
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .page {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+
+      .hero {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      .hero h1 {
+        margin: 0 0 8px 0;
+        font-size: 24px;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--gray-500);
+        font-size: 14px;
+      }
+
+      .section {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        margin-bottom: 14px;
+      }
+
+      .section-head {
+        border-bottom: 2px solid var(--gray-300);
+        padding: 10px 12px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        font-weight: 700;
+      }
+
+      .section-body {
+        padding: 14px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .token {
+        border: 2px solid var(--gray-300);
+        padding: 10px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .swatch {
+        height: 44px;
+        border: 2px solid var(--gray-300);
+      }
+
+      .label {
+        font-size: 12px;
+        color: var(--gray-500);
+      }
+
+      .display {
+        font-size: 36px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .h2 {
+        font-size: 22px;
+        margin: 0;
+      }
+
+      .h3 {
+        font-size: 16px;
+        margin: 0;
+      }
+
+      .body {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .small {
+        font-size: 12px;
+        margin: 0;
+      }
+
+      .component {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-50);
+        padding: 12px;
+      }
+
+      .wf-topbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 2px solid var(--gray-300);
+        padding: 8px;
+        background: var(--gray-100);
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid var(--gray-300);
+      }
+
+      .address {
+        height: 20px;
+        flex: 1;
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+      }
+
+      .wf-layout {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        border: 2px solid var(--gray-300);
+        min-height: 220px;
+      }
+
+      .wf-sidebar {
+        border-right: 2px solid var(--gray-300);
+        padding: 10px;
+        display: grid;
+        gap: 8px;
+        align-content: start;
+      }
+
+      .menu-item {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        padding: 8px;
+        font-size: 13px;
+      }
+
+      .menu-item.active {
+        border-color: var(--gray-700);
+        background: var(--gray-100);
+        font-weight: 700;
+      }
+
+      .wf-main {
+        padding: 10px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .card {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        padding: 10px;
+      }
+
+      .input {
+        border: 2px solid var(--gray-300);
+        height: 34px;
+        background: var(--gray-50);
+      }
+
+      .button {
+        border: 2px solid var(--gray-700);
+        background: var(--gray-100);
+        padding: 8px 10px;
+        font-size: 13px;
+        display: inline-block;
+      }
+
+      .button.secondary {
+        border-color: var(--gray-300);
+        background: var(--gray-50);
+      }
+
+      .chip {
+        border: 2px solid var(--gray-300);
+        padding: 5px 8px;
+        font-size: 12px;
+        display: inline-block;
+        margin-right: 6px;
+      }
+
+      .chip.active {
+        border-color: var(--gray-700);
+        background: var(--gray-100);
+        font-weight: 700;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .table th,
+      .table td {
+        border: 2px solid var(--gray-300);
+        padding: 6px;
+        text-align: left;
+      }
+
+      .chart {
+        height: 90px;
+        border: 2px dashed var(--gray-300);
+        display: flex;
+        gap: 8px;
+        align-items: end;
+        padding: 8px;
+      }
+
+      .bar {
+        flex: 1;
+        border: 2px solid var(--gray-300);
+        background: var(--gray-200);
+      }
+
+      .h40 {
+        height: 40%;
+      }
+
+      .h65 {
+        height: 65%;
+      }
+
+      .h80 {
+        height: 80%;
+      }
+
+      .h55 {
+        height: 55%;
+      }
+
+      .state {
+        border: 2px dashed var(--gray-700);
+        padding: 10px;
+        background: var(--gray-50);
+        font-size: 13px;
+      }
+
+      .skeleton {
+        display: grid;
+        gap: 8px;
+      }
+
+      .skeleton-line {
+        height: 14px;
+        background: linear-gradient(90deg, #ededed 0%, #d9d9d9 50%, #ededed 100%);
+        background-size: 200% 100%;
+        animation: shimmer 1.3s linear infinite;
+      }
+
+      .skeleton-box {
+        height: 70px;
+        background: linear-gradient(90deg, #ededed 0%, #d9d9d9 50%, #ededed 100%);
+        background-size: 200% 100%;
+        animation: shimmer 1.3s linear infinite;
+      }
+
+      @keyframes shimmer {
+        from {
+          background-position: 100% 0;
+        }
+        to {
+          background-position: -100% 0;
+        }
+      }
+
+      .spec {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .spec th,
+      .spec td {
+        border: 2px solid var(--gray-300);
+        padding: 7px;
+        text-align: left;
+      }
+
+      @media (max-width: 980px) {
+        .grid.two,
+        .grid.three {
+          grid-template-columns: 1fr;
+        }
+
+        .wf-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .wf-sidebar {
+          border-right: 0;
+          border-bottom: 2px solid var(--gray-300);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <h1>Design System Web (Wireframe) - Monitoreo de Sueno</h1>
+        <p>
+          Guia base para construir las pantallas web del admin sin color ni estilo final.
+        </p>
+      </header>
+
+      <section class="section">
+        <div class="section-head">01. Foundations</div>
+        <div class="section-body grid two">
+          <div class="grid three">
+            <div class="token">
+              <div class="swatch" style="background: var(--gray-0);"></div>
+              <div class="label">Gray 0 - #FFFFFF</div>
+            </div>
+            <div class="token">
+              <div class="swatch" style="background: var(--gray-100);"></div>
+              <div class="label">Gray 100 - #EDEDED</div>
+            </div>
+            <div class="token">
+              <div class="swatch" style="background: var(--gray-300);"></div>
+              <div class="label">Gray 300 - #BDBDBD</div>
+            </div>
+            <div class="token">
+              <div class="swatch" style="background: var(--gray-500);"></div>
+              <div class="label">Gray 500 - #6F6F6F</div>
+            </div>
+            <div class="token">
+              <div class="swatch" style="background: var(--gray-700);"></div>
+              <div class="label">Gray 700 - #474747</div>
+            </div>
+            <div class="token">
+              <div class="swatch" style="background: var(--gray-900);"></div>
+              <div class="label">Gray 900 - #1F1F1F</div>
+            </div>
+          </div>
+          <div class="component">
+            <p class="display">Display 36</p>
+            <p class="h2">Heading 22</p>
+            <p class="h3">Heading 16</p>
+            <p class="body">Body 14 para contenido principal.</p>
+            <p class="small">Small 12 para metadata y estados.</p>
+            <hr style="border: 0; border-top: 2px solid var(--gray-300); margin: 12px 0;" />
+            <p class="small">Spacing base: 8px / 12px / 16px / 24px.</p>
+            <p class="small">Radio recomendado: 0px (wireframe) o 2px max.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">02. Layout Web</div>
+        <div class="section-body">
+          <div class="wf-topbar">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <div class="address"></div>
+          </div>
+          <div class="wf-layout">
+            <aside class="wf-sidebar">
+              <div class="menu-item active">Inicio</div>
+              <div class="menu-item">Detalles</div>
+              <div class="menu-item">Historial</div>
+              <div class="menu-item">Alertas</div>
+              <div class="menu-item">Exportar</div>
+            </aside>
+            <main class="wf-main">
+              <div class="card">Header de pantalla</div>
+              <div class="grid three">
+                <div class="card">KPI 1</div>
+                <div class="card">KPI 2</div>
+                <div class="card">KPI 3</div>
+              </div>
+              <div class="card">Contenedor principal de grafico o tabla</div>
+            </main>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">03. Componentes Base</div>
+        <div class="section-body grid two">
+          <div class="component">
+            <p class="h3">Inputs y Botones</p>
+            <div class="input"></div>
+            <div style="height: 8px;"></div>
+            <div class="input"></div>
+            <div style="height: 10px;"></div>
+            <span class="button">Boton Primario</span>
+            <span class="button secondary">Boton Secundario</span>
+          </div>
+          <div class="component">
+            <p class="h3">Filtros / Tabs</p>
+            <span class="chip active">30 dias</span>
+            <span class="chip">7 dias</span>
+            <span class="chip">90 dias</span>
+            <div style="height: 12px;"></div>
+            <div class="chart">
+              <span class="bar h40"></span>
+              <span class="bar h80"></span>
+              <span class="bar h55"></span>
+              <span class="bar h65"></span>
+            </div>
+          </div>
+          <div class="component">
+            <p class="h3">Tabla de Historial</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Duracion</th>
+                  <th>Calidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>12 Oct</td>
+                  <td>7h 20m</td>
+                  <td>85%</td>
+                </tr>
+                <tr>
+                  <td>11 Oct</td>
+                  <td>6h 58m</td>
+                  <td>79%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="component">
+            <p class="h3">Tarjeta de Detalle</p>
+            <div class="card">
+              <p class="body">Analisis de noche: 12 Octubre</p>
+              <div class="chart">
+                <span class="bar h55"></span>
+                <span class="bar h80"></span>
+                <span class="bar h40"></span>
+                <span class="bar h65"></span>
+                <span class="bar h55"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">04. Estados de Feedback</div>
+        <div class="section-body grid three">
+          <div class="component">
+            <p class="h3">Error Login</p>
+            <div class="state">"Usuario o contrasena incorrectos."</div>
+          </div>
+          <div class="component">
+            <p class="h3">Skeleton Dashboard</p>
+            <div class="skeleton">
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-box"></div>
+            </div>
+          </div>
+          <div class="component">
+            <p class="h3">Exito Exportacion</p>
+            <div class="state">"Tu reporte se ha descargado correctamente."</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">05. Reglas de Uso</div>
+        <div class="section-body">
+          <table class="spec">
+            <thead>
+              <tr>
+                <th>Regla</th>
+                <th>Definicion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Grises only</td>
+                <td>No usar color semantico. Solo escalas grises.</td>
+              </tr>
+              <tr>
+                <td>Bordes visibles</td>
+                <td>Todos los bloques deben marcar estructura con borde 2px.</td>
+              </tr>
+              <tr>
+                <td>Contenido textual</td>
+                <td>Mensajes reales del flujo: login, carga, exportacion.</td>
+              </tr>
+              <tr>
+                <td>Desktop-first</td>
+                <td>Layout base con sidebar + area principal para admin web.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
