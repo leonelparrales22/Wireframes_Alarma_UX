@@ -15,6 +15,15 @@
         --gray-500: #6f6f6f;
         --gray-700: #474747;
         --gray-900: #1f1f1f;
+        --ink-900: #111827;
+        --ink-700: #374151;
+        --ink-500: #6b7280;
+        --ink-300: #d1d5db;
+        --ink-100: #f3f4f6;
+        --sky-500: #38bdf8;
+        --amber-400: #fbbf24;
+        --success-500: #10b981;
+        --error-500: #ef4444;
       }
 
       * {
@@ -408,6 +417,445 @@
         height: 80%;
       }
 
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .tone-card {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        padding: 10px;
+      }
+
+      .tone-sample {
+        height: 52px;
+        border: 2px solid var(--gray-300);
+        margin-bottom: 6px;
+      }
+
+      .tone-name {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .tone-hex {
+        font-size: 11px;
+        color: var(--gray-500);
+      }
+
+      .theme-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .theme-card {
+        border: 2px solid var(--gray-300);
+        padding: 12px;
+      }
+
+      .theme-card.light {
+        background: #ffffff;
+        color: #1f1f1f;
+      }
+
+      .theme-card.dark {
+        background: #111827;
+        color: #f3f4f6;
+      }
+
+      .theme-token {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+        font-size: 12px;
+      }
+
+      .theme-token span {
+        width: 20px;
+        height: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        display: inline-block;
+      }
+
+      .controls-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .control-card {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-50);
+        padding: 12px;
+      }
+
+      .control-card h4 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+      }
+
+      .state-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .btn-token {
+        border: 2px solid #111827;
+        background: #111827;
+        color: #ffffff;
+        font-size: 12px;
+        padding: 7px 10px;
+        border-radius: 999px;
+      }
+
+      .btn-token.hover {
+        background: #0b1220;
+      }
+
+      .btn-token.focus {
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+      }
+
+      .btn-token.disabled {
+        border-color: #bdbdbd;
+        background: #ededed;
+        color: #9a9a9a;
+      }
+
+      .btn-token.secondary {
+        border-color: #111827;
+        background: #ffffff;
+        color: #111827;
+      }
+
+      .btn-token.ghost {
+        border: 2px dashed #bdbdbd;
+        background: transparent;
+        color: #474747;
+      }
+
+      .field-sample {
+        height: 36px;
+        border: 2px solid #bdbdbd;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+
+      .field-sample.focus {
+        border-color: #38bdf8;
+      }
+
+      .field-sample.error {
+        border-color: #ef4444;
+      }
+
+      .field-sample.disabled {
+        background: #ededed;
+        color: #9a9a9a;
+      }
+
+      .switch-sample {
+        width: 52px;
+        height: 28px;
+        border-radius: 999px;
+        border: 2px solid #bdbdbd;
+        background: #e5e7eb;
+        position: relative;
+      }
+
+      .switch-sample::after {
+        content: "";
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px solid #bdbdbd;
+        position: absolute;
+        top: 3px;
+        left: 4px;
+      }
+
+      .switch-sample.on {
+        background: #0ea5e9;
+        border-color: #0ea5e9;
+      }
+
+      .switch-sample.on::after {
+        left: 26px;
+      }
+
+      .chip-row-spec {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip-spec {
+        border: 2px solid #bdbdbd;
+        padding: 6px 10px;
+        font-size: 11px;
+        border-radius: 999px;
+      }
+
+      .chip-spec.active {
+        background: #111827;
+        color: #ffffff;
+        border-color: #111827;
+      }
+
+      .color-step-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .color-family {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+      }
+
+      .color-family h4 {
+        margin: 0;
+        padding: 8px;
+        border-bottom: 2px solid var(--gray-300);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .family-tone {
+        padding: 7px 8px;
+        border-bottom: 1px dashed var(--gray-300);
+        font-size: 11px;
+      }
+
+      .family-tone:last-child {
+        border-bottom: 0;
+      }
+
+      .web-diff {
+        border: 2px dashed var(--gray-400);
+        background: var(--gray-50);
+        padding: 9px;
+        font-size: 12px;
+      }
+
+      .patterns-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .pattern-card {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-50);
+        padding: 12px;
+      }
+
+      .pattern-card h3 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+      }
+
+      .pattern-card p {
+        margin: 0 0 8px 0;
+        font-size: 12px;
+        color: var(--gray-700);
+      }
+
+      .web-shell {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+      }
+
+      .web-topbar {
+        height: 38px;
+        border-bottom: 2px solid var(--gray-300);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        font-size: 11px;
+      }
+
+      .web-main {
+        display: grid;
+        grid-template-columns: 170px 1fr;
+        min-height: 150px;
+      }
+
+      .web-side {
+        border-right: 2px solid var(--gray-300);
+        padding: 8px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .web-nav {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-100);
+        height: 24px;
+      }
+
+      .web-content {
+        padding: 8px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .web-row {
+        height: 32px;
+        border: 2px dashed var(--gray-300);
+        background: var(--gray-50);
+      }
+
+      .control-grid-extended {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .select-sample {
+        height: 36px;
+        border: 2px solid #bdbdbd;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+
+      .slider-sample-web {
+        width: 100%;
+        height: 8px;
+        border-radius: 999px;
+        background: #e5e7eb;
+        position: relative;
+      }
+
+      .slider-sample-web::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 8px;
+        width: 68%;
+        border-radius: 999px;
+        background: #111827;
+      }
+
+      .state-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .state-pill {
+        border: 2px dashed var(--gray-300);
+        background: var(--gray-0);
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+
+      .state-pill.info {
+        border-color: #0ea5e9;
+        color: #0ea5e9;
+      }
+
+      .state-pill.success {
+        border-color: #10b981;
+        color: #10b981;
+      }
+
+      .state-pill.warning {
+        border-color: #f59e0b;
+        color: #f59e0b;
+      }
+
+      .state-pill.error {
+        border-color: #ef4444;
+        color: #ef4444;
+      }
+
+      .feedback-mini {
+        display: grid;
+        gap: 8px;
+      }
+
+      .banner {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      .banner.info {
+        border-color: #0ea5e9;
+      }
+
+      .banner.success {
+        border-color: #10b981;
+      }
+
+      .banner.warning {
+        border-color: #f59e0b;
+      }
+
+      .banner.error {
+        border-color: #ef4444;
+      }
+
+      .status-row-mini {
+        border: 2px solid var(--gray-300);
+        background: var(--gray-0);
+        padding: 8px;
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 11px;
+      }
+
+      .status-row-mini strong {
+        display: block;
+        font-size: 12px;
+      }
+
+      .metric-chart-mini {
+        height: 42px;
+        border: 2px dashed var(--gray-300);
+        display: flex;
+        align-items: end;
+        gap: 4px;
+        padding: 4px;
+      }
+
+      .metric-chart-mini span {
+        flex: 1;
+        background: #d1d5db;
+      }
+
+      .metric-chart-mini span:nth-child(2) {
+        height: 80%;
+      }
+
+      .metric-chart-mini span:nth-child(1),
+      .metric-chart-mini span:nth-child(3) {
+        height: 50%;
+      }
+
+      .metric-chart-mini span:nth-child(4) {
+        height: 70%;
+      }
+
       @keyframes shimmer {
         from {
           background-position: 100% 0;
@@ -423,8 +871,23 @@
         .usage-grid,
         .row.three,
         .swatches,
-        .mood-row {
+        .mood-row,
+        .palette-grid,
+        .theme-grid,
+        .controls-grid,
+        .patterns-grid,
+        .control-grid-extended,
+        .color-step-grid {
           grid-template-columns: 1fr;
+        }
+
+        .web-main {
+          grid-template-columns: 1fr;
+        }
+
+        .web-side {
+          border-right: 0;
+          border-bottom: 2px solid var(--gray-300);
         }
       }
     </style>
@@ -536,7 +999,167 @@
       </section>
 
       <section class="section">
-        <div class="section-head">02. Carta Tipografica + Ejemplos de Texto (Artboard 1920 x 1080)</div>
+        <div class="section-head">02. Sistema de Color Web (Light + Dark)</div>
+        <div class="section-body grid two">
+          <div class="box">
+            <h3>Paleta principal y secundaria (alineada con mobile)</h3>
+            <p>
+              Base cromatica compartida con mobile para consistencia de marca y
+              lectura de estados.
+            </p>
+            <div class="palette-grid">
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#111827;"></div>
+                <div class="tone-name">Ink 900</div>
+                <div class="tone-hex">#111827 - titulos, CTA, iconos</div>
+              </div>
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#374151;"></div>
+                <div class="tone-name">Ink 700</div>
+                <div class="tone-hex">#374151 - texto principal</div>
+              </div>
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#6b7280;"></div>
+                <div class="tone-name">Ink 500</div>
+                <div class="tone-hex">#6B7280 - etiquetas y metadata</div>
+              </div>
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#d1d5db;"></div>
+                <div class="tone-name">Ink 300</div>
+                <div class="tone-hex">#D1D5DB - bordes, divisores, input</div>
+              </div>
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#f3f4f6;"></div>
+                <div class="tone-name">Ink 100</div>
+                <div class="tone-hex">#F3F4F6 - fondos suaves</div>
+              </div>
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#38bdf8;"></div>
+                <div class="tone-name">Sky 500</div>
+                <div class="tone-hex">#38BDF8 - focus y estado activo</div>
+              </div>
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#fbbf24;"></div>
+                <div class="tone-name">Amber 400</div>
+                <div class="tone-hex">#FBBF24 - advertencia</div>
+              </div>
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#10b981;"></div>
+                <div class="tone-name">Success 500</div>
+                <div class="tone-hex">#10B981 - exito y estados positivos</div>
+              </div>
+              <div class="tone-card">
+                <div class="tone-sample" style="background:#ef4444;"></div>
+                <div class="tone-name">Error 500</div>
+                <div class="tone-hex">#EF4444 - errores criticos</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h3>Tonos extendidos</h3>
+            <p>
+              Escalas extendidas para hover, focus, fondos y feedback igual que
+              en mobile.
+            </p>
+            <div class="color-step-grid">
+              <div class="color-family">
+                <h4>Ink Scale</h4>
+                <div class="family-tone" style="background:#f9fafb;">Ink 100 - #F9FAFB</div>
+                <div class="family-tone" style="background:#f3f4f6;">Ink 200 - #F3F4F6</div>
+                <div class="family-tone" style="background:#e5e7eb;">Ink 300 - #E5E7EB</div>
+                <div class="family-tone" style="background:#d1d5db;">Ink 400 - #D1D5DB</div>
+                <div class="family-tone" style="background:#9ca3af;">Ink 500 - #9CA3AF</div>
+                <div class="family-tone" style="background:#6b7280; color:#fff;">Ink 600 - #6B7280</div>
+                <div class="family-tone" style="background:#374151; color:#fff;">Ink 700 - #374151</div>
+                <div class="family-tone" style="background:#111827; color:#fff;">Ink 900 - #111827</div>
+              </div>
+              <div class="color-family">
+                <h4>Sky Scale</h4>
+                <div class="family-tone" style="background:#ecfeff;">Sky 50 - #ECFEFF</div>
+                <div class="family-tone" style="background:#bae6fd;">Sky 200 - #BAE6FD</div>
+                <div class="family-tone" style="background:#7dd3fc;">Sky 300 - #7DD3FC</div>
+                <div class="family-tone" style="background:#38bdf8;">Sky 500 - #38BDF8</div>
+                <div class="family-tone" style="background:#0ea5e9; color:#fff;">Sky 600 - #0EA5E9</div>
+              </div>
+              <div class="color-family">
+                <h4>Amber Scale</h4>
+                <div class="family-tone" style="background:#fefce8;">Amber 50 - #FEFCE8</div>
+                <div class="family-tone" style="background:#fde68a;">Amber 200 - #FDE68A</div>
+                <div class="family-tone" style="background:#fbbf24;">Amber 400 - #FBBF24</div>
+                <div class="family-tone" style="background:#f59e0b;">Amber 500 - #F59E0B</div>
+              </div>
+              <div class="color-family">
+                <h4>Success Scale</h4>
+                <div class="family-tone" style="background:#ecfdf5;">Success 50 - #ECFDF5</div>
+                <div class="family-tone" style="background:#d1fae5;">Success 100 - #D1FAE5</div>
+                <div class="family-tone" style="background:#6ee7b7;">Success 300 - #6EE7B7</div>
+                <div class="family-tone" style="background:#10b981; color:#fff;">Success 500 - #10B981</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box" style="grid-column:1 / -1;">
+            <h3>Tokens por tema (diferencial web)</h3>
+            <div class="theme-grid">
+              <div class="theme-card light">
+                <h4>Tema Light</h4>
+                <div class="theme-token"><span style="background:#ffffff;"></span> Background #FFFFFF</div>
+                <div class="theme-token"><span style="background:#f9fafb;"></span> Surface #F9FAFB</div>
+                <div class="theme-token"><span style="background:#e5e7eb;"></span> Border #E5E7EB</div>
+                <div class="theme-token"><span style="background:#111827;"></span> Text #111827</div>
+                <div class="theme-token"><span style="background:#38bdf8;"></span> Accent #38BDF8</div>
+              </div>
+              <div class="theme-card dark">
+                <h4>Tema Dark</h4>
+                <div class="theme-token"><span style="background:#0b1220;"></span> Background #0B1220</div>
+                <div class="theme-token"><span style="background:#111827;"></span> Surface #111827</div>
+                <div class="theme-token"><span style="background:#1f2937;"></span> Border #1F2937</div>
+                <div class="theme-token"><span style="background:#f3f4f6;"></span> Text #F3F4F6</div>
+                <div class="theme-token"><span style="background:#38bdf8;"></span> Accent #38BDF8</div>
+              </div>
+            </div>
+            <table style="margin-top:10px;">
+              <thead>
+                <tr>
+                  <th>Categoria</th>
+                  <th>Color</th>
+                  <th>Uso</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Datos grafico A</td>
+                  <td>#38BDF8</td>
+                  <td>Serie principal (calidad de sueno)</td>
+                </tr>
+                <tr>
+                  <td>Datos grafico B</td>
+                  <td>#10B981</td>
+                  <td>Serie positiva (recuperacion)</td>
+                </tr>
+                <tr>
+                  <td>Datos grafico C</td>
+                  <td>#F59E0B</td>
+                  <td>Serie de advertencia (riesgo)</td>
+                </tr>
+                <tr>
+                  <td>Feedback error</td>
+                  <td>#EF4444</td>
+                  <td>Input error, banners y toast</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="web-diff" style="margin-top:10px;">
+              Diferencial web: soporte de tema dark y colores para multiples
+              series en tablas/graficas de dashboard admin.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">03. Carta Tipografica + Ejemplos de Texto (Artboard 1920 x 1080)</div>
         <div class="section-body artboard-stack">
           <div class="artboard-wrap">
             <div class="artboard-title">Artboard C - Carta Tipografica (1920x1080)</div>
@@ -599,7 +1222,7 @@
       </section>
 
       <section class="section">
-        <div class="section-head">03. Analisis de Pantallas - Componentes por Pantalla</div>
+        <div class="section-head">04. Analisis de Pantallas - Componentes por Pantalla</div>
         <div class="section-body">
           <table>
             <thead>
@@ -665,7 +1288,7 @@
       </section>
 
       <section class="section">
-        <div class="section-head">04. Estados y Variaciones por Componente</div>
+        <div class="section-head">05. Estados y Variaciones por Componente</div>
         <div class="section-body">
           <table>
             <thead>
@@ -725,7 +1348,7 @@
       </section>
 
       <section class="section">
-        <div class="section-head">05. Clasificacion por Tipo o Uso</div>
+        <div class="section-head">06. Clasificacion por Tipo o Uso</div>
         <div class="section-body grid three">
           <div class="box">
             <h3>Navegacion</h3>
@@ -785,7 +1408,7 @@
       </section>
 
       <section class="section">
-        <div class="section-head">06. Catalogo Visual de Componentes (Base para Mockups)</div>
+        <div class="section-head">07. Catalogo Visual de Componentes (Base para Mockups)</div>
         <div class="section-body grid two">
           <div class="component-frame">
             <h4>Grupo A - Formulario y Acciones</h4>
@@ -846,6 +1469,180 @@
             </div>
             <div style="height:8px;"></div>
             <div class="state">Exito: Tu reporte se ha descargado correctamente.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">08. Botones y Controles Web (Especificacion)</div>
+        <div class="section-body controls-grid">
+          <div class="control-card">
+            <h4>Botones - variante principal</h4>
+            <div class="state-row">
+              <span class="btn-token">Default</span>
+              <span class="btn-token hover">Hover</span>
+              <span class="btn-token focus">Focus</span>
+              <span class="btn-token disabled">Disabled</span>
+            </div>
+            <p style="margin:8px 0 0 0; font-size:12px;">Token: fondo #111827, texto blanco, focus con halo #38BDF8.</p>
+          </div>
+
+          <div class="control-card">
+            <h4>Botones - secundario y ghost</h4>
+            <div class="state-row">
+              <span class="btn-token secondary">Secondary</span>
+              <span class="btn-token ghost">Ghost</span>
+            </div>
+            <p style="margin:8px 0 0 0; font-size:12px;">Secundario con borde solido; ghost con borde dashed para acciones de bajo peso.</p>
+          </div>
+
+          <div class="control-card">
+            <h4>Inputs / Selects</h4>
+            <div class="state-row" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <div class="field-sample">Input default</div>
+              <div class="field-sample focus">Input focus</div>
+              <div class="field-sample error">Input error</div>
+              <div class="field-sample disabled">Input disabled</div>
+            </div>
+          </div>
+
+          <div class="control-card">
+            <h4>Controles de seleccion</h4>
+            <div class="state-row">
+              <div class="switch-sample on"></div>
+              <div class="switch-sample"></div>
+            </div>
+            <div style="height:10px;"></div>
+            <div class="chip-row-spec">
+              <span class="chip-spec active">Tab Activo</span>
+              <span class="chip-spec">Tab Inactivo</span>
+              <span class="chip-spec">Chip filtro</span>
+            </div>
+            <p style="margin:8px 0 0 0; font-size:12px;">Usar chips para filtros y tabs de tiempo (7/30/90 dias).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">09. Navegacion, Layout, Estados Visuales y Feedback</div>
+        <div class="section-body patterns-grid">
+          <div class="pattern-card">
+            <h3>Navegacion + Layout web</h3>
+            <p>
+              Patron desktop: topbar, sidebar persistente y area de contenido
+              para tablas y graficas.
+            </p>
+            <div class="web-shell">
+              <div class="web-topbar">
+                <span>Admin Sueno</span>
+                <span>Buscar | Alertas | Perfil</span>
+              </div>
+              <div class="web-main">
+                <div class="web-side">
+                  <div class="web-nav"></div>
+                  <div class="web-nav"></div>
+                  <div class="web-nav"></div>
+                  <div class="web-nav"></div>
+                </div>
+                <div class="web-content">
+                  <div class="web-row"></div>
+                  <div class="web-row"></div>
+                  <div class="web-row"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pattern-card">
+            <h3>Inputs + Controls (detallado)</h3>
+            <p>
+              Controles base para filtros de historial, export y detalle de
+              sesion.
+            </p>
+            <div class="control-grid-extended">
+              <div class="field-sample">Input busqueda</div>
+              <div class="select-sample"><span>Select metrica</span><span>v</span></div>
+              <div class="field-sample">Rango fecha</div>
+              <div class="select-sample"><span>Ordenar por</span><span>v</span></div>
+            </div>
+            <div style="height:10px;"></div>
+            <div class="state-row">
+              <div class="switch-sample on"></div>
+              <div class="switch-sample"></div>
+              <span class="chip-spec active">30 dias</span>
+              <span class="chip-spec">90 dias</span>
+            </div>
+            <div style="height:10px;"></div>
+            <div class="slider-sample-web"></div>
+          </div>
+
+          <div class="pattern-card">
+            <h3>Estados visuales</h3>
+            <p>
+              Estados semanticos unificados para botones, tags, cards y celdas
+              de tabla.
+            </p>
+            <div class="state-pills">
+              <span class="state-pill">Neutral</span>
+              <span class="state-pill info">Info</span>
+              <span class="state-pill success">Success</span>
+              <span class="state-pill warning">Warning</span>
+              <span class="state-pill error">Error</span>
+            </div>
+            <div style="height:10px;"></div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Estados</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Boton</td>
+                  <td>default, hover, focus, disabled</td>
+                </tr>
+                <tr>
+                  <td>Input</td>
+                  <td>default, focus, error, disabled</td>
+                </tr>
+                <tr>
+                  <td>Chip/Tab</td>
+                  <td>active, inactive, blocked</td>
+                </tr>
+                <tr>
+                  <td>Banner</td>
+                  <td>info, success, warning, error</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pattern-card">
+            <h3>Feedback + Data</h3>
+            <p>
+              Sistema de comunicacion de estado para cargas, errores y acciones
+              completadas en dashboard.
+            </p>
+            <div class="feedback-mini">
+              <div class="banner info">Info: Cargando datos de la nube...</div>
+              <div class="banner success">Exito: Tu reporte se descargo correctamente.</div>
+              <div class="banner warning">Alerta: Se detectaron variaciones en respiracion.</div>
+              <div class="banner error">Error: Usuario o contrasena incorrectos.</div>
+              <div class="status-row-mini">
+                <div>
+                  <strong>Sesion 12 Oct</strong>
+                  <span>Calidad 85% - Duracion 7h 20m</span>
+                </div>
+                <div>
+                  <strong>Estado</strong>
+                  <span>Analizada</span>
+                </div>
+              </div>
+              <div class="metric-chart-mini">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
