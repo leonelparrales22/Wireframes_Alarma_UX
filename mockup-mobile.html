@@ -50,9 +50,7 @@
     />
     <style>
       body {
-        background-image: radial-gradient(circle at top left, rgba(56, 189, 248, 0.14), transparent 45%),
-          radial-gradient(circle at 85% 10%, rgba(251, 191, 36, 0.14), transparent 40%),
-          linear-gradient(125deg, rgba(243, 244, 246, 0.95), rgba(255, 255, 255, 0.9));
+        background: #ffffff;
       }
     </style>
   </head>
@@ -102,16 +100,10 @@
           <div className="relative flex justify-center">
             <div
               className="absolute -inset-6 blur-3xl opacity-80"
-              style={{ background: `radial-gradient(circle, ${palette.glow} 0%, transparent 60%)` }}
+              style={{ background: 'radial-gradient(circle, rgba(15,23,42,0.15) 0%, transparent 65%)' }}
             ></div>
-            <div className="relative w-full max-w-md rounded-[52px] border-[6px] border-white bg-white/95 p-4 shadow-frame">
-              <div
-                className="rounded-[36px] border bg-white/95 p-6"
-                style={{
-                  borderColor: palette.primary,
-                  background: `linear-gradient(180deg, #ffffff 0%, ${palette.light} 55%, rgba(243,244,246,0.92) 100%)`
-                }}
-              >
+            <div className="relative w-full max-w-md rounded-[52px] border-[6px] border-ink-900 bg-white p-4 shadow-frame">
+              <div className="rounded-[36px] bg-white p-6">
                 {children}
               </div>
             </div>
@@ -319,8 +311,8 @@
         </svg>
       );
 
-      const IconWarning = () => (
-        <svg viewBox="0 0 32 32" className="h-6 w-6">
+      const IconWarning = ({ className = 'h-6 w-6' }) => (
+        <svg viewBox="0 0 32 32" className={className}>
           <path
             d="M16 5l11 20a2 2 0 0 1-1.7 3H6.7a2 2 0 0 1-1.7-3L16 5Z"
             fill="#fff7ed"
@@ -692,13 +684,29 @@
                 <p>Movimiento nocturno</p>
                 <span>Bajo</span>
               </div>
-              <div className="mt-3 rounded-2xl border border-ink-200 bg-ink-50 p-3">
-                <svg viewBox="0 0 220 60" className="h-16 w-full text-ink-500">
+              <div className="mt-3 rounded-2xl border border-ink-200 bg-white p-3">
+                <svg viewBox="0 0 220 60" className="h-16 w-full">
+                  <defs>
+                    <linearGradient id="motionStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#10b981" />
+                      <stop offset="100%" stopColor="#38bdf8" />
+                    </linearGradient>
+                    <linearGradient id="motionFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="rgba(16,185,129,0.25)" />
+                      <stop offset="100%" stopColor="rgba(56,189,248,0.05)" />
+                    </linearGradient>
+                  </defs>
+                  <polyline
+                    fill="url(#motionFill)"
+                    stroke="none"
+                    points="0,60 0,40 20,30 40,42 60,22 80,44 100,26 120,48 140,28 160,46 180,32 200,40 200,60"
+                  />
                   <polyline
                     fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
+                    stroke="url(#motionStroke)"
+                    strokeWidth="3"
                     strokeLinecap="round"
+                    strokeLinejoin="round"
                     points="0,40 20,30 40,42 60,22 80,44 100,26 120,48 140,28 160,46 180,32 200,40"
                   />
                 </svg>
@@ -739,17 +747,8 @@
       const ErrorView = ({ onResolve }) => (
         <div className="flex min-h-[720px] flex-col items-center text-center">
           <header className="text-xs uppercase tracking-[0.2em] text-ink-500">Error crítico</header>
-          <div className="mt-10 flex h-32 w-32 items-center justify-center rounded-full border border-ink-200">
-            <svg viewBox="0 0 60 60" className="h-16 w-16 text-ink-500">
-              <path
-                d="M30 6 53 48a3 3 0 0 1-2.6 4.5H9.6A3 3 0 0 1 7 48L30 6Z"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <circle cx="30" cy="40" r="2" fill="currentColor" />
-              <path d="M30 22v12" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-            </svg>
+          <div className="mt-10 flex h-32 w-32 items-center justify-center rounded-full border border-amber-200 bg-amber-50/40">
+            <IconWarning className="h-16 w-16" />
           </div>
           <p className="mt-6 text-lg font-medium">Permisos de micrófono y sensores denegados</p>
           <p className="mt-2 text-sm text-ink-500">
