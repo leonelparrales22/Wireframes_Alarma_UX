@@ -461,9 +461,9 @@
         color: #1f1f1f;
       }
 
-      .theme-card.dark {
-        background: #111827;
-        color: #f3f4f6;
+      .theme-card.alt {
+        background: #f8fafc;
+        color: #1f1f1f;
       }
 
       .theme-token {
@@ -856,6 +856,151 @@
         height: 70%;
       }
 
+      .hifi-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .hifi-card {
+        border: 2px solid var(--gray-300);
+        background: #ffffff;
+        padding: 12px;
+      }
+
+      .hifi-card h3 {
+        margin: 0 0 8px 0;
+        font-size: 14px;
+      }
+
+      .hifi-card p {
+        margin: 0 0 8px 0;
+        font-size: 12px;
+        color: var(--gray-700);
+      }
+
+      .gradient-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .gradient-token {
+        border: 2px solid var(--gray-300);
+        min-height: 70px;
+        padding: 8px;
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .texture-sample {
+        border: 2px solid var(--gray-300);
+        min-height: 96px;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.12) 0%, transparent 35%),
+          radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.11) 0%, transparent 34%),
+          repeating-linear-gradient(
+            135deg,
+            rgba(15, 23, 42, 0.01),
+            rgba(15, 23, 42, 0.01) 8px,
+            rgba(15, 23, 42, 0.02) 8px,
+            rgba(15, 23, 42, 0.02) 16px
+          ),
+          linear-gradient(135deg, #ffffff 0%, #f3f4f6 45%, #eef2f7 100%);
+      }
+
+      .mock-shell {
+        border: 2px solid #d1d5db;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #ffffff;
+      }
+
+      .mock-shell .top {
+        height: 36px;
+        border-bottom: 1px solid #d1d5db;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+        color: #6b7280;
+        font-size: 11px;
+        background: #f8fafc;
+      }
+
+      .mock-shell .body {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        min-height: 148px;
+      }
+
+      .mock-shell .left {
+        border-right: 1px solid #e5e7eb;
+        padding: 8px;
+        display: grid;
+        gap: 6px;
+        background: #f8fafc;
+      }
+
+      .mock-shell .nav {
+        border-radius: 8px;
+        background: #e5e7eb;
+        height: 22px;
+      }
+
+      .mock-shell .nav.active {
+        background: linear-gradient(90deg, rgba(56, 189, 248, 0.24), rgba(16, 185, 129, 0.24));
+      }
+
+      .mock-shell .right {
+        padding: 8px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .mock-shell .panel {
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        background: #ffffff;
+        min-height: 36px;
+      }
+
+      .component-tag-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .component-tag {
+        border: 1px solid var(--gray-300);
+        background: #f8fafc;
+        padding: 8px;
+        font-size: 11px;
+      }
+
+      .resource-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .resource-item {
+        border: 2px solid var(--gray-300);
+        background: #ffffff;
+        padding: 10px;
+      }
+
+      .resource-item h4 {
+        margin: 0 0 6px 0;
+        font-size: 13px;
+      }
+
+      .resource-item p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--gray-700);
+      }
+
       @keyframes shimmer {
         from {
           background-position: 100% 0;
@@ -877,12 +1022,24 @@
         .controls-grid,
         .patterns-grid,
         .control-grid-extended,
-        .color-step-grid {
+        .color-step-grid,
+        .hifi-grid,
+        .gradient-row,
+        .component-tag-grid {
           grid-template-columns: 1fr;
         }
 
         .web-main {
           grid-template-columns: 1fr;
+        }
+
+        .mock-shell .body {
+          grid-template-columns: 1fr;
+        }
+
+        .mock-shell .left {
+          border-right: 0;
+          border-bottom: 1px solid rgba(148, 163, 184, 0.24);
         }
 
         .web-side {
@@ -999,7 +1156,7 @@
       </section>
 
       <section class="section">
-        <div class="section-head">02. Sistema de Color Web (Light + Dark)</div>
+        <div class="section-head">02. Sistema de Color Web (Prioridad Light)</div>
         <div class="section-body grid two">
           <div class="box">
             <h3>Paleta principal y secundaria (alineada con mobile)</h3>
@@ -1110,13 +1267,13 @@
                 <div class="theme-token"><span style="background:#111827;"></span> Text #111827</div>
                 <div class="theme-token"><span style="background:#38bdf8;"></span> Accent #38BDF8</div>
               </div>
-              <div class="theme-card dark">
-                <h4>Tema Dark</h4>
-                <div class="theme-token"><span style="background:#0b1220;"></span> Background #0B1220</div>
-                <div class="theme-token"><span style="background:#111827;"></span> Surface #111827</div>
-                <div class="theme-token"><span style="background:#1f2937;"></span> Border #1F2937</div>
-                <div class="theme-token"><span style="background:#f3f4f6;"></span> Text #F3F4F6</div>
-                <div class="theme-token"><span style="background:#38bdf8;"></span> Accent #38BDF8</div>
+              <div class="theme-card light">
+                <h4>Tema Light Plus</h4>
+                <div class="theme-token"><span style="background:#f8fafc;"></span> Background #F8FAFC</div>
+                <div class="theme-token"><span style="background:#ffffff;"></span> Surface #FFFFFF</div>
+                <div class="theme-token"><span style="background:#d1d5db;"></span> Border #D1D5DB</div>
+                <div class="theme-token"><span style="background:#374151;"></span> Text #374151</div>
+                <div class="theme-token"><span style="background:#10b981;"></span> Accent #10B981</div>
               </div>
             </div>
             <table style="margin-top:10px;">
@@ -1151,8 +1308,8 @@
               </tbody>
             </table>
             <div class="web-diff" style="margin-top:10px;">
-              Diferencial web: soporte de tema dark y colores para multiples
-              series en tablas/graficas de dashboard admin.
+              Diferencial web: prioridad de tema claro tipo mobile y uso de
+              colores para multiples series en tablas/graficas de dashboard.
             </div>
           </div>
         </div>
@@ -1643,6 +1800,308 @@
                 <span></span><span></span><span></span><span></span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">10. Extension Mockup Web (Identidad Visual)</div>
+        <div class="section-body hifi-grid">
+          <div class="hifi-card">
+            <h3>Direccion visual del mockup</h3>
+            <p>
+              Estilo "Clinico Claro": base blanca, superficies suaves, acentos
+              sky/success y profundidad ligera por capas.
+            </p>
+            <div class="gradient-row">
+              <div class="gradient-token" style="background:linear-gradient(135deg,#ffffff 0%,#f3f4f6 48%,#eef2f7 100%); color:#1f2937;">
+                BG Light
+              </div>
+              <div class="gradient-token" style="background:linear-gradient(135deg,#38bdf8 0%,#0ea5e9 100%);">
+                Accent Info
+              </div>
+              <div class="gradient-token" style="background:linear-gradient(135deg,#34d399 0%,#10b981 100%);">
+                Accent Success
+              </div>
+            </div>
+            <div style="height:8px;"></div>
+            <div class="texture-sample"></div>
+          </div>
+
+          <div class="hifi-card">
+            <h3>Layout y navegacion aplicados en mockup-web</h3>
+            <p>
+              Se cambia de "marco wireframe" a shell web de aplicacion:
+              sidebar fija, topbar contextual y area de trabajo por pantalla.
+            </p>
+            <div class="mock-shell">
+              <div class="top">
+                <span>Bio-Alarm Admin</span>
+                <span>Buscar | Alertas | Perfil</span>
+              </div>
+              <div class="body">
+                <div class="left">
+                  <div class="nav active"></div>
+                  <div class="nav"></div>
+                  <div class="nav"></div>
+                  <div class="nav"></div>
+                </div>
+                <div class="right">
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                  <div class="panel"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hifi-card">
+            <h3>Nuevos componentes incorporados</h3>
+            <p>
+              Componentes hi-fi agregados en el paso de wireframe a mockup y
+              sincronizados con este Design System.
+            </p>
+            <div class="component-tag-grid">
+              <div class="component-tag">App Shell Desktop (sidebar + topbar)</div>
+              <div class="component-tag">Hero card de pantalla con gradiente</div>
+              <div class="component-tag">KPI card clara (valor + tendencia)</div>
+              <div class="component-tag">Chart panel (area + barras + escala)</div>
+              <div class="component-tag">Alert pill por severidad</div>
+              <div class="component-tag">Table row con estado semantico</div>
+              <div class="component-tag">Export format card (PDF/CSV/XLSX)</div>
+              <div class="component-tag">Avatar placeholder clinico</div>
+              <div class="component-tag">Feedback banner multiestado</div>
+              <div class="component-tag">Panel de interpretacion de resultados</div>
+              <div class="component-tag">Insight panel contrastado con gauge</div>
+              <div class="component-tag">Modulo de comentarios (Supabase)</div>
+            </div>
+          </div>
+
+          <div class="hifi-card">
+            <h3>Reglas para no "solo colorear wireframes"</h3>
+            <p>
+              El mockup cambia estructura visual, jerarquias, profundidad,
+              densidad de informacion y lenguaje de componentes.
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Eje</th>
+                  <th>Wireframe</th>
+                  <th>Mockup Web</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Composicion</td>
+                  <td>Bloques planos</td>
+                  <td>Capas, cards claras y paneles por prioridad</td>
+                </tr>
+                <tr>
+                  <td>Navegacion</td>
+                  <td>Menu basico</td>
+                  <td>Shell persistente con contexto de pantalla</td>
+                </tr>
+                <tr>
+                  <td>Data viz</td>
+                  <td>Graficas esquematicas</td>
+                  <td>Graficas con escala, leyenda y series semanticas</td>
+                </tr>
+                <tr>
+                  <td>Feedback</td>
+                  <td>Texto estado</td>
+                  <td>Banners, pills, toasts y estados de carga</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">11. Alineacion Final con Mockup Web Actual</div>
+        <div class="section-body hifi-grid">
+          <div class="hifi-card">
+            <h3>Paridad funcional con wireframe</h3>
+            <p>
+              El mockup web mantiene exactamente las mismas 9 pantallas, mismos
+              componentes base y mismo flujo de navegacion del wireframe.
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Pantalla</th>
+                  <th>Base funcional conservada</th>
+                  <th>Trabajo de estilo aplicado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01 Login Seguro</td>
+                  <td>Acceso + error de credenciales</td>
+                  <td>Hero fullscreen, threads animadas, card de login premium</td>
+                </tr>
+                <tr>
+                  <td>02 Dashboard Cargando</td>
+                  <td>Skeleton + accion "omitir"</td>
+                  <td>Jerarquia visual de cargas, superficies y espaciado</td>
+                </tr>
+                <tr>
+                  <td>03 Dashboard Analitico</td>
+                  <td>KPI + graficas + CTA a detalle/export</td>
+                  <td>Charts con escala legible, cards y contraste de datos</td>
+                </tr>
+                <tr>
+                  <td>04-09 Flujo admin</td>
+                  <td>Detalle, historial, alertas, export, exito, perfil</td>
+                  <td>Sistema consistente de cards, tablas, filtros y feedback</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="hifi-card">
+            <h3>Componentes clave tomados de mockup-web</h3>
+            <p>
+              Inventario de componentes efectivamente usados en la implementacion
+              actual del mockup.
+            </p>
+            <div class="token-list">
+              <div class="token-item">Login Hero: `login-stage`, `login-top-pill`, `login-hero`, `login-form-floating`</div>
+              <div class="token-item">Shell Web: `wireframe`, `browser-top`, `url-bar`, `app-shell`, `sidebar`, `main`</div>
+              <div class="token-item">Navegacion: `top-nav-btn` + `menu-item` con `data-go` por pantalla</div>
+              <div class="token-item">Data UI: `card`, `kpi`, `chart-with-scale`, `line-chart-with-scale`, `table`, `table-action`</div>
+              <div class="token-item">Filtros/controles: `input`, `select`, `chip`, `history-filters`, `step-grid`</div>
+              <div class="token-item">Feedback: `message`, `feedback-footer`, `banner`, `badge`, estado de exito de exportacion</div>
+              <div class="token-item">Colaboracion: modulo de comentarios con Supabase via `CommentsComponent.js`</div>
+            </div>
+          </div>
+
+          <div class="hifi-card">
+            <h3>Estados y microinteracciones implementadas</h3>
+            <p>
+              Estados visibles y recurrentes del mockup que deben mantenerse en
+              futuras iteraciones y mockups hi-fi.
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Estados activos</th>
+                  <th>Evidencia en flujo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Boton</td>
+                  <td>default, hover, ghost</td>
+                  <td>Navegacion entre 9 pantallas (`data-go`)</td>
+                </tr>
+                <tr>
+                  <td>Input</td>
+                  <td>default, focus, error</td>
+                  <td>Login, filtros de historial y perfil</td>
+                </tr>
+                <tr>
+                  <td>Carga</td>
+                  <td>skeleton</td>
+                  <td>Dashboard Cargando (Pantalla 02)</td>
+                </tr>
+                <tr>
+                  <td>Alerta</td>
+                  <td>alta, media, baja</td>
+                  <td>Alertas Clinicas (Pantalla 06)</td>
+                </tr>
+                <tr>
+                  <td>Resultado</td>
+                  <td>exito de descarga</td>
+                  <td>Descarga Exitosa (Pantalla 08)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="hifi-card">
+            <h3>Reglas de sincronizacion DS ↔ Mockup</h3>
+            <p>
+              Criterios para mantener el Design System alineado con cambios de
+              UI sin perder consistencia ni introducir componentes no definidos.
+            </p>
+            <div class="state">
+              1) Si cambia una clase visual en `mockup-web.html`, registrar token
+              o patron equivalente en este documento.
+            </div>
+            <div class="state" style="margin-top:8px;">
+              2) No agregar nuevas pantallas o componentes en mockup sin primero
+              listarlos en "Analisis de Pantallas" y "Estados y Variaciones".
+            </div>
+            <div class="state" style="margin-top:8px;">
+              3) Mantener el login hero como caso especial del sistema web
+              (pantalla de entrada), sin alterar el flujo funcional base.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">12. Recursos Visuales Finales Utilizados</div>
+        <div class="section-body resource-list">
+          <div class="resource-item">
+            <h4>Fondos y atmosfera</h4>
+            <p>
+              Fondo claro (`#FFFFFF -> #F3F4F6 -> #EEF2F7`) con manchas radiales
+              suaves sky/success para profundidad sin oscurecer la interfaz.
+            </p>
+          </div>
+          <div class="resource-item">
+            <h4>Texturas</h4>
+            <p>
+              Textura abstracta generada en CSS con `repeating-linear-gradient`
+              (sin imagen externa) para evitar superficies planas.
+            </p>
+          </div>
+          <div class="resource-item">
+            <h4>Tipografias</h4>
+            <p>
+              `Space Grotesk` (titulos/KPI) y `IBM Plex Sans` (cuerpo/controles),
+              mismas familias que mobile para continuidad de producto.
+            </p>
+          </div>
+          <div class="resource-item">
+            <h4>Iconografia</h4>
+            <p>
+              Iconos SVG inline para menu, estados y acciones. No se usaron sets
+              de terceros en esta entrega.
+            </p>
+          </div>
+          <div class="resource-item">
+            <h4>Graficas y data-viz</h4>
+            <p>
+              Area chart, barras, lineas y mini-sparkline construidas con CSS/SVG
+              propios; sin librerias externas de charts.
+            </p>
+          </div>
+          <div class="resource-item">
+            <h4>Fotografias / imagenes raster</h4>
+            <p>
+              No se utilizaron fotografias ni texturas raster externas. La
+              interfaz se resolvio con recursos vectoriales y gradientes nativos.
+            </p>
+          </div>
+          <div class="resource-item">
+            <h4>Sombras y profundidad</h4>
+            <p>
+              Sistema de sombras suaves multicapa para separar niveles:
+              `panel`, `card` y `modal`.
+            </p>
+          </div>
+          <div class="resource-item">
+            <h4>Comentarios colaborativos</h4>
+            <p>
+              Componente reutilizado `CommentsComponent.js` conectado a Supabase
+              (`comentarios_entregas`) y anclado por `entrega_id` unico para esta
+              version de mockup web.
+            </p>
           </div>
         </div>
       </section>

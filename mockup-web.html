@@ -1,0 +1,3407 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mockup Web - Admin Sueño</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink-900: #111827;
+        --ink-800: #1f2937;
+        --ink-700: #374151;
+        --ink-600: #4b5563;
+        --ink-500: #6b7280;
+        --ink-400: #9ca3af;
+        --ink-300: #d1d5db;
+        --ink-200: #e5e7eb;
+        --ink-100: #f3f4f6;
+        --sky-500: #38bdf8;
+        --sky-600: #0ea5e9;
+        --success-500: #10b981;
+        --success-600: #059669;
+        --amber-400: #fbbf24;
+        --amber-500: #f59e0b;
+        --error-500: #ef4444;
+        --page-bg: #f5f7fb;
+        --panel-bg: #ffffff;
+        --panel-soft: #f8fafd;
+        --line-soft: #dbe2ea;
+        --line-strong: #c3cedb;
+        --radius-xl: 26px;
+        --radius-lg: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+        color: var(--ink-900);
+        background:
+          radial-gradient(circle at 8% 12%, rgba(56, 189, 248, 0.1), transparent 24%),
+          radial-gradient(circle at 90% 8%, rgba(16, 185, 129, 0.1), transparent 24%),
+          radial-gradient(circle at 82% 88%, rgba(251, 191, 36, 0.08), transparent 20%),
+          linear-gradient(180deg, #fbfdff 0%, #f1f5fb 100%);
+      }
+
+      .page {
+        max-width: 1640px;
+        margin: 0 auto;
+        padding: 22px;
+      }
+
+      .project-head {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius-xl);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 18px 20px;
+        display: grid;
+        gap: 10px;
+        box-shadow: 0 18px 40px rgba(17, 24, 39, 0.09);
+        display: none;
+      }
+
+      .project-head::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 42%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--success-500), var(--sky-500), transparent);
+      }
+
+      .project-head h1 {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 30px;
+        letter-spacing: 0.2px;
+      }
+
+      .head-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .head-title {
+        display: grid;
+        gap: 8px;
+        max-width: 920px;
+      }
+
+      .comments-cta {
+        border: 1px solid var(--ink-900);
+        border-radius: 999px;
+        background: var(--ink-900);
+        color: #ffffff;
+        padding: 10px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        box-shadow: 0 12px 24px rgba(17, 24, 39, 0.2);
+        transition: transform 0.16s ease, box-shadow 0.16s ease;
+      }
+
+      .comments-cta:hover {
+        transform: translateY(1px);
+        box-shadow: 0 7px 16px rgba(17, 24, 39, 0.18);
+      }
+
+      .comments-cta-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #6ee7b7, #38bdf8);
+      }
+
+      .project-head p {
+        margin: 0;
+        color: var(--ink-600);
+        font-size: 14px;
+      }
+
+      .token-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .token-row span {
+        border: 1px solid var(--line-soft);
+        border-radius: 999px;
+        padding: 6px 10px;
+        background: #ffffff;
+        color: var(--ink-600);
+        font-size: 11px;
+      }
+
+      .flow-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .flow-btn {
+        position: relative;
+        border: 1px solid var(--line-soft);
+        border-radius: 999px;
+        background: #ffffff;
+        color: var(--ink-700);
+        padding: 8px 14px;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.16s ease;
+      }
+
+      .flow-btn:hover {
+        transform: translateY(-1px);
+        border-color: rgba(14, 165, 233, 0.5);
+        box-shadow: 0 8px 16px rgba(14, 165, 233, 0.12);
+      }
+
+      .flow-btn.active {
+        border-color: rgba(16, 185, 129, 0.56);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(56, 189, 248, 0.14));
+        color: #064e3b;
+      }
+
+      .prototype {
+        height: min(900px, calc(100vh - 44px));
+        border-radius: 30px;
+        border: 1px solid var(--line-soft);
+        overflow: hidden;
+        background: #ffffff;
+        display: block;
+        box-shadow: 0 26px 62px rgba(17, 24, 39, 0.11);
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .brand {
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius-lg);
+        background: #ffffff;
+        padding: 12px;
+        box-shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
+      }
+
+      .brand .name {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 16px;
+      }
+
+      .brand .sub {
+        margin: 4px 0 0 0;
+        font-size: 11px;
+        color: var(--ink-500);
+      }
+
+      .status-card {
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius-lg);
+        background: #ffffff;
+        padding: 10px;
+      }
+
+      .status-card p {
+        margin: 0;
+        font-size: 11px;
+        color: var(--ink-500);
+      }
+
+      .status-card strong {
+        display: block;
+        margin-top: 4px;
+        color: var(--ink-900);
+        font-size: 14px;
+      }
+
+      .menu {
+        display: grid;
+        gap: 6px;
+      }
+
+      .menu button {
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        background: #ffffff;
+        color: var(--ink-700);
+        font-size: 13px;
+        text-align: left;
+        padding: 10px 11px;
+        cursor: pointer;
+        transition: all 0.16s ease;
+      }
+
+      .menu button:hover {
+        border-color: var(--line-strong);
+        transform: translateX(2px);
+      }
+
+      .menu button.active {
+        border-color: rgba(16, 185, 129, 0.55);
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.1), rgba(56, 189, 248, 0.08));
+        color: #065f46;
+      }
+
+      .footer-tag {
+        border: 1px dashed var(--line-strong);
+        border-radius: 12px;
+        background: #ffffff;
+        padding: 8px;
+        color: var(--ink-500);
+        font-size: 11px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-rows: 64px 1fr;
+      }
+
+      .workspace.login-mode {
+        grid-template-rows: 1fr;
+      }
+
+      .workspace.login-mode .topbar {
+        display: none;
+      }
+
+      .workspace.login-mode .screen-wrap {
+        padding: 0;
+        background: #070312;
+        overflow: auto;
+      }
+
+      .topbar {
+        border-bottom: 1px solid var(--line-soft);
+        background: #ffffff;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 14px;
+        min-height: 68px;
+      }
+
+      .topbar .title {
+        display: grid;
+        gap: 2px;
+        width: auto;
+        padding-top: 2px;
+      }
+
+      .topbar .title h2 {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 18px;
+      }
+
+      .topbar .title p {
+        margin: 2px 0 0 0;
+        color: var(--ink-500);
+        font-size: 11px;
+      }
+
+      .brand-mini {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line-soft);
+        border-radius: 12px;
+        padding: 8px 10px;
+        font-weight: 700;
+        color: var(--ink-900);
+        background: #ffffff;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .brand-mini::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--success-500), var(--sky-500));
+      }
+
+      .top-nav {
+        display: none;
+      }
+
+      .top-nav-btn {
+        border: 1px solid var(--line-soft);
+        border-radius: 999px;
+        background: #ffffff;
+        color: var(--ink-700);
+        padding: 8px 12px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.16s ease;
+      }
+
+      .top-nav-btn:hover {
+        border-color: rgba(14, 165, 233, 0.52);
+      }
+
+      .top-nav-btn.active {
+        border-color: rgba(16, 185, 129, 0.55);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(56, 189, 248, 0.12));
+        color: #065f46;
+      }
+
+      .top-search {
+        min-width: 260px;
+        border: 1px solid var(--line-soft);
+        border-radius: 11px;
+        background: #f8fafc;
+        color: var(--ink-500);
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      .ghost-btn {
+        border: 1px solid var(--line-soft);
+        border-radius: 10px;
+        background: #ffffff;
+        color: var(--ink-700);
+        padding: 8px 10px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .ghost-btn:hover {
+        border-color: var(--sky-500);
+        color: #0369a1;
+      }
+
+      .screen-wrap {
+        padding: 16px;
+        overflow: auto;
+        background: linear-gradient(180deg, #f8fbff 0%, #f4f7fb 100%);
+      }
+
+      .screen-wrap::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      .screen-wrap::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 999px;
+      }
+
+      .screen {
+        display: none;
+        animation: fadeIn 0.2s ease;
+      }
+
+      .screen.active {
+        display: grid;
+        gap: 12px;
+      }
+
+      .screen.login-screen.active {
+        display: block;
+        height: 100%;
+      }
+
+      .panel {
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius-lg);
+        background: var(--panel-bg);
+        padding: 14px;
+        box-shadow: 0 10px 24px rgba(17, 24, 39, 0.06);
+      }
+
+      .panel h3 {
+        margin: 0 0 6px 0;
+        color: var(--ink-900);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 18px;
+      }
+
+      .panel p {
+        margin: 0;
+        color: var(--ink-600);
+        font-size: 13px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 85% 12%, rgba(56, 189, 248, 0.18), transparent 34%),
+          radial-gradient(circle at 10% 88%, rgba(16, 185, 129, 0.17), transparent 32%),
+          linear-gradient(145deg, #ffffff 0%, #f5faf8 100%);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        right: -70px;
+        top: -120px;
+      }
+
+      .grid-two {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .grid-three {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .grid-four {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .kpi {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line-soft);
+        border-radius: 14px;
+        background: #ffffff;
+        padding: 11px;
+      }
+
+      .kpi::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 3px;
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.62), rgba(56, 189, 248, 0.55));
+      }
+
+      .kpi small {
+        color: var(--ink-500);
+        font-size: 11px;
+      }
+
+      .kpi strong {
+        display: block;
+        margin-top: 6px;
+        color: var(--ink-900);
+        font-size: 24px;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .trend-up {
+        color: var(--success-600);
+        font-size: 11px;
+      }
+
+      .trend-warn {
+        color: #b45309;
+        font-size: 11px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        border-radius: 999px;
+        border: 1px solid #dbe2ea;
+        background: #ffffff;
+        color: var(--ink-600);
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+
+      .tag.info {
+        border-color: rgba(56, 189, 248, 0.6);
+        background: rgba(56, 189, 248, 0.1);
+        color: #0c4a6e;
+      }
+
+      .tag.success {
+        border-color: rgba(16, 185, 129, 0.58);
+        background: rgba(16, 185, 129, 0.1);
+        color: #065f46;
+      }
+
+      .tag.warning {
+        border-color: rgba(245, 158, 11, 0.62);
+        background: rgba(251, 191, 36, 0.16);
+        color: #92400e;
+      }
+
+      .tag.error {
+        border-color: rgba(239, 68, 68, 0.58);
+        background: rgba(239, 68, 68, 0.1);
+        color: #991b1b;
+      }
+
+      .btn {
+        border: 1px solid transparent;
+        border-radius: 11px;
+        padding: 10px 12px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+
+      .btn.primary {
+        background: linear-gradient(135deg, var(--success-500), var(--sky-600));
+        color: #ffffff;
+        box-shadow: 0 10px 20px rgba(16, 185, 129, 0.24);
+      }
+
+      .btn.primary:hover {
+        filter: brightness(1.03);
+      }
+
+      .btn.success {
+        background: linear-gradient(135deg, #34d399, var(--success-500));
+        color: #05362e;
+        font-weight: 700;
+      }
+
+      .btn.secondary {
+        border-color: var(--line-strong);
+        background: #ffffff;
+        color: var(--ink-700);
+      }
+
+      .btn.ghost {
+        border-style: dashed;
+        border-color: var(--line-strong);
+        background: #f8fafc;
+        color: var(--ink-500);
+      }
+
+      .field,
+      .select {
+        width: 100%;
+        border: 1px solid var(--ink-300);
+        border-radius: 10px;
+        background: #ffffff;
+        color: var(--ink-800);
+        font-size: 13px;
+        padding: 10px 12px;
+      }
+
+      .field::placeholder {
+        color: var(--ink-400);
+      }
+
+      .field:focus,
+      .select:focus {
+        outline: 2px solid rgba(56, 189, 248, 0.28);
+        outline-offset: 1px;
+      }
+
+      .label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink-500);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .auth {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 12px;
+      }
+
+      .auth.login {
+        grid-template-columns: 1.35fr 1fr;
+        align-items: stretch;
+      }
+
+      .login-stage {
+        position: relative;
+        height: 100%;
+        min-height: 760px;
+        overflow: hidden;
+        padding: 32px 44px 36px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 24px;
+        background:
+          radial-gradient(circle at 14% 16%, rgba(56, 189, 248, 0.14), transparent 26%),
+          radial-gradient(circle at 85% 14%, rgba(16, 185, 129, 0.09), transparent 24%),
+          linear-gradient(145deg, #070312 0%, #0b041d 42%, #050112 100%);
+      }
+
+      .login-stage::after {
+        content: "";
+        position: absolute;
+        inset: 20px;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 20px;
+        pointer-events: none;
+      }
+
+      .login-stage-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.08), transparent 34%),
+          linear-gradient(180deg, rgba(9, 5, 20, 0.2) 0%, rgba(9, 5, 20, 0.45) 100%);
+      }
+
+      .login-top-pill {
+        position: relative;
+        z-index: 3;
+        width: min(1120px, 100%);
+        margin: 0 auto;
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.3);
+        backdrop-filter: blur(10px);
+        padding: 11px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .login-top-brand {
+        color: #f8fafc;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        font-size: 14px;
+      }
+
+      .login-top-links {
+        display: inline-flex;
+        gap: 8px;
+      }
+
+      .login-top-links span {
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-radius: 999px;
+        padding: 7px 14px;
+        color: #cbd5e1;
+        font-size: 12px;
+      }
+
+      .login-hero {
+        position: relative;
+        z-index: 3;
+        width: min(1120px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 38px;
+        align-items: center;
+      }
+
+      .login-center {
+        position: relative;
+        text-align: left;
+      }
+
+      .login-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 999px;
+        padding: 8px 14px;
+        color: #cbd5e1;
+        font-size: 12px;
+        background: rgba(15, 23, 42, 0.35);
+      }
+
+      .login-title {
+        margin: 14px 0 0;
+        max-width: 720px;
+        color: #f8fafc;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(44px, 5vw, 76px);
+        line-height: 0.98;
+        letter-spacing: -0.02em;
+      }
+
+      .login-subtitle {
+        margin: 14px 0 0;
+        max-width: 640px;
+        color: #aebad0;
+        font-size: 22px;
+        line-height: 1.45;
+      }
+
+      .login-actions {
+        margin-top: 24px;
+        display: inline-flex;
+        gap: 10px;
+      }
+
+      .login-btn-main {
+        border: none;
+        border-radius: 999px;
+        background: #f8fafc;
+        color: #0f172a;
+        font-weight: 700;
+        font-size: 14px;
+        padding: 12px 26px;
+        cursor: pointer;
+      }
+
+      .login-btn-alt {
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.34);
+        color: #cbd5e1;
+        font-size: 14px;
+        padding: 12px 22px;
+        cursor: pointer;
+      }
+
+      .login-art {
+        position: relative;
+        min-height: 360px;
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid #0f172a;
+        background:
+          radial-gradient(circle at 18% 18%, rgba(56, 189, 248, 0.16), transparent 36%),
+          radial-gradient(circle at 80% 16%, rgba(16, 185, 129, 0.14), transparent 34%),
+          linear-gradient(150deg, #0b1220 0%, #111827 40%, #0f172a 100%);
+      }
+
+      .threads-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .login-art-copy {
+        position: absolute;
+        left: 16px;
+        top: 16px;
+        max-width: 320px;
+        z-index: 2;
+      }
+
+      .login-art-copy h4 {
+        margin: 0 0 6px 0;
+        color: #f8fafc;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 22px;
+      }
+
+      .login-art-copy p {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .login-metrics {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .login-metric {
+        border: 1px solid rgba(148, 163, 184, 0.42);
+        border-radius: 12px;
+        background: rgba(15, 23, 42, 0.58);
+        backdrop-filter: blur(3px);
+        padding: 8px;
+      }
+
+      .login-metric small {
+        display: block;
+        color: #94a3b8;
+        font-size: 10px;
+      }
+
+      .login-metric strong {
+        display: block;
+        margin-top: 2px;
+        color: #f8fafc;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 18px;
+      }
+
+      .login-form {
+        position: relative;
+        border: 1px solid var(--line-soft);
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+        padding: 14px;
+      }
+
+      .login-form::before {
+        content: "";
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: 0;
+        height: 3px;
+        border-bottom-left-radius: 999px;
+        border-bottom-right-radius: 999px;
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.68), rgba(56, 189, 248, 0.62));
+      }
+
+      .login-form-floating {
+        position: relative;
+        z-index: 4;
+        width: 100%;
+        border: 1px solid rgba(148, 163, 184, 0.34);
+        border-radius: 22px;
+        background: rgba(248, 250, 252, 0.97);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 24px 48px rgba(2, 6, 23, 0.33);
+        padding: 18px;
+      }
+
+      .login-form-floating .field {
+        border-radius: 12px;
+        background: #f1f5f9;
+      }
+
+      .login-form-floating .btn.primary {
+        width: fit-content;
+        min-width: 204px;
+      }
+
+      .login-alert-inline {
+        border: 1px solid #fca5a5;
+        border-radius: 10px;
+        background: rgba(254, 242, 242, 0.94);
+        color: #991b1b;
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+
+      .hero-illustration {
+        min-height: 260px;
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius-lg);
+        background:
+          radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 32%),
+          radial-gradient(circle at 82% 78%, rgba(16, 185, 129, 0.18), transparent 34%),
+          #ffffff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-illustration::before,
+      .hero-illustration::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.26);
+      }
+
+      .hero-illustration::before {
+        width: 280px;
+        height: 280px;
+        top: -130px;
+        right: -100px;
+      }
+
+      .hero-illustration::after {
+        width: 220px;
+        height: 220px;
+        bottom: -110px;
+        left: -70px;
+      }
+
+      .hero-illustration .stat-ring {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+      }
+
+      .ring {
+        width: 138px;
+        height: 138px;
+        border-radius: 50%;
+        border: 11px solid var(--ink-200);
+        border-top-color: var(--success-500);
+        border-right-color: var(--sky-500);
+        display: grid;
+        place-items: center;
+      }
+
+      .ring strong {
+        color: var(--ink-900);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+      }
+
+      .ring span {
+        color: var(--ink-500);
+        font-size: 11px;
+      }
+
+      .alert {
+        border: 1px solid #fca5a5;
+        border-radius: 10px;
+        background: #fef2f2;
+        color: #991b1b;
+        padding: 10px;
+        font-size: 12px;
+      }
+
+      .skeleton {
+        display: grid;
+        gap: 8px;
+      }
+
+      .skeleton div {
+        height: 12px;
+        border-radius: 6px;
+        background: linear-gradient(90deg, #e5e7eb, #cbd5e1, #e5e7eb);
+        background-size: 220% 100%;
+        animation: shimmer 1.3s linear infinite;
+      }
+
+      .skeleton div:nth-child(3) {
+        width: 62%;
+      }
+
+      .chart-card {
+        border: 1px solid var(--line-soft);
+        border-radius: var(--radius-lg);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.94));
+        padding: 12px;
+      }
+
+      .insight-panel {
+        border: 1px solid #163251;
+        border-radius: var(--radius-lg);
+        background:
+          radial-gradient(circle at 16% 8%, rgba(56, 189, 248, 0.18), transparent 32%),
+          radial-gradient(circle at 88% 12%, rgba(16, 185, 129, 0.16), transparent 28%),
+          linear-gradient(160deg, #0b1a31 0%, #091426 100%);
+        color: #e2e8f0;
+        padding: 14px;
+      }
+
+      .insight-panel h3 {
+        color: #f8fafc;
+        margin: 0;
+      }
+
+      .insight-panel p {
+        color: #cbd5e1;
+      }
+
+      .insight-panel .tag.info {
+        border-color: rgba(125, 211, 252, 0.42);
+        background: rgba(14, 116, 144, 0.25);
+        color: #dbeafe;
+      }
+
+      .insight-panel .tag.success {
+        border-color: rgba(110, 231, 183, 0.42);
+        background: rgba(5, 150, 105, 0.2);
+        color: #d1fae5;
+      }
+
+      .insight-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .insight-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .insight-mini {
+        border: 1px solid rgba(148, 163, 184, 0.38);
+        border-radius: 14px;
+        background: rgba(15, 30, 52, 0.72);
+        padding: 11px;
+      }
+
+      .insight-mini small {
+        display: block;
+        color: #cbd5e1;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .insight-mini strong {
+        display: block;
+        margin-top: 6px;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 42px;
+        line-height: 1;
+        color: #f8fafc;
+      }
+
+      .insight-mini p {
+        margin: 4px 0 0;
+        font-size: 12px;
+        color: #93a7c0;
+      }
+
+      .mini-track {
+        margin-top: 10px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mini-track::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: var(--value, 20%);
+        border-radius: inherit;
+        background: linear-gradient(90deg, #22c55e, #facc15, #f97316, #ef4444);
+      }
+
+      .mini-track::after {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        background: #22c55e;
+        left: calc(var(--value, 20%) - 7px);
+        top: 50%;
+        transform: translateY(-50%);
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.22);
+      }
+
+      .gauge-wrap {
+        margin-top: 12px;
+        border-top: 1px solid rgba(148, 163, 184, 0.26);
+        padding-top: 12px;
+      }
+
+      .gauge-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .gauge-top span:first-child {
+        color: #cbd5e1;
+        font-size: 12px;
+      }
+
+      .risk-spectrum {
+        margin-top: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #22c55e 0%, #facc15 56%, #f97316 78%, #ef4444 100%);
+        position: relative;
+      }
+
+      .risk-spectrum::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 3px solid #ffffff;
+        background: #38bdf8;
+        left: calc(var(--score, 22%) - 8px);
+        top: 50%;
+        transform: translateY(-50%);
+        box-shadow: 0 0 0 5px rgba(56, 189, 248, 0.2);
+      }
+
+      .risk-scale {
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        color: #9fb0c6;
+        font-size: 11px;
+      }
+
+      .gauge-score-row {
+        margin-top: 12px;
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+      }
+
+      .gauge-score {
+        font-size: 46px;
+        font-family: "Space Grotesk", sans-serif;
+        color: #f8fafc;
+        line-height: 1;
+      }
+
+      .gauge-score-row p {
+        margin: 0;
+        color: #9fb0c6;
+        font-size: 13px;
+      }
+
+      .insight-note {
+        margin-top: 10px;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 11px;
+        background: rgba(15, 30, 52, 0.6);
+        padding: 10px 11px;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .insight-actions {
+        margin-top: 10px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .insight-panel .btn.secondary {
+        background: rgba(15, 23, 42, 0.62);
+        border-color: rgba(148, 163, 184, 0.48);
+        color: #dbeafe;
+      }
+
+      .chart-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .chart-head h4 {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .legend {
+        display: flex;
+        gap: 12px;
+        font-size: 11px;
+        color: var(--ink-500);
+      }
+
+      .dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+
+      .axis-box {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 8px;
+      }
+
+      .axis-labels {
+        display: grid;
+        align-content: space-between;
+        color: var(--ink-500);
+        font-size: 10px;
+        padding-top: 6px;
+        padding-bottom: 4px;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+      }
+
+      .table th,
+      .table td {
+        border-bottom: 1px solid #e2e8f0;
+        padding: 10px 8px;
+        text-align: left;
+        color: var(--ink-700);
+      }
+
+      .table th {
+        color: var(--ink-500);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .table tbody tr:hover {
+        background: #f8fafc;
+      }
+
+      .alert-card {
+        border: 1px solid var(--line-soft);
+        border-radius: 12px;
+        background: #ffffff;
+        padding: 10px;
+      }
+
+      .alert-card h4 {
+        margin: 0;
+        color: var(--ink-900);
+        font-size: 13px;
+      }
+
+      .alert-card p {
+        margin: 4px 0 0 0;
+        color: var(--ink-600);
+        font-size: 12px;
+      }
+
+      .badge {
+        display: inline-block;
+        border-radius: 999px;
+        padding: 4px 9px;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .badge.high {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+      }
+
+      .badge.mid {
+        background: #fef3c7;
+        color: #92400e;
+        border: 1px solid #fcd34d;
+      }
+
+      .badge.low {
+        background: #e0f2fe;
+        color: #075985;
+        border: 1px solid #7dd3fc;
+      }
+
+      .format-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .format-card {
+        border: 1px solid var(--line-soft);
+        border-radius: 12px;
+        background: #ffffff;
+        padding: 12px;
+        cursor: pointer;
+        transition: all 0.16s ease;
+      }
+
+      .format-card:hover {
+        transform: translateY(-1px);
+      }
+
+      .format-card.active {
+        border-color: rgba(16, 185, 129, 0.62);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(56, 189, 248, 0.1));
+      }
+
+      .format-card h4 {
+        margin: 0;
+        font-size: 16px;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .format-card p {
+        margin: 4px 0 0 0;
+        font-size: 11px;
+        color: var(--ink-500);
+      }
+
+      .check-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .check-item {
+        border: 1px solid var(--line-soft);
+        border-radius: 10px;
+        background: var(--panel-soft);
+        padding: 8px;
+        font-size: 12px;
+        color: var(--ink-700);
+      }
+
+      .success-state {
+        display: grid;
+        justify-items: center;
+        text-align: center;
+        gap: 10px;
+        padding: 28px 12px;
+      }
+
+      .success-circle {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at 30% 25%, #6ee7b7, #10b981);
+        color: #05352d;
+        font-weight: 700;
+        font-size: 30px;
+      }
+
+      .avatar-box {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 1px dashed var(--line-strong);
+        background:
+          radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.2), transparent 55%),
+          #eef2f7;
+        display: grid;
+        place-items: center;
+        color: var(--ink-500);
+        font-size: 12px;
+      }
+
+      .switch {
+        width: 44px;
+        height: 24px;
+        border-radius: 999px;
+        border: 1px solid #cbd5e1;
+        position: relative;
+        background: #e2e8f0;
+      }
+
+      .switch::after {
+        content: "";
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+      }
+
+      .switch.on {
+        background: rgba(16, 185, 129, 0.35);
+        border-color: rgba(16, 185, 129, 0.7);
+      }
+
+      .switch.on::after {
+        left: 22px;
+      }
+
+      .comments-shell {
+        border: 1px dashed var(--line-strong);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.88);
+        padding: 16px;
+        margin-top: 14px;
+        box-shadow: 0 14px 30px rgba(17, 24, 39, 0.06);
+      }
+
+      .comments-shell h3 {
+        margin: 0 0 4px 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 20px;
+      }
+
+      .comments-shell p {
+        margin: 0 0 12px 0;
+        color: var(--ink-600);
+        font-size: 13px;
+      }
+
+      .screen.active {
+        display: block;
+      }
+
+      .wireframe {
+        border: 1px solid var(--line-soft);
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at 10% 6%, rgba(56, 189, 248, 0.08), transparent 26%),
+          radial-gradient(circle at 95% 4%, rgba(16, 185, 129, 0.07), transparent 24%),
+          linear-gradient(180deg, #f9fcff 0%, #f3f7fc 100%);
+        min-height: 800px;
+        display: grid;
+        grid-template-rows: 52px minmax(0, 1fr);
+        overflow: hidden;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+      }
+
+      .browser-top {
+        border-bottom: 1px solid var(--line-soft);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 14px;
+        background: linear-gradient(180deg, #ffffff 0%, #f5f9ff 100%);
+      }
+
+      .browser-top .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid #b7c6d8;
+        background: #f8fafc;
+      }
+
+      .url-bar {
+        height: 26px;
+        flex: 1;
+        border: 1px solid var(--line-soft);
+        border-radius: 999px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      }
+
+      .app-shell {
+        display: grid;
+        grid-template-columns: 230px 1fr;
+        height: 100%;
+        min-height: 0;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.58);
+      }
+
+      .app-shell .sidebar {
+        display: block;
+        border-right: 1px solid var(--line-soft);
+        padding: 14px;
+        background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      }
+
+      .logo {
+        height: 42px;
+        border: 1px dashed var(--line-strong);
+        border-radius: 10px;
+        background: #f8fafc;
+        margin-bottom: 12px;
+      }
+
+      .menu-item {
+        border: 1px solid transparent;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 10px;
+        font-size: 13px;
+        background: #ffffff;
+        color: var(--ink-700);
+        cursor: pointer;
+        user-select: none;
+        transition: border-color 0.16s ease, transform 0.16s ease, background 0.16s ease;
+      }
+
+      .menu-item::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: #cbd5e1;
+        flex: 0 0 auto;
+      }
+
+      .menu-item:hover {
+        border-color: rgba(14, 165, 233, 0.45);
+        transform: translateX(2px);
+      }
+
+      .menu-item.active {
+        border-color: rgba(16, 185, 129, 0.56);
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.12), rgba(56, 189, 248, 0.1));
+        color: #065f46;
+        font-weight: 700;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+      }
+
+      .menu-item.active::before {
+        background: linear-gradient(135deg, var(--success-500), var(--sky-500));
+      }
+
+      .main {
+        padding: 16px;
+        display: grid;
+        gap: 14px;
+        align-content: start;
+        overflow: auto;
+        background:
+          radial-gradient(circle at 98% 2%, rgba(16, 185, 129, 0.06), transparent 18%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(248, 251, 255, 0.72));
+      }
+
+      .wireframe > .main,
+      .wireframe > .app-shell {
+        min-height: 0;
+      }
+
+      .row {
+        display: grid;
+        gap: 10px;
+      }
+
+      .row.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .row.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .row.four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line-soft);
+        border-radius: 14px;
+        background: #ffffff;
+        padding: 12px;
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.05);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 3px;
+        background: linear-gradient(90deg, rgba(16, 185, 129, 0.48), rgba(56, 189, 248, 0.44), transparent);
+      }
+
+      .card h3,
+      .card h4 {
+        margin: 0 0 6px 0;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .card h3 {
+        font-size: 18px;
+      }
+
+      .card h4 {
+        font-size: 15px;
+      }
+
+      .card p {
+        margin: 0 0 8px 0;
+        font-size: 13px;
+        color: var(--ink-600);
+      }
+
+      .card p:last-child {
+        margin-bottom: 0;
+      }
+
+      .field-label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--ink-500);
+      }
+
+      .input {
+        height: 36px;
+        border: 1px solid var(--line-soft);
+        border-radius: 10px;
+        background: #f7fafc;
+        margin-top: 8px;
+        width: 100%;
+        color: var(--ink-700);
+        font-size: 13px;
+        padding: 0 10px;
+        transition: border-color 0.16s ease, box-shadow 0.16s ease;
+      }
+
+      .input:focus,
+      .textarea:focus {
+        outline: none;
+        border-color: rgba(56, 189, 248, 0.6);
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+      }
+
+      .input.flat {
+        margin-top: 0;
+      }
+
+      .textarea {
+        width: 100%;
+        min-height: 88px;
+        border: 1px solid var(--line-soft);
+        border-radius: 10px;
+        background: #f8fafc;
+        color: var(--ink-700);
+        font-size: 13px;
+        font-family: inherit;
+        padding: 8px 10px;
+        resize: none;
+      }
+
+      .pill-note {
+        border: 1px dashed var(--line-strong);
+        border-radius: 10px;
+        background: #f8fafc;
+        padding: 8px 10px;
+        font-size: 12px;
+        color: var(--ink-600);
+      }
+
+      .section-title {
+        font-size: 11px;
+        color: var(--ink-500);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .history-filters {
+        border: 1px dashed var(--line-strong);
+        border-radius: 12px;
+        background: linear-gradient(180deg, #fbfdff 0%, #f5f9ff 100%);
+        padding: 12px;
+      }
+
+      .history-filters .row {
+        margin-top: 10px;
+      }
+
+      .history-filters .row.three {
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        align-items: end;
+      }
+
+      .history-filters .row.two {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+      }
+
+      .history-filters .chip-row {
+        margin-top: 10px;
+      }
+
+      .history-filters .pill-note {
+        margin-top: 8px;
+      }
+
+      .history-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .mini-kpi {
+        border: 1px solid var(--line-soft);
+        border-radius: 12px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+        padding: 10px;
+      }
+
+      .history-summary .mini-kpi:nth-child(1) {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(110, 231, 183, 0.08));
+      }
+
+      .history-summary .mini-kpi:nth-child(2) {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(147, 197, 253, 0.08));
+      }
+
+      .history-summary .mini-kpi:nth-child(3) {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(251, 191, 36, 0.08));
+      }
+
+      .mini-kpi strong {
+        display: block;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 24px;
+      }
+
+      .mini-kpi span {
+        font-size: 12px;
+        color: var(--ink-500);
+      }
+
+      .alert-mock {
+        position: relative;
+        border: 1px solid rgba(239, 68, 68, 0.35);
+        border-left: 6px solid #ef4444;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #fff8f8 0%, #ffecec 100%);
+        box-shadow: 0 12px 26px rgba(239, 68, 68, 0.2);
+        padding: 12px 12px 12px 14px;
+      }
+
+      .alert-mock::before {
+        content: "CRITICA";
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        border: 1px solid rgba(239, 68, 68, 0.52);
+        border-radius: 999px;
+        padding: 2px 8px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #b91c1c;
+        background: #fff5f5;
+      }
+
+      .alert-mock strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #991b1b;
+      }
+
+      .alert-mock p {
+        margin: 0 0 10px 0;
+        font-size: 13px;
+        color: #7f1d1d;
+      }
+
+      .avatar-block {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .avatar-placeholder {
+        width: 120px;
+        height: 120px;
+        border: 1px dashed var(--line-strong);
+        border-radius: 14px;
+        background: #f8fafc;
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        color: var(--ink-500);
+        text-align: center;
+        padding: 8px;
+      }
+
+      .profile-meta {
+        border: 1px solid var(--line-soft);
+        border-radius: 12px;
+        background: #f8fafc;
+        padding: 10px;
+      }
+
+      .step-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        align-items: stretch;
+      }
+
+      .step-box {
+        position: relative;
+        border: 1px solid var(--line-soft);
+        border-radius: 10px;
+        padding: 10px 10px;
+        font-size: 12px;
+        box-shadow: 0 8px 14px rgba(15, 23, 42, 0.05);
+      }
+
+      .step-box:nth-child(1) {
+        background: linear-gradient(135deg, rgba(52, 211, 153, 0.22), rgba(16, 185, 129, 0.12));
+      }
+
+      .step-box:nth-child(2) {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(14, 165, 233, 0.1));
+      }
+
+      .step-box:nth-child(3) {
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.24), rgba(245, 158, 11, 0.12));
+      }
+
+      .step-box:nth-child(4) {
+        background: linear-gradient(135deg, rgba(167, 139, 250, 0.22), rgba(129, 140, 248, 0.12));
+      }
+
+      .step-box:not(:last-child)::after {
+        content: "→";
+        position: absolute;
+        right: -13px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #64748b;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .step-box strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .summary-line {
+        border-bottom: 1px solid #e2e8f0;
+        padding: 6px 0;
+        font-size: 13px;
+        color: var(--ink-700);
+      }
+
+      .summary-line:last-child {
+        border-bottom: 0;
+      }
+
+      .wireframe .btn {
+        border: 1px solid transparent;
+        border-radius: 11px;
+        background: linear-gradient(135deg, var(--success-500), var(--sky-600));
+        color: #ffffff;
+        padding: 9px 12px;
+        font-size: 13px;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(16, 185, 129, 0.2);
+        transition: transform 0.16s ease, filter 0.16s ease, box-shadow 0.16s ease;
+      }
+
+      .wireframe .btn:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+        box-shadow: 0 10px 22px rgba(14, 165, 233, 0.2);
+      }
+
+      .wireframe .btn.ghost {
+        border-color: var(--line-strong);
+        background: #ffffff;
+        color: var(--ink-700);
+        box-shadow: none;
+      }
+
+      .wireframe .btn[data-go="screen-4"],
+      .wireframe .table-action[data-go="screen-4"] {
+        border-color: rgba(14, 165, 233, 0.54);
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(14, 165, 233, 0.1));
+        color: #075985;
+        font-weight: 700;
+      }
+
+      .wireframe .btn[data-go="screen-5"] {
+        border-color: rgba(30, 64, 175, 0.38);
+        background: linear-gradient(135deg, rgba(147, 197, 253, 0.25), rgba(191, 219, 254, 0.12));
+        color: #1e3a8a;
+        font-weight: 700;
+      }
+
+      .wireframe .btn[data-go="screen-7"] {
+        border-color: rgba(5, 150, 105, 0.4);
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(14, 165, 233, 0.88));
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .wireframe .btn.ghost[data-go="screen-7"] {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(14, 165, 233, 0.12));
+        color: #065f46;
+      }
+
+      #screen-3 .row.three:first-of-type .card {
+        border-color: rgba(148, 163, 184, 0.32);
+      }
+
+      #screen-3 .row.three:first-of-type .card:nth-child(1) {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(52, 211, 153, 0.1));
+      }
+
+      #screen-3 .row.three:first-of-type .card:nth-child(2) {
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.1));
+      }
+
+      #screen-3 .row.three:first-of-type .card:nth-child(3) {
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.22), rgba(245, 158, 11, 0.1));
+      }
+
+      #screen-3 .row.three:first-of-type .card p {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--ink-900);
+      }
+
+      .message {
+        border: 1px dashed var(--line-strong);
+        border-radius: 12px;
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        padding: 10px;
+        font-size: 13px;
+        color: var(--ink-700);
+      }
+
+      .bar {
+        flex: 1;
+        border-radius: 8px 8px 2px 2px;
+        background: linear-gradient(180deg, #34d399 0%, #0ea5e9 100%);
+      }
+
+      .bar.a { height: 28%; background: linear-gradient(180deg, #6ee7b7 0%, #34d399 100%); }
+      .bar.b { height: 52%; background: linear-gradient(180deg, #7dd3fc 0%, #38bdf8 100%); }
+      .bar.c { height: 75%; background: linear-gradient(180deg, #93c5fd 0%, #60a5fa 100%); }
+      .bar.d { height: 46%; background: linear-gradient(180deg, #5eead4 0%, #2dd4bf 100%); }
+      .bar.e { height: 68%; background: linear-gradient(180deg, #86efac 0%, #4ade80 100%); }
+
+      .line-chart {
+        height: 180px;
+        border-left: 1px solid var(--line-strong);
+        border-bottom: 1px solid var(--line-strong);
+        border-radius: 0 10px 0 0;
+        padding: 8px 10px 2px 10px;
+        background-image: repeating-linear-gradient(
+          to top,
+          transparent 0,
+          transparent 34px,
+          rgba(148, 163, 184, 0.2) 34px,
+          rgba(148, 163, 184, 0.2) 35px
+        );
+      }
+
+      .timeline {
+        width: 100%;
+        height: 100%;
+      }
+
+      .chart-with-scale {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .chart-with-scale.compact {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .axis-y {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        font-size: 11px;
+        color: var(--ink-500);
+        padding: 2px 0;
+      }
+
+      .plot-wrap {
+        display: grid;
+        gap: 6px;
+      }
+
+      .plot-grid {
+        min-height: 132px;
+        border-left: 1px solid var(--line-strong);
+        border-bottom: 1px solid var(--line-strong);
+        border-radius: 0 10px 0 0;
+        padding: 8px 8px 4px 8px;
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 8px;
+        background-image: repeating-linear-gradient(
+          to top,
+          transparent 0,
+          transparent 26px,
+          rgba(148, 163, 184, 0.2) 26px,
+          rgba(148, 163, 184, 0.2) 27px
+        );
+      }
+
+      .chart-with-scale.compact .plot-grid {
+        min-height: 102px;
+      }
+
+      .plot-grid .bar {
+        flex: 1 1 44px;
+        min-width: 12px;
+      }
+
+      .axis-x {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        font-size: 11px;
+        color: var(--ink-500);
+      }
+
+      .axis-x span {
+        flex: 1;
+        text-align: center;
+      }
+
+      .axis-caption {
+        font-size: 11px;
+        color: var(--ink-500);
+        margin-top: 6px;
+      }
+
+      .line-chart-with-scale {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 8px;
+      }
+
+      .wireframe .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .wireframe .table th,
+      .wireframe .table td {
+        border: 1px solid var(--line-soft);
+        padding: 8px;
+        text-align: left;
+      }
+
+      .wireframe .table thead th {
+        background: linear-gradient(180deg, #fff5eb 0%, #ffedd5 100%);
+        color: #9a3412;
+      }
+
+      .wireframe .table tbody tr:nth-child(even) {
+        background: #fffaf5;
+      }
+
+      .wireframe .table tbody tr:nth-child(odd) {
+        background: #fffdfa;
+      }
+
+      .wireframe .table tbody tr:hover {
+        background: #ffedd5;
+      }
+
+      .wireframe .table th {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--ink-500);
+      }
+
+      .table-action {
+        border: 1px solid var(--line-soft);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        font-size: 12px;
+        padding: 5px 8px;
+        cursor: pointer;
+      }
+
+      .wireframe .skeleton {
+        display: grid;
+        gap: 10px;
+      }
+
+      .skeleton-block {
+        height: 16px;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #edf2f7 0%, #dbe5f0 50%, #edf2f7 100%);
+        background-size: 200% 100%;
+        animation: pulse 1.4s linear infinite;
+      }
+
+      .skeleton-block.big {
+        height: 100px;
+      }
+
+      .chip-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        border: 1px solid var(--line-soft);
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      }
+
+      .chip.selected {
+        border-color: rgba(16, 185, 129, 0.56);
+        background: rgba(16, 185, 129, 0.12);
+        color: #065f46;
+        font-weight: 700;
+      }
+
+      .center-stack {
+        max-width: 560px;
+        margin: 34px auto;
+        display: grid;
+        gap: 12px;
+      }
+
+      .feedback-footer {
+        margin-top: 10px;
+        border: 1px dashed var(--line-strong);
+        border-radius: 12px;
+        background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        padding: 8px 10px;
+        font-size: 12px;
+        color: var(--ink-600);
+      }
+
+      @keyframes pulse {
+        from {
+          background-position: 100% 0;
+        }
+        to {
+          background-position: -100% 0;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 110% 0;
+        }
+        100% {
+          background-position: -110% 0;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1220px) {
+        .prototype {
+          height: auto;
+        }
+
+        .workspace {
+          min-height: 680px;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .grid-two,
+        .grid-three,
+        .grid-four,
+        .format-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .head-top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .app-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .app-shell .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--line-soft);
+        }
+
+        .row.two,
+        .row.three,
+        .row.four,
+        .history-summary,
+        .step-grid,
+        .avatar-block {
+          grid-template-columns: 1fr;
+        }
+
+        .center-stack {
+          margin: 16px auto;
+          max-width: 100%;
+        }
+
+        .history-filters .row.three,
+        .history-filters .row.two {
+          grid-template-columns: 1fr;
+        }
+
+        .login-stage {
+          padding: 22px 20px 22px;
+          gap: 18px;
+        }
+
+        .login-top-pill {
+          width: 100%;
+          padding: 10px;
+        }
+
+        .login-hero {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+
+        .login-center {
+          text-align: center;
+        }
+
+        .login-form-floating {
+          max-width: 560px;
+          margin: 0 auto;
+        }
+
+        .login-title {
+          max-width: none;
+          font-size: clamp(34px, 10vw, 56px);
+          line-height: 1.02;
+        }
+
+        .login-subtitle {
+          margin-left: auto;
+          margin-right: auto;
+          font-size: 17px;
+        }
+
+        .login-actions {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .login-top-links {
+          display: none;
+        }
+
+        .step-box:not(:last-child)::after {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <section class="prototype">
+        <div class="workspace">
+          <div class="topbar">
+            <div class="brand-mini">Bio-Alarm</div>
+            <div class="title">
+              <h2 id="screen-title">Login Seguro</h2>
+              <p>Flujo web de 9 pantallas para monitoreo clinico de sueño.</p>
+            </div>
+          </div>
+
+          <div class="screen-wrap">
+          <section class="screen login-screen active" id="screen-1" data-name="Login Seguro">
+            <div class="login-stage" id="login-threads">
+              <canvas class="threads-canvas" id="login-threads-canvas"></canvas>
+              <div class="login-stage-overlay" aria-hidden="true"></div>
+
+              <div class="login-top-pill">
+                <div class="login-top-brand">Bio-Alarm</div>
+              </div>
+
+              <div class="login-hero">
+                <div class="login-center">
+                  <div class="login-kicker">Verificacion clinica de alto nivel</div>
+                  <h1 class="login-title">Acceso seguro para monitoreo clinico del sueño</h1>
+                  <p class="login-subtitle">
+                    Proteccion de datos medicos, autenticacion robusta y trazabilidad continua para equipos clinicos.
+                  </p>
+                  <div class="login-actions">
+                    <button class="login-btn-main" data-go="screen-2">Ingresar al dashboard</button>
+                    <button class="login-btn-alt" data-go="screen-7">Ver formatos de reporte</button>
+                  </div>
+                </div>
+
+                <div class="login-form-floating">
+                  <label class="label">Usuario institucional</label>
+                  <input class="field" placeholder="medico@clinica.com" />
+                  <div style="height:10px"></div>
+                  <label class="label">Contrasena</label>
+                  <input class="field" type="password" placeholder="***********" />
+                  <div style="height:10px"></div>
+                  <label class="label">Codigo de verificacion 2FA</label>
+                  <input class="field" placeholder="123456" />
+                  <div style="height:12px"></div>
+                  <div class="login-alert-inline">Usuario o contrasena incorrectos.</div>
+                  <div style="height:12px"></div>
+                  <button class="btn primary" data-go="screen-2">Validar e iniciar sesion</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen" id="screen-2" data-name="Dashboard Cargando">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item active">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item">Alertas</div>
+                    <div class="menu-item">Exportar</div>
+                    <div class="menu-item">Perfil</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Dashboard Analitico</h3>
+                    <p>Cargando datos de la nube...</p>
+                    <div class="skeleton">
+                      <div class="skeleton-block"></div>
+                      <div class="skeleton-block"></div>
+                      <div class="skeleton-block big"></div>
+                      <div class="skeleton-block big"></div>
+                    </div>
+                  </div>
+                  <div class="row three">
+                    <div class="card skeleton"><div class="skeleton-block big"></div></div>
+                    <div class="card skeleton"><div class="skeleton-block big"></div></div>
+                    <div class="card skeleton"><div class="skeleton-block big"></div></div>
+                  </div>
+                  <button class="btn" data-go="screen-3">Omitir espera</button>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Feedback: estado de espera visible para evitar pantalla vacia.
+            </div>
+          </section>
+
+          <section class="screen" id="screen-3" data-name="Dashboard Analitico">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item active">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item">Alertas</div>
+                    <div class="menu-item">Exportar</div>
+                    <div class="menu-item">Perfil</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="row three">
+                    <div class="card">
+                      <h4>Calidad promedio</h4>
+                      <p>84%</p>
+                    </div>
+                    <div class="card">
+                      <h4>Duracion promedio</h4>
+                      <p>7h 12m</p>
+                    </div>
+                    <div class="card">
+                      <h4>Alertas</h4>
+                      <p>3 eventos</p>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h3>Tendencias ultimos 30 dias</h3>
+                    <div class="chip-row">
+                      <span class="chip selected">30 dias</span>
+                      <span class="chip">7 dias</span>
+                      <span class="chip">90 dias</span>
+                    </div>
+                    <div class="chart-with-scale">
+                      <div class="axis-y">
+                        <span>100%</span>
+                        <span>75%</span>
+                        <span>50%</span>
+                        <span>25%</span>
+                        <span>0%</span>
+                      </div>
+                      <div class="plot-wrap">
+                        <div class="plot-grid">
+                          <span class="bar a"></span>
+                          <span class="bar c"></span>
+                          <span class="bar b"></span>
+                          <span class="bar e"></span>
+                          <span class="bar d"></span>
+                          <span class="bar c"></span>
+                          <span class="bar b"></span>
+                        </div>
+                        <div class="axis-x">
+                          <span>D1</span>
+                          <span>D5</span>
+                          <span>D10</span>
+                          <span>D15</span>
+                          <span>D20</span>
+                          <span>D25</span>
+                          <span>D30</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="axis-caption">Eje Y: indice de calidad | Eje X: dias del periodo</p>
+                  </div>
+                  <div class="row two">
+                    <div class="card">
+                      <h4>Factor: consumo de cafe</h4>
+                      <div class="chart-with-scale compact">
+                        <div class="axis-y">
+                          <span>4</span>
+                          <span>3</span>
+                          <span>2</span>
+                          <span>1</span>
+                          <span>0</span>
+                        </div>
+                        <div class="plot-wrap">
+                          <div class="plot-grid">
+                            <span class="bar b"></span>
+                            <span class="bar d"></span>
+                            <span class="bar a"></span>
+                            <span class="bar c"></span>
+                          </div>
+                          <div class="axis-x">
+                            <span>Sem1</span>
+                            <span>Sem2</span>
+                            <span>Sem3</span>
+                            <span>Sem4</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="axis-caption">Unidad: tazas promedio / noche</p>
+                    </div>
+                    <div class="card">
+                      <h4>Factor: estres diario</h4>
+                      <div class="chart-with-scale compact">
+                        <div class="axis-y">
+                          <span>10</span>
+                          <span>8</span>
+                          <span>6</span>
+                          <span>4</span>
+                          <span>0</span>
+                        </div>
+                        <div class="plot-wrap">
+                          <div class="plot-grid">
+                            <span class="bar c"></span>
+                            <span class="bar d"></span>
+                            <span class="bar b"></span>
+                            <span class="bar a"></span>
+                          </div>
+                          <div class="axis-x">
+                            <span>Sem1</span>
+                            <span>Sem2</span>
+                            <span>Sem3</span>
+                            <span>Sem4</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="axis-caption">Unidad: escala de estres (0-10)</p>
+                    </div>
+                  </div>
+                  <div class="row two">
+                    <button class="btn" data-go="screen-4">Abrir detalle de sesion</button>
+                    <button class="btn ghost" data-go="screen-7">Ir a exportar reporte</button>
+                  </div>
+                  <div class="row two">
+                    <button class="btn ghost" data-go="screen-5">Abrir historial filtrado</button>
+                    <button class="btn" data-go="screen-9">Configurar perfil de salud</button>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: "big picture" de comportamiento del sueño.
+            </div>
+          </section>
+
+          <section class="screen" id="screen-4" data-name="Detalle de Sesion">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item active">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item">Alertas</div>
+                    <div class="menu-item">Exportar</div>
+                    <div class="menu-item">Perfil</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Analisis de Noche: 12 Octubre 2025</h3>
+                    <p>Calidad 85% - Duracion 7h 20m - Eficiencia 91%</p>
+                  </div>
+                  <div class="card">
+                    <div class="row three">
+                      <div>
+                        <label class="field-label">Metrica principal</label>
+                        <select class="select">
+                          <option>Arquitectura del sueño (REM/Ligero/Profundo)</option>
+                          <option>Ritmo cardiaco nocturno</option>
+                          <option>Respiracion por minuto</option>
+                          <option>Saturacion de oxigeno (SpO2)</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="field-label">Ventana de analisis</label>
+                        <select class="select">
+                          <option>Noche completa</option>
+                          <option>Primer tercio</option>
+                          <option>Segundo tercio</option>
+                          <option>Ultimo tercio</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="field-label">Comparar contra</label>
+                        <select class="select">
+                          <option>Promedio personal 30 dias</option>
+                          <option>Noche anterior</option>
+                          <option>Ultima semana</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h4>Fases de sueño (REM / Ligero / Profundo)</h4>
+                    <div class="line-chart-with-scale">
+                      <div class="axis-y">
+                        <span>100%</span>
+                        <span>75%</span>
+                        <span>50%</span>
+                        <span>25%</span>
+                        <span>0%</span>
+                      </div>
+                      <div class="plot-wrap">
+                        <div class="line-chart">
+                          <svg class="timeline" viewBox="0 0 600 180" preserveAspectRatio="none">
+                            <polyline
+                              points="0,145 60,145 110,80 180,80 240,132 300,132 350,60 430,60 500,118 600,118"
+                              fill="none"
+                              stroke="#666666"
+                              stroke-width="3"
+                            />
+                            <line x1="0" y1="145" x2="600" y2="145" stroke="#c0c0c0" stroke-width="1" />
+                            <line x1="0" y1="110" x2="600" y2="110" stroke="#cfcfcf" stroke-width="1" />
+                            <line x1="0" y1="75" x2="600" y2="75" stroke="#cfcfcf" stroke-width="1" />
+                            <line x1="0" y1="40" x2="600" y2="40" stroke="#d8d8d8" stroke-width="1" />
+                          </svg>
+                        </div>
+                        <div class="axis-x">
+                          <span>00:00</span>
+                          <span>02:00</span>
+                          <span>04:00</span>
+                          <span>06:00</span>
+                          <span>08:00</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="axis-caption">Eje Y: profundidad (%) | Eje X: tiempo de la sesion</p>
+                  </div>
+                  <div class="row two">
+                    <div class="card">
+                      <h4>Respiracion</h4>
+                      <p>12 eventos leves</p>
+                    </div>
+                    <div class="card">
+                      <h4>Frecuencia cardiaca</h4>
+                      <p>56-72 bpm</p>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h4>Interpretacion de resultados</h4>
+                    <div class="summary-line">
+                      Predominio de sueño ligero entre 02:00 y 03:30, con dos transiciones abruptas.
+                    </div>
+                    <div class="summary-line">
+                      Ritmo cardiaco estable la mayor parte de la noche; incremento leve al final de la sesion.
+                    </div>
+                    <div class="summary-line">
+                      Recomendacion: reducir consumo de cafe posterior a las 17:00 y validar higiene de sueño.
+                    </div>
+                  </div>
+                  <div class="row two">
+                    <button class="btn ghost" data-go="screen-3">Volver a inicio</button>
+                    <button class="btn" data-go="screen-7">Exportar este analisis</button>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: zoom tecnico de una sesion especifica.
+            </div>
+          </section>
+
+          <section class="screen" id="screen-5" data-name="Historial de Sesiones">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item active">Historial</div>
+                    <div class="menu-item">Alertas</div>
+                    <div class="menu-item">Exportar</div>
+                    <div class="menu-item">Perfil</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Historial de Sesiones</h3>
+                    <p>Filtra por rango, calidad, eventos y estado clinico.</p>
+                    <div class="history-filters">
+                      <div class="section-title">Filtros avanzados</div>
+                      <div class="row three">
+                        <div>
+                          <label class="field-label">Desde</label>
+                          <input class="input flat" value="2025-10-01" />
+                        </div>
+                        <div>
+                          <label class="field-label">Hasta</label>
+                          <input class="input flat" value="2025-10-31" />
+                        </div>
+                        <div>
+                          <label class="field-label">Calidad minima</label>
+                          <select class="select">
+                            <option>70%</option>
+                            <option selected>75%</option>
+                            <option>80%</option>
+                            <option>85%</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row three">
+                        <div>
+                          <label class="field-label">Eventos respiratorios</label>
+                          <select class="select">
+                            <option>Todos</option>
+                            <option>0-2 eventos</option>
+                            <option>3-5 eventos</option>
+                            <option>6+ eventos</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label class="field-label">Etiqueta clinica</label>
+                          <select class="select">
+                            <option>Todas</option>
+                            <option>Normal</option>
+                            <option>Vigilar</option>
+                            <option>Prioritario</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label class="field-label">Orden</label>
+                          <select class="select">
+                            <option>Mas reciente</option>
+                            <option>Mejor calidad</option>
+                            <option>Mayor duracion</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row two">
+                        <button class="btn">Aplicar filtros</button>
+                        <button class="btn ghost">Limpiar filtros</button>
+                      </div>
+                      <div class="chip-row">
+                        <span class="chip selected">Octubre</span>
+                        <span class="chip">Calidad > 75%</span>
+                        <span class="chip">Sin alertas severas</span>
+                      </div>
+                      <div class="pill-note">Resultados encontrados: 14 sesiones</div>
+                    </div>
+                  </div>
+
+                  <div class="history-summary">
+                    <div class="mini-kpi">
+                      <strong>14</strong>
+                      <span>Sesiones filtradas</span>
+                    </div>
+                    <div class="mini-kpi">
+                      <strong>82%</strong>
+                      <span>Calidad promedio</span>
+                    </div>
+                    <div class="mini-kpi">
+                      <strong>2.1</strong>
+                      <span>Eventos promedio</span>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="section-title">Resultados</div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Fecha</th>
+                          <th>Duracion</th>
+                          <th>Calidad</th>
+                          <th>Eventos</th>
+                          <th>Accion</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>12 Oct 2025</td>
+                          <td>7h 20m</td>
+                          <td>85%</td>
+                          <td>2</td>
+                          <td><button class="table-action" data-go="screen-4">Ver detalle</button></td>
+                        </tr>
+                        <tr>
+                          <td>11 Oct 2025</td>
+                          <td>6h 58m</td>
+                          <td>79%</td>
+                          <td>4</td>
+                          <td><button class="table-action" data-go="screen-4">Ver detalle</button></td>
+                        </tr>
+                        <tr>
+                          <td>10 Oct 2025</td>
+                          <td>7h 42m</td>
+                          <td>88%</td>
+                          <td>1</td>
+                          <td><button class="table-action" data-go="screen-4">Ver detalle</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="row two">
+                    <button class="btn ghost" data-go="screen-4">Ver analisis de la noche seleccionada</button>
+                    <button class="btn" data-go="screen-7">Exportar resultados filtrados</button>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: consulta historica antes de exportar o comparar.
+            </div>
+          </section>
+          <section class="screen" id="screen-6" data-name="Alertas Clinicas">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item active">Alertas</div>
+                    <div class="menu-item">Exportar</div>
+                    <div class="menu-item">Perfil</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="alert-mock">
+                    <strong>Mock alerta critica activa</strong>
+                    <p>
+                      SpO2 por debajo de 90% por 4 minutos en la sesion 12 Oct 2025.
+                      Requiere revision prioritaria.
+                    </p>
+                    <div class="row two">
+                      <button class="btn" data-go="screen-4">Revisar sesion ahora</button>
+                      <button class="btn ghost">Marcar como atendida</button>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h3>Alertas Clinicas Detectadas</h3>
+                    <p>Priorizacion para revision del equipo medico.</p>
+                  </div>
+                  <div class="row two">
+                    <div class="card">
+                      <h4>Evento A</h4>
+                      <p>Desaturacion nocturna - Prioridad Alta</p>
+                      <button class="btn ghost" data-go="screen-4">Abrir sesion</button>
+                    </div>
+                    <div class="card">
+                      <h4>Evento B</h4>
+                      <p>Movimientos frecuentes - Prioridad Media</p>
+                      <button class="btn ghost" data-go="screen-4">Abrir sesion</button>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h4>Linea temporal de alertas</h4>
+                    <div class="chart-with-scale compact">
+                      <div class="axis-y">
+                        <span>5</span>
+                        <span>4</span>
+                        <span>3</span>
+                        <span>2</span>
+                        <span>0</span>
+                      </div>
+                      <div class="plot-wrap">
+                        <div class="plot-grid">
+                          <span class="bar a"></span>
+                          <span class="bar b"></span>
+                          <span class="bar d"></span>
+                          <span class="bar c"></span>
+                          <span class="bar a"></span>
+                          <span class="bar e"></span>
+                        </div>
+                        <div class="axis-x">
+                          <span>Lun</span>
+                          <span>Mar</span>
+                          <span>Mie</span>
+                          <span>Jue</span>
+                          <span>Vie</span>
+                          <span>Sab</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="axis-caption">Cantidad de eventos por dia</p>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Pantalla adicional para completar flujo admin (6-8 vistas).
+            </div>
+          </section>
+
+          <section class="screen" id="screen-7" data-name="Exportar Reporte">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item">Alertas</div>
+                    <div class="menu-item active">Exportar</div>
+                    <div class="menu-item">Perfil</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Descargar Reporte Medico</h3>
+                    <p>Flujo guiado para evitar errores de exportacion.</p>
+                    <div class="step-grid">
+                      <div class="step-box">
+                        <strong>Paso 1</strong>
+                        Formato
+                      </div>
+                      <div class="step-box">
+                        <strong>Paso 2</strong>
+                        Periodo
+                      </div>
+                      <div class="step-box">
+                        <strong>Paso 3</strong>
+                        Contenido
+                      </div>
+                      <div class="step-box">
+                        <strong>Paso 4</strong>
+                        Confirmacion
+                      </div>
+                    </div>
+                    <div class="row two" style="margin-top: 10px;">
+                      <div>
+                        <label class="field-label">Formato de salida</label>
+                        <select class="select">
+                          <option>PDF clinico</option>
+                          <option>CSV analitico</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="field-label">Rango</label>
+                        <select class="select">
+                          <option>Ultimos 30 dias</option>
+                          <option>Ultimos 7 dias</option>
+                          <option>Noche puntual</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row two">
+                      <div>
+                        <label class="field-label">Incluir secciones</label>
+                        <div class="chip-row">
+                          <span class="chip selected">Resumen</span>
+                          <span class="chip selected">Detalle REM</span>
+                          <span class="chip">Alertas</span>
+                        </div>
+                      </div>
+                      <div>
+                        <label class="field-label">Destino</label>
+                        <select class="select">
+                          <option>Descarga local</option>
+                          <option>Enviar por correo medico</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row two" style="margin-top: 10px;">
+                      <button class="btn" data-go="screen-8">Descargar</button>
+                      <button class="btn ghost" data-go="screen-4">Previsualizar</button>
+                    </div>
+                  </div>
+                  <div class="row two">
+                    <div class="card">
+                      <h4>Vista previa de estructura</h4>
+                      <div class="summary-line">1. Datos del paciente y periodo</div>
+                      <div class="summary-line">2. Indicadores de calidad y duracion</div>
+                      <div class="summary-line">3. Graficas: REM, FC, respiracion</div>
+                      <div class="summary-line">4. Interpretacion automatica</div>
+                    </div>
+                    <div class="card">
+                      <h4>Control de salida</h4>
+                      <div class="summary-line">Tamano estimado: 2.4 MB</div>
+                      <div class="summary-line">Tiempo de generacion: ~12 s</div>
+                      <div class="summary-line">Cumple formato medico: Si</div>
+                      <button class="btn ghost" data-go="screen-5">Exportar desde historial filtrado</button>
+                    </div>
+                  </div>
+                  <div class="message">
+                    La estructura del archivo sera: portada, resumen, detalle tecnico e interpretacion.
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: exportar datos en PDF/CSV para medicos.
+            </div>
+          </section>
+
+          <section class="screen" id="screen-8" data-name="Descarga Exitosa">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="main">
+                <div class="center-stack">
+                  <div class="card">
+                    <h3>Exportacion completada</h3>
+                    <p>Tu reporte se ha descargado correctamente.</p>
+                    <div class="row two" style="margin-top: 10px;">
+                      <button class="btn" data-go="screen-7">Abrir archivo</button>
+                      <button class="btn ghost" data-go="screen-3">Volver al dashboard</button>
+                    </div>
+                    <div class="row two">
+                      <button class="btn ghost" data-go="screen-9">Actualizar perfil de salud</button>
+                      <button class="btn" data-go="screen-5">Ver historial filtrado</button>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <h4>Resumen del archivo</h4>
+                    <p>Formato: PDF - Rango: ultimos 30 dias - Incluye analisis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Feedback final: confirmacion positiva de descarga.
+            </div>
+          </section>
+
+          <section class="screen" id="screen-9" data-name="Perfil y Salud">
+            <div class="wireframe">
+              <div class="browser-top">
+                <span class="dot"></span><span class="dot"></span>
+                <div class="url-bar"></div>
+              </div>
+              <div class="app-shell">
+                <aside class="sidebar">
+                  <div class="logo"></div>
+                  <div class="menu">
+                    <div class="menu-item">Inicio</div>
+                    <div class="menu-item">Detalles</div>
+                    <div class="menu-item">Historial</div>
+                    <div class="menu-item">Alertas</div>
+                    <div class="menu-item">Exportar</div>
+                    <div class="menu-item active">Perfil</div>
+                  </div>
+                </aside>
+                <main class="main">
+                  <div class="card">
+                    <h3>Foto / Avatar del paciente</h3>
+                    <div class="avatar-block">
+                      <div class="avatar-placeholder">Espacio de avatar o imagen</div>
+                      <div class="profile-meta">
+                        <div class="summary-line">ID paciente: SLP-2025-001</div>
+                        <div class="summary-line">Ultima actualizacion: 22-02-2026</div>
+                        <div class="summary-line">Fuente: carga manual / sistema clinico</div>
+                        <div class="row two" style="margin-top: 10px;">
+                          <button class="btn">Subir imagen</button>
+                          <button class="btn ghost">Quitar imagen</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h3>Perfil y Parametros de Salud</h3>
+                    <p>Estos datos ajustan la interpretacion automatica de resultados.</p>
+                    <div class="row three">
+                      <div>
+                        <label class="field-label">Nombre paciente</label>
+                        <input class="input flat" value="Paciente Demo" />
+                      </div>
+                      <div>
+                        <label class="field-label">Edad</label>
+                        <input class="input flat" value="42" />
+                      </div>
+                      <div>
+                        <label class="field-label">Sexo biologico</label>
+                        <select class="select">
+                          <option>Femenino</option>
+                          <option selected>Masculino</option>
+                          <option>Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row three">
+                      <div>
+                        <label class="field-label">Peso (kg)</label>
+                        <input class="input flat" value="78" />
+                      </div>
+                      <div>
+                        <label class="field-label">Talla (cm)</label>
+                        <input class="input flat" value="176" />
+                      </div>
+                      <div>
+                        <label class="field-label">Objetivo de sueño</label>
+                        <select class="select">
+                          <option>7 horas</option>
+                          <option selected>7.5 horas</option>
+                          <option>8 horas</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <h4>Antecedentes y condiciones relevantes</h4>
+                    <div class="chip-row">
+                      <span class="chip selected">Hipertension</span>
+                      <span class="chip">Diabetes</span>
+                      <span class="chip selected">Apnea diagnosticada</span>
+                      <span class="chip">Ansiedad</span>
+                      <span class="chip">Ninguna</span>
+                    </div>
+                    <div style="margin-top: 10px;">
+                      <label class="field-label">Medicacion nocturna / observaciones</label>
+                      <textarea class="textarea">Melatonina 3mg, toma 22:30. Ronquido frecuente reportado por pareja.</textarea>
+                    </div>
+                  </div>
+
+                  <div class="row two">
+                    <div class="card">
+                      <h4>Impacto en interpretacion</h4>
+                      <div class="summary-line">Se ajusta umbral de alerta en ritmo cardiaco.</div>
+                      <div class="summary-line">Se activa regla de vigilancia para pausas respiratorias.</div>
+                      <div class="summary-line">El score final pondera antecedentes clinicos.</div>
+                    </div>
+                    <div class="card">
+                      <h4>Acciones</h4>
+                      <button class="btn">Guardar perfil</button>
+                      <button class="btn ghost" data-go="screen-3">Recalcular dashboard</button>
+                      <button class="btn ghost" data-go="screen-4">Revisar detalle con ajustes</button>
+                    </div>
+                  </div>
+                </main>
+              </div>
+            </div>
+            <div class="feedback-footer">
+              Objetivo: personalizar el modelo con informacion de salud para mejorar exactitud.
+            </div>
+          </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="comments-shell">
+        <h3>Comentarios de la entrega</h3>
+        <p>Comparte feedback puntual sobre estructura, estilo visual y claridad de cada pantalla.</p>
+        <div
+          id="comments-root"
+          data-entrega-comments
+          data-entrega-id="entrega_mockup_web_v3_creativo"
+        ></div>
+      </section>
+    </div>
+
+    <script>
+      const screenItems = [
+        ["screen-1", "Login Seguro"],
+        ["screen-2", "Dashboard Cargando"],
+        ["screen-3", "Dashboard Analitico"],
+        ["screen-4", "Detalle de Sesion"],
+        ["screen-5", "Historial de Sesiones"],
+        ["screen-6", "Alertas Clinicas"],
+        ["screen-7", "Exportar Reporte"],
+        ["screen-8", "Descarga Exitosa"],
+        ["screen-9", "Perfil y Salud"]
+      ];
+
+      const topNav = document.getElementById("top-nav");
+      const menuMap = {
+        Inicio: "screen-3",
+        Detalles: "screen-4",
+        Historial: "screen-5",
+        Alertas: "screen-6",
+        Exportar: "screen-7",
+        Perfil: "screen-9"
+      };
+
+      function buildNav(container, className) {
+        screenItems.forEach(([id, label]) => {
+          const btn = document.createElement("button");
+          btn.className = className;
+          btn.dataset.go = id;
+          btn.textContent = label;
+          container.appendChild(btn);
+        });
+      }
+
+      if (topNav) {
+        buildNav(topNav, "top-nav-btn");
+      }
+
+      function prepareMenuNavigation() {
+        document.querySelectorAll(".menu-item").forEach((item) => {
+          const label = item.textContent.trim();
+          const target = menuMap[label];
+          if (!target) return;
+          item.dataset.go = target;
+          item.setAttribute("role", "button");
+          item.tabIndex = 0;
+        });
+      }
+
+      prepareMenuNavigation();
+
+      function goToScreen(screenId) {
+        const target = document.getElementById(screenId);
+        if (!target) return;
+        const workspace = document.querySelector(".workspace");
+
+        document.querySelectorAll(".screen").forEach((screen) => {
+          screen.classList.toggle("active", screen.id === screenId);
+        });
+
+        document.querySelectorAll(".top-nav-btn").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.go === screenId);
+        });
+
+        const label = target.dataset.name || screenId;
+        document.getElementById("screen-title").textContent = label;
+        if (workspace) {
+          workspace.classList.toggle("login-mode", screenId === "screen-1");
+        }
+      }
+
+      document.addEventListener("click", (event) => {
+        const trigger = event.target.closest("[data-go]");
+        if (!trigger) return;
+        goToScreen(trigger.dataset.go);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        const trigger = event.target.closest("[data-go]");
+        if (!trigger) return;
+        event.preventDefault();
+        goToScreen(trigger.dataset.go);
+      });
+
+      function initLoginThreads() {
+        const wrap = document.getElementById("login-threads");
+        const canvas = document.getElementById("login-threads-canvas");
+        if (!wrap || !canvas) return;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const lineCount = 40;
+        let raf = null;
+        let time = 0;
+        let targetMouse = { x: 0.5, y: 0.5 };
+        let mouse = { x: 0.5, y: 0.5 };
+
+        const resize = () => {
+          const rect = wrap.getBoundingClientRect();
+          canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+          canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+          canvas.style.width = rect.width + "px";
+          canvas.style.height = rect.height + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+
+        const draw = () => {
+          const w = canvas.width / dpr;
+          const h = canvas.height / dpr;
+          ctx.clearRect(0, 0, w, h);
+
+          mouse.x += (targetMouse.x - mouse.x) * 0.06;
+          mouse.y += (targetMouse.y - mouse.y) * 0.06;
+
+          for (let i = 0; i < lineCount; i += 1) {
+            const p = i / (lineCount - 1);
+            const yBase = h * (0.15 + p * 0.72);
+            const alpha = 0.04 + (1 - p) * 0.17;
+            const width = 0.8 + (1 - p) * 1.8;
+            const waveAmp = 8 + (1 - p) * 22;
+
+            ctx.beginPath();
+            for (let x = 0; x <= w; x += 7) {
+              const nx = x / w;
+              const n1 = Math.sin(nx * 7.5 + time * 0.0018 + p * 4.6);
+              const n2 = Math.sin(nx * 14.5 - time * 0.0013 + p * 10.1);
+              const focus = Math.exp(-Math.abs(nx - mouse.x) * 7);
+              const mouseWave = Math.sin((nx - mouse.x) * Math.PI * 2.2 + time * 0.0022) * focus;
+              const y = yBase + (n1 * 0.55 + n2 * 0.45) * waveAmp + mouseWave * 16 * (1 - p);
+              if (x === 0) ctx.moveTo(x, y);
+              else ctx.lineTo(x, y);
+            }
+
+            ctx.lineWidth = width;
+            const toneShift = (1 - p) * 24;
+            ctx.strokeStyle = `rgba(${216 + toneShift},${224 + toneShift},${236 + toneShift},${alpha})`;
+            ctx.stroke();
+          }
+
+          time += 16;
+          raf = requestAnimationFrame(draw);
+        };
+
+        const onMove = (event) => {
+          const rect = wrap.getBoundingClientRect();
+          targetMouse.x = (event.clientX - rect.left) / rect.width;
+          targetMouse.y = 1 - (event.clientY - rect.top) / rect.height;
+        };
+
+        const onLeave = () => {
+          targetMouse.x = 0.5;
+          targetMouse.y = 0.5;
+        };
+
+        window.addEventListener("resize", resize);
+        wrap.addEventListener("mousemove", onMove);
+        wrap.addEventListener("mouseleave", onLeave);
+
+        resize();
+        draw();
+
+        window.__stopLoginThreads = () => {
+          if (raf) cancelAnimationFrame(raf);
+          window.removeEventListener("resize", resize);
+          wrap.removeEventListener("mousemove", onMove);
+          wrap.removeEventListener("mouseleave", onLeave);
+        };
+      }
+
+      goToScreen("screen-1");
+      initLoginThreads();
+    </script>
+
+    <script type="module">
+      const initComments = async () => {
+        const section = document.getElementById("comments-root");
+        const cta = document.getElementById("comments-cta");
+        if (!section) return;
+
+        let mount = null;
+        try {
+          const mod = await import("./CommentsComponent.js");
+          mount = mod.mountCommentsFromDom;
+        } catch (error) {
+          console.error("No se pudo importar CommentsComponent.js", error);
+          mount = window.mountCommentsFromDom || null;
+        }
+
+        if (!mount) {
+          section.innerHTML =
+            '<p style="color:#b91c1c;font-size:13px;margin:0;">No fue posible cargar el modulo de comentarios. Abre este archivo desde un servidor local (por ejemplo Live Server) para habilitar Supabase.</p>';
+          return;
+        }
+
+        mount({
+          supabaseUrl: "https://jzawvnkoabujmmqrgjfc.supabase.co",
+          supabaseKey:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6YXd2bmtvYWJ1am1tcXJnamZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzODg1MDgsImV4cCI6MjA4Nzk2NDUwOH0.Rg4C8pkvjL-u1ULQsK0hKU1jKjbinFYhQ2kWH2mPTgE",
+          pageSize: 5
+        });
+
+        if (cta) {
+          cta.addEventListener("click", () =>
+            section.scrollIntoView({ behavior: "smooth", block: "start" })
+          );
+        }
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => {
+          initComments();
+        }, { once: true });
+      } else {
+        initComments();
+      }
+    </script>
+  </body>
+</html>
