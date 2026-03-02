@@ -74,7 +74,7 @@
         <div
           id="comments-root"
           data-entrega-comments
-          data-entrega-id="entrega_mockup_mobile"
+          data-entrega-id="entrega_home"
         ></div>
       </section>
     </main>
@@ -815,6 +815,23 @@
           error: { onResolve: () => setScreen('home') }
         };
 
+        React.useEffect(() => {
+          const applyEntrega = () => {
+            const instances = window.__commentsInstances;
+            if (instances && instances[0]) {
+              instances[0].setEntrega(`entrega_${screen}`, { label: current.label });
+              return true;
+            }
+            return false;
+          };
+
+          if (!applyEntrega()) {
+            const handler = () => applyEntrega();
+            window.addEventListener('comments-ready', handler, { once: true });
+            return () => window.removeEventListener('comments-ready', handler);
+          }
+        }, [screen, current.label]);
+
         return (
           <section className="rounded-[40px] border border-ink-200 bg-white/85 p-6 shadow-[0_30px_80px_rgba(17,24,39,0.12)]">
             <div className="flex flex-wrap gap-2">
@@ -854,12 +871,15 @@
       import { mountCommentsFromDom } from './CommentsComponent.js';
 
       const initComments = () => {
-        mountCommentsFromDom({
+        const instances = mountCommentsFromDom({
           supabaseUrl: 'https://jzawvnkoabujmmqrgjfc.supabase.co',
           supabaseKey:
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp6YXd2bmtvYWJ1am1tcXJnamZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzODg1MDgsImV4cCI6MjA4Nzk2NDUwOH0.Rg4C8pkvjL-u1ULQsK0hKU1jKjbinFYhQ2kWH2mPTgE',
           pageSize: 5
         });
+
+        window.__commentsInstances = instances;
+        window.dispatchEvent(new CustomEvent('comments-ready'));
 
         const cta = document.getElementById('comments-cta');
         const section = document.getElementById('comments-root');

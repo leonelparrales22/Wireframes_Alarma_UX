@@ -172,6 +172,26 @@ export class CommentsComponent {
     this.loadComments();
   }
 
+  setEntrega(entregaId, { label } = {}) {
+    if (!entregaId) return;
+    const isSame = this.entregaId === entregaId;
+    this.entregaId = entregaId;
+    this.root.dataset.entregaId = entregaId;
+    if (this.titleEl && label) {
+      this.titleEl.textContent = `Comentarios · ${label}`;
+    }
+
+    if (isSame) return;
+
+    this.currentPage = 0;
+    this.hasMore = true;
+    this.loadMoreBtn.disabled = false;
+    this.loadMoreBtn.textContent = 'Cargar más';
+    this.list.innerHTML = '';
+    this.emptyState.hidden = true;
+    this.loadComments();
+  }
+
   get baseUrl() {
     return `${this.supabaseUrl.replace(/\/$/, '')}/rest/v1/comentarios_entregas`;
   }
@@ -182,6 +202,7 @@ export class CommentsComponent {
 
     const title = document.createElement('h3');
     title.textContent = 'Comentarios de la entrega';
+    this.titleEl = title;
 
     this.form = document.createElement('form');
     this.form.className = 'comments-form';
@@ -342,11 +363,16 @@ export function mountCommentsFromDom({
   pageSize,
 } = {}) {
   const nodes = document.querySelectorAll(selector);
+  const instances = [];
   nodes.forEach((node) => {
     const entregaId = node.dataset.entregaId || node.getAttribute('data-entrega-id');
     // eslint-disable-next-line no-new
-    new CommentsComponent({ root: node, entregaId, supabaseUrl, supabaseKey, pageSize });
+    const instance = new CommentsComponent({ root: node, entregaId, supabaseUrl, supabaseKey, pageSize });
+    node.__commentsInstance = instance;
+    instances.push(instance);
   });
+
+  return instances;
 }
 
 if (typeof window !== 'undefined') {
