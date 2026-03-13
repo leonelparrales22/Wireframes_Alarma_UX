@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bioalarm · Mockup web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <section class="prototype-shell">
+        <div class="workspace" id="workspace">
+          <div class="screen-wrap">
+            <section class="screen login-screen active" id="screen-1" data-name="Login seguro">
+              <div class="login-stage" id="login-stage">
+                <canvas class="threads-canvas" id="threads-canvas"></canvas>
+                <div class="login-stage-overlay" aria-hidden="true"></div>
+
+                <div class="login-top-pill">
+                  <div class="login-top-brand">bioalarm</div>
+                </div>
+
+                <div class="login-hero">
+                  <div class="login-copy">
+                    <div class="login-kicker">Verificación clínica de alto nivel</div>
+                    <h1 class="login-title">Acceso seguro para monitoreo clínico del sueño</h1>
+                    <p class="login-subtitle">
+                      Protección de datos médicos, autenticación robusta y trazabilidad continua para equipos clínicos.
+                    </p>
+
+                    <div class="login-actions">
+                      <button class="login-btn-main" type="button" data-go="screen-2">Ingresar al dashboard</button>
+                      <button class="login-btn-alt" type="button" data-go="screen-7">Ver reporte</button>
+                    </div>
+                  </div>
+
+                  <div class="login-form-floating">
+                    <label class="label">Usuario institucional</label>
+                    <input class="field" type="email" placeholder="medico@clinica.com" />
+
+                    <label class="label">Contraseña</label>
+                    <input class="field" type="password" placeholder="***********" />
+
+                    <label class="label">Código de verificación 2FA</label>
+                    <input class="field" type="text" placeholder="123456" />
+
+                    <div class="login-alert-inline">Usuario o contraseña incorrectos.</div>
+
+                    <button class="btn primary" type="button" data-go="screen-2">Validar e iniciar sesión</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" id="screen-2" data-name="Dashboard cargando">
+              <div class="wireframe">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="url-bar"></div>
+                </div>
+
+                <div class="app-shell">
+                  <aside class="sidebar">
+                    <div class="logo-mark"></div>
+                    <div class="menu">
+                      <button class="menu-item active" type="button" data-go="screen-3">Inicio</button>
+                      <button class="menu-item" type="button" data-go="screen-4">Detalles</button>
+                      <button class="menu-item" type="button" data-go="screen-5">Historial</button>
+                      <button class="menu-item" type="button" data-go="screen-6">Alertas</button>
+                      <button class="menu-item" type="button" data-go="screen-7">Exportar</button>
+                      <button class="menu-item" type="button" data-go="screen-9">Perfil</button>
+                    </div>
+                  </aside>
+
+                  <main class="main">
+                    <div class="card hero-card soft">
+                      <h3>Dashboard analítico</h3>
+                      <p>Cargando datos de la nube y preparando componentes de visualización.</p>
+                      <div class="skeleton">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+
+                    <div class="row three">
+                      <div class="card skeleton-card"><div class="skeleton"><div></div><div></div><div></div></div></div>
+                      <div class="card skeleton-card"><div class="skeleton"><div></div><div></div><div></div></div></div>
+                      <div class="card skeleton-card"><div class="skeleton"><div></div><div></div><div></div></div></div>
+                    </div>
+
+                    <button class="btn secondary" type="button" data-go="screen-3">Omitir espera</button>
+                  </main>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" id="screen-3" data-name="Dashboard analítico">
+              <div class="wireframe">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="url-bar"></div>
+                </div>
+
+                <div class="app-shell">
+                  <aside class="sidebar">
+                    <div class="logo-mark"></div>
+                    <div class="menu">
+                      <button class="menu-item active" type="button" data-go="screen-3">Inicio</button>
+                      <button class="menu-item" type="button" data-go="screen-4">Detalles</button>
+                      <button class="menu-item" type="button" data-go="screen-5">Historial</button>
+                      <button class="menu-item" type="button" data-go="screen-6">Alertas</button>
+                      <button class="menu-item" type="button" data-go="screen-7">Exportar</button>
+                      <button class="menu-item" type="button" data-go="screen-9">Perfil</button>
+                    </div>
+                  </aside>
+
+                  <main class="main">
+                    <div class="row three">
+                      <article class="card metric-card">
+                        <span class="metric-label">Calidad promedio</span>
+                        <strong>84%</strong>
+                        <p>Mejora sostenida respecto al último periodo.</p>
+                      </article>
+                      <article class="card metric-card">
+                        <span class="metric-label">Duración promedio</span>
+                        <strong>7h 12m</strong>
+                        <p>Se mantiene cerca del objetivo recomendado.</p>
+                      </article>
+                      <article class="card metric-card">
+                        <span class="metric-label">Alertas</span>
+                        <strong>3 eventos</strong>
+                        <p>Dos medias y una revisión prioritaria.</p>
+                      </article>
+                    </div>
+
+                    <article class="card chart-card">
+                      <div class="section-head">
+                        <div>
+                          <h3>Tendencias últimos 30 días</h3>
+                          <p>Lectura general de calidad nocturna y comportamiento del periodo.</p>
+                        </div>
+                        <div class="chip-row">
+                          <button class="chip selected" type="button" data-trend-range="30">30 días</button>
+                          <button class="chip" type="button" data-trend-range="7">7 días</button>
+                          <button class="chip" type="button" data-trend-range="90">90 días</button>
+                        </div>
+                      </div>
+
+                      <div class="chart-with-scale">
+                        <div class="axis-y">
+                          <span>100%</span>
+                          <span>75%</span>
+                          <span>50%</span>
+                          <span>25%</span>
+                          <span>0%</span>
+                        </div>
+                        <div class="plot-wrap">
+                          <div class="plot-grid" id="trend-bars">
+                            <span class="bar" style="height:46%"></span>
+                            <span class="bar" style="height:72%"></span>
+                            <span class="bar" style="height:64%"></span>
+                            <span class="bar" style="height:92%"></span>
+                            <span class="bar" style="height:84%"></span>
+                            <span class="bar" style="height:72%"></span>
+                            <span class="bar" style="height:64%"></span>
+                          </div>
+                          <div class="axis-x" id="trend-axis-x">
+                            <span>D1</span>
+                            <span>D5</span>
+                            <span>D10</span>
+                            <span>D15</span>
+                            <span>D20</span>
+                            <span>D25</span>
+                            <span>D30</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="axis-caption">Eje Y: índice de calidad | Eje X: días del periodo</p>
+                    </article>
+
+                    <div class="row two">
+                      <article class="card chart-card">
+                        <h4>Factor: consumo de café</h4>
+                        <div class="chart-with-scale compact">
+                          <div class="axis-y">
+                            <span>4</span>
+                            <span>3</span>
+                            <span>2</span>
+                            <span>1</span>
+                            <span>0</span>
+                          </div>
+                          <div class="plot-wrap">
+                            <div class="plot-grid">
+                              <span class="bar b"></span>
+                              <span class="bar d"></span>
+                              <span class="bar a"></span>
+                              <span class="bar c"></span>
+                            </div>
+                            <div class="axis-x">
+                              <span>Sem1</span>
+                              <span>Sem2</span>
+                              <span>Sem3</span>
+                              <span>Sem4</span>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="axis-caption">Unidad: tazas promedio / noche</p>
+                      </article>
+
+                      <article class="card insight-panel">
+                        <div class="insight-head">
+                          <div>
+                            <h3>Interpretación rápida</h3>
+                            <p>Resumen clínico de la última lectura consolidada.</p>
+                          </div>
+                          <span class="tag success">Estable</span>
+                        </div>
+
+                        <div class="insight-grid">
+                          <div class="insight-mini">
+                            <small>Eficiencia</small>
+                            <strong>91%</strong>
+                            <p>Mejor que el promedio personal.</p>
+                          </div>
+                          <div class="insight-mini">
+                            <small>Riesgo actual</small>
+                            <strong>28</strong>
+                            <p>Nivel bajo con una alerta a revisar.</p>
+                          </div>
+                        </div>
+
+                        <div class="insight-note">
+                          El patrón general es estable, con una ligera caída en calidad asociada a
+                          movimientos frecuentes en el segundo tercio de la noche.
+                        </div>
+                      </article>
+                    </div>
+
+                    <div class="row two">
+                      <button class="btn primary" type="button" data-go="screen-4">Abrir detalle de sesión</button>
+                      <button class="btn ghost" type="button" data-go="screen-7">Ir a exportar reporte</button>
+                    </div>
+
+                    <div class="row two">
+                      <button class="btn ghost" type="button" data-go="screen-5">Abrir historial filtrado</button>
+                      <button class="btn secondary" type="button" data-go="screen-9">Configurar perfil de salud</button>
+                    </div>
+                  </main>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" id="screen-4" data-name="Detalle de sesión">
+              <div class="wireframe">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="url-bar"></div>
+                </div>
+
+                <div class="app-shell">
+                  <aside class="sidebar">
+                    <div class="logo-mark"></div>
+                    <div class="menu">
+                      <button class="menu-item" type="button" data-go="screen-3">Inicio</button>
+                      <button class="menu-item active" type="button" data-go="screen-4">Detalles</button>
+                      <button class="menu-item" type="button" data-go="screen-5">Historial</button>
+                      <button class="menu-item" type="button" data-go="screen-6">Alertas</button>
+                      <button class="menu-item" type="button" data-go="screen-7">Exportar</button>
+                      <button class="menu-item" type="button" data-go="screen-9">Perfil</button>
+                    </div>
+                  </aside>
+
+                  <main class="main">
+                    <article class="card hero-card bright">
+                      <h3>Análisis de noche · 12 octubre 2025</h3>
+                      <p>Calidad 85% · Duración 7h 20m · Eficiencia 91%</p>
+                    </article>
+
+                    <article class="card">
+                      <div class="row three">
+                        <div>
+                          <label class="field-label">Métrica principal</label>
+                          <select class="select">
+                            <option>Arquitectura del sueño (REM / Ligero / Profundo)</option>
+                            <option>Ritmo cardíaco nocturno</option>
+                            <option>Respiración por minuto</option>
+                            <option>Saturación de oxígeno (SpO2)</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label class="field-label">Ventana de análisis</label>
+                          <select class="select">
+                            <option>Noche completa</option>
+                            <option>Primer tercio</option>
+                            <option>Segundo tercio</option>
+                            <option>Último tercio</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label class="field-label">Comparar contra</label>
+                          <select class="select">
+                            <option>Promedio personal 30 días</option>
+                            <option>Noche anterior</option>
+                            <option>Última semana</option>
+                          </select>
+                        </div>
+                      </div>
+                    </article>
+
+                    <article class="card chart-card">
+                      <h4>Fases de sueño (REM / Ligero / Profundo)</h4>
+                      <div class="line-chart-with-scale">
+                        <div class="axis-y">
+                          <span>100%</span>
+                          <span>75%</span>
+                          <span>50%</span>
+                          <span>25%</span>
+                          <span>0%</span>
+                        </div>
+                        <div class="plot-wrap">
+                          <div class="line-chart">
+                            <svg class="timeline-svg" viewBox="0 0 600 180" preserveAspectRatio="none">
+                              <polyline
+                                points="0,145 60,145 110,80 180,80 240,132 300,132 350,60 430,60 500,118 600,118"
+                                fill="none"
+                                stroke="#47c0ce"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <line x1="0" y1="145" x2="600" y2="145" stroke="#d6dfea" stroke-width="1" />
+                              <line x1="0" y1="110" x2="600" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                              <line x1="0" y1="75" x2="600" y2="75" stroke="#e2e8f0" stroke-width="1" />
+                              <line x1="0" y1="40" x2="600" y2="40" stroke="#edf2f7" stroke-width="1" />
+                            </svg>
+                          </div>
+                          <div class="axis-x">
+                            <span>00:00</span>
+                            <span>02:00</span>
+                            <span>04:00</span>
+                            <span>06:00</span>
+                            <span>08:00</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="axis-caption">Eje Y: profundidad (%) | Eje X: tiempo de la sesión</p>
+                    </article>
+
+                    <div class="row two">
+                      <article class="card metric-mini">
+                        <h4>Respiración</h4>
+                        <p>12 eventos leves</p>
+                      </article>
+                      <article class="card metric-mini">
+                        <h4>Frecuencia cardíaca</h4>
+                        <p>56-72 bpm</p>
+                      </article>
+                    </div>
+
+                    <article class="card">
+                      <h4>Interpretación de resultados</h4>
+                      <div class="summary-line">Predominio de sueño ligero entre 02:00 y 03:30, con dos transiciones abruptas.</div>
+                      <div class="summary-line">Ritmo cardíaco estable la mayor parte de la noche; incremento leve al final de la sesión.</div>
+                      <div class="summary-line">Recomendación: reducir consumo de café posterior a las 17:00 y validar higiene de sueño.</div>
+                    </article>
+
+                    <div class="row two">
+                      <button class="btn ghost" type="button" data-go="screen-3">Volver a inicio</button>
+                      <button class="btn primary" type="button" data-go="screen-7">Exportar este análisis</button>
+                    </div>
+                  </main>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" id="screen-5" data-name="Historial de sesiones">
+              <div class="wireframe">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="url-bar"></div>
+                </div>
+
+                <div class="app-shell">
+                  <aside class="sidebar">
+                    <div class="logo-mark"></div>
+                    <div class="menu">
+                      <button class="menu-item" type="button" data-go="screen-3">Inicio</button>
+                      <button class="menu-item" type="button" data-go="screen-4">Detalles</button>
+                      <button class="menu-item active" type="button" data-go="screen-5">Historial</button>
+                      <button class="menu-item" type="button" data-go="screen-6">Alertas</button>
+                      <button class="menu-item" type="button" data-go="screen-7">Exportar</button>
+                      <button class="menu-item" type="button" data-go="screen-9">Perfil</button>
+                    </div>
+                  </aside>
+
+                  <main class="main">
+                    <article class="card">
+                      <h3>Historial de sesiones</h3>
+                      <p>Filtra por rango, calidad, eventos y estado clínico.</p>
+
+                      <div class="history-filters">
+                        <div class="section-title">Filtros avanzados</div>
+                        <div class="row three">
+                          <div>
+                            <label class="field-label">Desde</label>
+                            <input class="input flat" value="2025-10-01" />
+                          </div>
+                          <div>
+                            <label class="field-label">Hasta</label>
+                            <input class="input flat" value="2025-10-31" />
+                          </div>
+                          <div>
+                            <label class="field-label">Calidad mínima</label>
+                            <select class="select">
+                              <option>70%</option>
+                              <option selected>75%</option>
+                              <option>80%</option>
+                              <option>85%</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="row three">
+                          <div>
+                            <label class="field-label">Eventos respiratorios</label>
+                            <select class="select">
+                              <option>Todos</option>
+                              <option>0-2 eventos</option>
+                              <option>3-5 eventos</option>
+                              <option>6+ eventos</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label class="field-label">Etiqueta clínica</label>
+                            <select class="select">
+                              <option>Todas</option>
+                              <option>Normal</option>
+                              <option>Vigilar</option>
+                              <option>Prioritario</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label class="field-label">Orden</label>
+                            <select class="select">
+                              <option>Más reciente</option>
+                              <option>Mejor calidad</option>
+                              <option>Mayor duración</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="row two">
+                          <button class="btn primary" type="button">Aplicar filtros</button>
+                          <button class="btn ghost" type="button">Limpiar filtros</button>
+                        </div>
+
+                        <div class="chip-row">
+                          <button class="chip selected" type="button" data-toggle-chip="history-period">Octubre</button>
+                          <button class="chip" type="button" data-toggle-chip="history-quality">Calidad &gt; 75%</button>
+                          <button class="chip" type="button" data-toggle-chip="history-alerts">Sin alertas severas</button>
+                        </div>
+
+                        <div class="pill-note">Resultados encontrados: 14 sesiones</div>
+                      </div>
+                    </article>
+
+                    <div class="history-summary">
+                      <div class="mini-kpi"><strong>14</strong><span>Sesiones filtradas</span></div>
+                      <div class="mini-kpi"><strong>82%</strong><span>Calidad promedio</span></div>
+                      <div class="mini-kpi"><strong>2.1</strong><span>Eventos promedio</span></div>
+                    </div>
+
+                    <article class="card">
+                      <div class="section-title">Resultados</div>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Fecha</th>
+                            <th>Duración</th>
+                            <th>Calidad</th>
+                            <th>Eventos</th>
+                            <th>Acción</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>12 Oct 2025</td>
+                            <td>7h 20m</td>
+                            <td>85%</td>
+                            <td>2</td>
+                            <td><button class="table-action" type="button" data-go="screen-4">Ver detalle</button></td>
+                          </tr>
+                          <tr>
+                            <td>11 Oct 2025</td>
+                            <td>6h 58m</td>
+                            <td>79%</td>
+                            <td>4</td>
+                            <td><button class="table-action" type="button" data-go="screen-4">Ver detalle</button></td>
+                          </tr>
+                          <tr>
+                            <td>10 Oct 2025</td>
+                            <td>7h 42m</td>
+                            <td>88%</td>
+                            <td>1</td>
+                            <td><button class="table-action" type="button" data-go="screen-4">Ver detalle</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </article>
+
+                    <div class="row two">
+                      <button class="btn ghost" type="button" data-go="screen-4">Ver análisis de la noche seleccionada</button>
+                      <button class="btn primary" type="button" data-go="screen-7">Exportar resultados filtrados</button>
+                    </div>
+                  </main>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" id="screen-6" data-name="Alertas clínicas">
+              <div class="wireframe">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="url-bar"></div>
+                </div>
+
+                <div class="app-shell">
+                  <aside class="sidebar">
+                    <div class="logo-mark"></div>
+                    <div class="menu">
+                      <button class="menu-item" type="button" data-go="screen-3">Inicio</button>
+                      <button class="menu-item" type="button" data-go="screen-4">Detalles</button>
+                      <button class="menu-item" type="button" data-go="screen-5">Historial</button>
+                      <button class="menu-item active" type="button" data-go="screen-6">Alertas</button>
+                      <button class="menu-item" type="button" data-go="screen-7">Exportar</button>
+                      <button class="menu-item" type="button" data-go="screen-9">Perfil</button>
+                    </div>
+                  </aside>
+
+                  <main class="main">
+                    <div class="alert-mock">
+                      <strong>Mock alerta crítica activa</strong>
+                      <p>SpO2 por debajo de 90% por 4 minutos en la sesión 12 Oct 2025. Requiere revisión prioritaria.</p>
+                      <div class="row two">
+                        <button class="btn primary" type="button" data-go="screen-4">Revisar sesión ahora</button>
+                        <button class="btn ghost" type="button">Marcar como atendida</button>
+                      </div>
+                    </div>
+
+                    <article class="card">
+                      <h3>Alertas clínicas detectadas</h3>
+                      <p>Priorización para revisión del equipo médico.</p>
+                    </article>
+
+                    <div class="row two">
+                      <article class="card">
+                        <h4>Evento A</h4>
+                        <p>Desaturación nocturna · Prioridad alta</p>
+                        <button class="btn ghost" type="button" data-go="screen-4">Abrir sesión</button>
+                      </article>
+                      <article class="card">
+                        <h4>Evento B</h4>
+                        <p>Movimientos frecuentes · Prioridad media</p>
+                        <button class="btn ghost" type="button" data-go="screen-4">Abrir sesión</button>
+                      </article>
+                    </div>
+
+                    <article class="card chart-card">
+                      <h4>Línea temporal de alertas</h4>
+                      <div class="line-chart-with-scale compact-line">
+                        <div class="axis-y">
+                          <span>5</span>
+                          <span>4</span>
+                          <span>3</span>
+                          <span>2</span>
+                          <span>0</span>
+                        </div>
+                        <div class="plot-wrap">
+                          <div class="line-chart small">
+                            <svg class="timeline-svg" viewBox="0 0 600 180" preserveAspectRatio="none">
+                              <polyline
+                                points="0,144 90,128 180,82 270,118 360,60 450,92 540,38 600,46"
+                                fill="none"
+                                stroke="#14b8a6"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                              <circle cx="90" cy="128" r="6" fill="#38bdf8" />
+                              <circle cx="180" cy="82" r="6" fill="#38bdf8" />
+                              <circle cx="270" cy="118" r="6" fill="#38bdf8" />
+                              <circle cx="360" cy="60" r="6" fill="#38bdf8" />
+                              <circle cx="450" cy="92" r="6" fill="#38bdf8" />
+                              <circle cx="540" cy="38" r="6" fill="#38bdf8" />
+                              <line x1="0" y1="145" x2="600" y2="145" stroke="#d6dfea" stroke-width="1" />
+                              <line x1="0" y1="110" x2="600" y2="110" stroke="#e2e8f0" stroke-width="1" />
+                              <line x1="0" y1="75" x2="600" y2="75" stroke="#e2e8f0" stroke-width="1" />
+                              <line x1="0" y1="40" x2="600" y2="40" stroke="#edf2f7" stroke-width="1" />
+                            </svg>
+                          </div>
+                          <div class="axis-x">
+                            <span>Lun</span>
+                            <span>Mar</span>
+                            <span>Mié</span>
+                            <span>Jue</span>
+                            <span>Vie</span>
+                            <span>Sáb</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="axis-caption">Cantidad de eventos por día</p>
+                    </article>
+                  </main>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" id="screen-7" data-name="Exportar reporte">
+              <div class="wireframe">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="url-bar"></div>
+                </div>
+
+                <div class="app-shell">
+                  <aside class="sidebar">
+                    <div class="logo-mark"></div>
+                    <div class="menu">
+                      <button class="menu-item" type="button" data-go="screen-3">Inicio</button>
+                      <button class="menu-item" type="button" data-go="screen-4">Detalles</button>
+                      <button class="menu-item" type="button" data-go="screen-5">Historial</button>
+                      <button class="menu-item" type="button" data-go="screen-6">Alertas</button>
+                      <button class="menu-item active" type="button" data-go="screen-7">Exportar</button>
+                      <button class="menu-item" type="button" data-go="screen-9">Perfil</button>
+                    </div>
+                  </aside>
+
+                  <main class="main">
+                    <article class="card">
+                      <h3>Descargar reporte médico</h3>
+                      <p>Flujo guiado para evitar errores de exportación.</p>
+
+                      <div class="step-grid">
+                        <button class="step-box active" type="button" data-step-box="1"><strong>Paso 1</strong><span>Formato</span></button>
+                        <button class="step-box" type="button" data-step-box="2"><strong>Paso 2</strong><span>Periodo</span></button>
+                        <button class="step-box" type="button" data-step-box="3"><strong>Paso 3</strong><span>Contenido</span></button>
+                        <button class="step-box" type="button" data-step-box="4"><strong>Paso 4</strong><span>Confirmación</span></button>
+                      </div>
+
+                      <div class="row two">
+                        <div>
+                          <label class="field-label">Formato de salida</label>
+                          <select class="select">
+                            <option>PDF clínico</option>
+                            <option>CSV analítico</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label class="field-label">Rango</label>
+                          <select class="select">
+                            <option>Últimos 30 días</option>
+                            <option>Últimos 7 días</option>
+                            <option>Noche puntual</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row two">
+                        <div>
+                          <label class="field-label">Incluir secciones</label>
+                          <div class="chip-row">
+                            <button class="chip selected" type="button" data-toggle-chip="export-summary">Resumen</button>
+                            <button class="chip selected" type="button" data-toggle-chip="export-rem">Detalle REM</button>
+                            <button class="chip" type="button" data-toggle-chip="export-alerts">Alertas</button>
+                          </div>
+                        </div>
+                        <div>
+                          <label class="field-label">Destino</label>
+                          <select class="select">
+                            <option>Descarga local</option>
+                            <option>Enviar por correo médico</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row two">
+                        <button class="btn primary" type="button" data-go="screen-8">Descargar</button>
+                        <button class="btn ghost" type="button" data-go="screen-4">Previsualizar</button>
+                      </div>
+                    </article>
+
+                    <div class="row two">
+                      <article class="card">
+                        <h4>Vista previa de estructura</h4>
+                        <div class="summary-line">1. Datos del paciente y periodo</div>
+                        <div class="summary-line">2. Indicadores de calidad y duración</div>
+                        <div class="summary-line">3. Gráficas: REM, FC, respiración</div>
+                        <div class="summary-line">4. Interpretación automática</div>
+                      </article>
+
+                      <article class="card">
+                        <h4>Control de salida</h4>
+                        <div class="summary-line">Tamaño estimado: 2.4 MB</div>
+                        <div class="summary-line">Tiempo de generación: ~12 s</div>
+                        <div class="summary-line">Cumple formato médico: Sí</div>
+                        <button class="btn ghost" type="button" data-go="screen-5">Exportar desde historial filtrado</button>
+                      </article>
+                    </div>
+
+                    <div class="message">
+                      La estructura del archivo será: portada, resumen, detalle técnico e interpretación.
+                    </div>
+                  </main>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" id="screen-8" data-name="Descarga exitosa">
+              <div class="wireframe">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="url-bar"></div>
+                </div>
+
+                <div class="main standalone">
+                  <div class="center-stack">
+                    <article class="card success-card">
+                      <h3>Exportación completada</h3>
+                      <p>Tu reporte se ha descargado correctamente.</p>
+                      <div class="row two">
+                        <button class="btn primary" type="button" data-go="screen-7">Abrir archivo</button>
+                        <button class="btn ghost" type="button" data-go="screen-3">Volver al dashboard</button>
+                      </div>
+                      <div class="row two">
+                        <button class="btn ghost" type="button" data-go="screen-9">Actualizar perfil de salud</button>
+                        <button class="btn secondary" type="button" data-go="screen-5">Ver historial filtrado</button>
+                      </div>
+                    </article>
+
+                    <article class="card">
+                      <h4>Resumen del archivo</h4>
+                      <p>Formato: PDF · Rango: últimos 30 días · Incluye análisis y resumen clínico.</p>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" id="screen-9" data-name="Perfil y salud">
+              <div class="wireframe">
+                <div class="browser-top">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <div class="url-bar"></div>
+                </div>
+
+                <div class="app-shell">
+                  <aside class="sidebar">
+                    <div class="logo-mark"></div>
+                    <div class="menu">
+                      <button class="menu-item" type="button" data-go="screen-3">Inicio</button>
+                      <button class="menu-item" type="button" data-go="screen-4">Detalles</button>
+                      <button class="menu-item" type="button" data-go="screen-5">Historial</button>
+                      <button class="menu-item" type="button" data-go="screen-6">Alertas</button>
+                      <button class="menu-item" type="button" data-go="screen-7">Exportar</button>
+                      <button class="menu-item active" type="button" data-go="screen-9">Perfil</button>
+                    </div>
+                  </aside>
+
+                  <main class="main">
+                    <article class="card">
+                      <h3>Foto / avatar del paciente</h3>
+                      <div class="avatar-block">
+                        <div class="avatar-placeholder">Espacio de avatar o imagen</div>
+                        <div class="profile-meta">
+                          <div class="summary-line">ID paciente: SLP-2025-001</div>
+                          <div class="summary-line">Última actualización: 22-02-2026</div>
+                          <div class="summary-line">Fuente: carga manual / sistema clínico</div>
+                          <div class="row two">
+                            <button class="btn primary" type="button">Subir imagen</button>
+                            <button class="btn ghost" type="button">Quitar imagen</button>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+
+                    <article class="card">
+                      <h3>Perfil y parámetros de salud</h3>
+                      <p>Estos datos ajustan la interpretación automática de resultados.</p>
+                      <div class="row three">
+                        <div>
+                          <label class="field-label">Nombre paciente</label>
+                          <input class="input flat" value="Paciente Demo" />
+                        </div>
+                        <div>
+                          <label class="field-label">Edad</label>
+                          <input class="input flat" value="42" />
+                        </div>
+                        <div>
+                          <label class="field-label">Sexo biológico</label>
+                          <select class="select">
+                            <option>Femenino</option>
+                            <option selected>Masculino</option>
+                            <option>Otro</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row three">
+                        <div>
+                          <label class="field-label">Peso (kg)</label>
+                          <input class="input flat" value="78" />
+                        </div>
+                        <div>
+                          <label class="field-label">Talla (cm)</label>
+                          <input class="input flat" value="176" />
+                        </div>
+                        <div>
+                          <label class="field-label">Objetivo de sueño</label>
+                          <select class="select">
+                            <option>7 horas</option>
+                            <option selected>7.5 horas</option>
+                            <option>8 horas</option>
+                          </select>
+                        </div>
+                      </div>
+                    </article>
+
+                    <article class="card">
+                      <h4>Antecedentes y condiciones relevantes</h4>
+                      <div class="chip-row">
+                        <button class="chip selected" type="button" data-toggle-chip="condition-ht">Hipertensión</button>
+                        <button class="chip" type="button" data-toggle-chip="condition-db">Diabetes</button>
+                        <button class="chip selected" type="button" data-toggle-chip="condition-apnea">Apnea diagnosticada</button>
+                        <button class="chip" type="button" data-toggle-chip="condition-anxiety">Ansiedad</button>
+                        <button class="chip" type="button" data-toggle-chip="condition-none">Ninguna</button>
+                      </div>
+                      <div class="note-block">
+                        <label class="field-label">Medicación nocturna / observaciones</label>
+                        <textarea class="textarea">Melatonina 3mg, toma 22:30. Ronquido frecuente reportado por pareja.</textarea>
+                      </div>
+                    </article>
+
+                    <div class="row two">
+                      <article class="card">
+                        <h4>Impacto en interpretación</h4>
+                        <div class="summary-line">Se ajusta umbral de alerta en ritmo cardíaco.</div>
+                        <div class="summary-line">Se activa regla de vigilancia para pausas respiratorias.</div>
+                        <div class="summary-line">El score final pondera antecedentes clínicos.</div>
+                      </article>
+
+                      <article class="card">
+                        <h4>Acciones</h4>
+                        <div class="stack-actions">
+                          <button class="btn primary" type="button">Guardar perfil</button>
+                          <button class="btn ghost" type="button" data-go="screen-3">Recalcular dashboard</button>
+                          <button class="btn ghost" type="button" data-go="screen-4">Revisar detalle con ajustes</button>
+                        </div>
+                      </article>
+                    </div>
+                  </main>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
